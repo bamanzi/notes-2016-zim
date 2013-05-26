@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>evernote-3.1-portable</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-align: center;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+			.page { max-width: 1000px;}
+			.menu{
+				float:left; width: 300px;
+			}
+
+			.content { padding-left: 320px;}
+			.notebook{font-variant: small-caps;
+					color:#4e9a06;
+					padding: 0px 20px;}
+			hr{clear:both;}
+		</style>
+
+	</head>
+	<body>
+		<div class="page">
+			<div class="heading">
+									<h1>evernote-3.1-portable</h1>
+			</div>
+			<hr>
+			<div class="menu">
+				<ul>
+<li><a href="../../../2012.html" title="2012" class="page">2012</a></li>
+<li><a href="../../../blog.html" title="blog" class="page">blog</a></li>
+<ul>
+<li><a href="../../2012.html" title="2012" class="page">2012</a></li>
+<ul>
+<li><a href="../02.html" title="02" class="page">02</a></li>
+<li><a href="../05.html" title="05" class="page">05</a></li>
+<li><a href="../06.html" title="06" class="page">06</a></li>
+<li><a href="../07.html" title="07" class="page">07</a></li>
+<ul>
+<li><strong class="activepage">evernote-3.1-portable</strong></li>
+<li><a href="./file-compare-tools.html" title="file-compare-tools" class="page">file-compare-tools</a></li>
+<li><a href="./various-goodies.html" title="various-goodies" class="page">various-goodies</a></li>
+<li><a href="./zim-like-org-mode.html" title="zim-like-org-mode" class="page">zim-like-org-mode</a></li>
+</ul>
+<li><a href="../09.html" title="09" class="page">09</a></li>
+</ul>
+<li><a href="../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+<li><a href="../../../emacs.html" title="emacs" class="page">emacs</a></li>
+<li><a href="../../../notes.html" title="notes" class="page">notes</a></li>
+<li><a href="../../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+
+			</div>
+			<div class="content">
+			<!-- Wiki content -->
+				<p>
+Created 星期六 22 十二月 2012<br>
+</p>
+
+<h1># Evernote 3.1.0.1212 英文版 + 3.1.0.1139 汉化绿色中文版 #</h1>
+
+<p>
+做了个Evernote 3.1的便携离线版（不要问我为什么搞这个，我现在觉得我是闲得蛋腾，看谁有需要吧）。下载地址: <a href="http://files.cnblogs.com/bamanzi/evernote3.1-portable-offline-bamanzi.7z" title="http://files.cnblogs.com/bamanzi/evernote3.1-portable-offline-bamanzi.7z" class="http">http://files.cnblogs.com/bamanzi/evernote3.1-portable-offline-bamanzi.7z</a>   Evernote V3版本不支持纯离线使用，第一次必须要用帐号登录，但之后可以不同步数据。所以为了纯离线使用，这里用了一个假帐号johndoe（用到了一点小技巧搞定这个问题），但实际上是不能同步的。<br>
+</p>
+
+<p>
+基于下面的版本:<br>
+<div style='padding-left: 30pt'>
+英文版 3.1.0.1212 下载自: <a href="http://www.filehippo.com/download_evernote/5902/" title="http://www.filehippo.com/download_evernote/5902/" class="http">http://www.filehippo.com/download_evernote/5902/</a><br>
+简体版 3.1.0.1139 下载自: <a href="http://www.hanzify.org/software/11904.html" title="http://www.hanzify.org/software/11904.html" class="http">http://www.hanzify.org/software/11904.html</a>   瘦瘦汉化<br>
+</div>
+</p>
+
+
+<h2>## 安装说明 ##</h2>
+<p>
+<ul>
+<li>如果想离线使用:</li>
+</ul>
+</p>
+
+<p>
+  请在磁盘根目录解压，即保持Portable目录在根目录，而evernote.exe在X:\Portable\Evernote3.1\Evernote.exe<br>
+</p>
+  
+<p>
+  要改为其它目录也可以，但需要修改Portable\Evernote3\ENOptions.xml，重新指定数据文件的位置:<br>
+    `&lt;DefaultEvernotePath TEXT="*:\Portable\Evernote3\Data\" /&gt;` <br>
+  其中*:\Portable\Evernote3\Data\数据文件所在目录（即Database3和Log等目录所在的地方，<br>
+  （*表示evernote.exe程序所在盘符，也可以固定为C、D什么的）<br>
+</p>
+
+<p>
+  另外注意，用户名(包括ENOptions.xml里面的LastLogin, 数据库.exb文件名)不能修改，须与exb里面<br>
+  存放的账号相一致。否则要用自己的账号登录一次，evernote会根据用户名建立本地数据库。<br>
+</p>
+
+<p>
+  注: 非便携版的设置存放在注册表:`HKEY_CURRENT_USER\Software\Evernote\Evernote3` 而不在ENOptions.xml<br>
+  中，目前尚不清楚evernote是如何判断是否离线版本的。<br>
+</p>
+
+<p>
+<ul>
+<li>不想用这里提供的账号:</li>
+</ul>
+</p>
+  
+<p>
+  用自己的账号登录，须联网。Evernote 3.1可以用现在的账号登录。但3.0已经不行了。<br>
+</p>
+  
+
+<h2>## 3.0 vs 3.1 ##</h2>
+<p>
+- 3.1可以用现在的账号登录，但3.0已经不行了——第一次不登录则无法使用<br>
+</p>
+
+<p>
+- 3.0不支持DefaultEvernotePath设置，比如是安装盘下根目录的\My Evernote Files；而3.1支持（非便携版本可<br>
+  以在【工具-&gt;选项】里修改，而便携版可以在ENOptions.xml里设置）<br>
+</p>
+
+<p>
+- 3.1版本可以方便地编辑笔记的标题、来源地址和标签，而3.0只拿第一行做标题(3.1缺省也用第一行)，来源地址<br>
+  不可编辑，标签编辑在一个对话框中进行很不方便；<br>
+</p>
+
+<p>
+- 3.0的Clipper需要单独从Evernote的菜单里启动（除非用户登录操作系统时自动启动）, 系统热键不能修改<br>
+  (Win+A, Win+PrtScr)；3.1会自动随evernote主程序启动（程序不再叫UniClipper，改名叫做EvernoteTray了），<br>
+  并且可以设置热键；<br>
+</p>
+
+<p>
+- 3.0不支持导出为enex格式，不方便与其它笔记本合并；而3.1支持<br>
+</p>
+
+
+<h2>## 补充 ##</h2>
+<p>
+以下内容摘自: EverNote 3.1 網頁、手機、電腦同步筆記，站在雲端的剪輯工具：問題解答篇<br>
+<a href="http://playpcesor.blogspot.com/2009/03/evernote-31.html" title="http://playpcesor.blogspot.com/2009/03/evernote-31.html" class="http">http://playpcesor.blogspot.com/2009/03/evernote-31.html</a><br>
+</p>
+
+<p>
+- 可以免安裝隨身攜帶嗎？<br>
+</p>
+
+<p>
+  當然可以，EverNote第一次需要安裝在某台電腦上，但是隨後你可以透過主程式來製作「免安裝版」的EverNote，<br>
+  讓你放在隨身碟裡面，主程式和資料庫都隨身攜帶，不需再到別台電腦安裝，而且免安裝版也同樣有網路同步的<br>
+  功能。<br>
+</p>
+
+<p>
+- 可以免安裝隨身攜帶嗎？<br>
+</p>
+
+<p>
+  當然可以，EverNote第一次需要安裝在某台電腦上，但是隨後你可以透過主程式來製作「免安裝版」的EverNote，<br>
+  讓你放在隨身碟裡面，主程式和資料庫都隨身攜帶，不需再到別台電腦安裝，而且免安裝版也同樣有網路同步的<br>
+  功能。<br>
+</p>
+
+<h2>## 遗留问题 ##</h2>
+<p>
+- 不支持中文搜索<br>
+- 不支持图片里的文字识别（因为为了保持便携版比较小，ANR目录已经被删除了）<br>
+- 不支持pdf (为了保持便携版比较小，删除了fpdfview.dll, fpdfcjk.bin和pdffilt.dll三个文件)<br>
+- EvernoteTray.exe未汉化（因瘦瘦汉化版本中的该文件被杀毒软件报告有木马 ）<br>
+- 测试wine下的兼容性(v2.2 vs v3.1)  <a href="http://appdb.winehq.org/objectManager.php?sClass=application&iId=2566" title="http://appdb.winehq.org/objectManager.php?sClass=application&amp;iId=2566" class="http">http://appdb.winehq.org/objectManager.php?sClass=application&amp;iId=2566</a><br>
+</p>
+
+<h2>## 参考 ##</h2>
+<p>
+关于Evernote Windows的3个版本: 2.2/3.1/3.5 | 善用佳软<br>
+<a href="http://xbeta.info/evernote-win.htm" title="http://xbeta.info/evernote-win.htm" class="http">http://xbeta.info/evernote-win.htm</a><br>
+</p>
+
+<p>
+EverNote 2.2.0.384 – 瘦瘦汉化绿色免费版 - 小众软件 <br>
+<a href="http://www.appinn.com/evernote-ha/" title="http://www.appinn.com/evernote-ha/" class="http">http://www.appinn.com/evernote-ha/</a><br>
+</p>
+
+<p>
+[下载]EverNote 2.2.0.384 汉化绿色版 - 替代OneNote的笔记软件_船说：沙洲中有破船@poboat_百度空间 <br>
+<a href="http://hi.baidu.com/shazhou/blog/item/00b64290d3685a89a877a443.html" title="http://hi.baidu.com/shazhou/blog/item/00b64290d3685a89a877a443.html" class="http">http://hi.baidu.com/shazhou/blog/item/00b64290d3685a89a877a443.html</a><br>
+</p>
+
+<p>
+EverNote 3.0 试用心得：一切关乎网路，但还不够快 <a href="http://playpcesor.blogspot.com/2008/03/evernote-30.html" title="http://playpcesor.blogspot.com/2008/03/evernote-30.html" class="http">http://playpcesor.blogspot.com/2008/03/evernote-30.html</a><br>
+<a href="http://xbeta.info/evernote-30.htm" title="http://xbeta.info/evernote-30.htm" class="http">http://xbeta.info/evernote-30.htm</a>  (zz)<br>
+</p>
+
+
+<p>
+bamanzi 2012-07-12<br>
+</p>
+
+
+
+
+
+
+
+			<!-- End wiki content -->
+			</div>
+			<hr>
+			<!-- Backlinks -->
+			<div class="footer">
+									<i>No backlinks to this page.</i>
+				<br><br>
+
+				
+			<!-- End Backlinks -->
+			</div>
+		</div>
+	</body>
+</html>

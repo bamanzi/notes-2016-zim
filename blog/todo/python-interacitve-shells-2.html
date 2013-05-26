@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>python-interacitve-shells-2</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-align: center;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+			.page { max-width: 1000px;}
+			.menu{
+				float:left; width: 300px;
+			}
+
+			.content { padding-left: 320px;}
+			.notebook{font-variant: small-caps;
+					color:#4e9a06;
+					padding: 0px 20px;}
+			hr{clear:both;}
+		</style>
+
+	</head>
+	<body>
+		<div class="page">
+			<div class="heading">
+									<h1>python-interacitve-shells-2</h1>
+			</div>
+			<hr>
+			<div class="menu">
+				<ul>
+<li><a href="../../blog.html" title="blog" class="page">blog</a></li>
+<ul>
+<li><a href="../2012.html" title="2012" class="page">2012</a></li>
+<li><a href="../todo.html" title="todo" class="page">todo</a></li>
+<ul>
+<li><a href="./org-mode-tips.html" title="org-mode-tips" class="page">org-mode-tips</a></li>
+<li><strong class="activepage">python-interacitve-shells-2</strong></li>
+<li><a href="./window-shell-replacement.html" title="window-shell-replacement" class="page">window-shell-replacement</a></li>
+</ul>
+</ul>
+<li><a href="../../chirps.html" title="chirps" class="page">chirps</a></li>
+<li><a href="../../misc.html" title="misc" class="page">misc</a></li>
+<li><a href="../../notes.html" title="notes" class="page">notes</a></li>
+<li><a href="../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+
+			</div>
+			<div class="content">
+			<!-- Wiki content -->
+				<p>
+Created 星期日 24 六月 2012<br>
+</p>
+
+<p>
+<span class="zim-tag">@python</span> <br>
+</p>
+
+<h3>bpython</h3>
+<p>
+<a href="http://bpython-interpreter.org/about/" title="http://bpython-interpreter.org/about/" class="http">http://bpython-interpreter.org/about/</a><br>
+</p>
+
+<p>
+中间的几个都是GUI based, 而这个bpython是用在控制台/终端上的，因为需要ncurses，所以只能在<br>
+Unix下，Windows的话只能用于Cygwin里面的python。<br>
+</p>
+
+<p>
+虽然是字符界面，但它也有代码高亮、方便的代码提示和补全。<br>
+</p>
+
+<p>
+<a href="http://www.shahuwang.com/wp-content/uploads/2011/12/Terminal_001.png" title="http://www.shahuwang.com/wp-content/uploads/2011/12/Terminal_001.png" class="http">http://www.shahuwang.com/wp-content/uploads/2011/12/Terminal_001.png</a><br>
+</p>
+
+<p>
+详细一点的说明可参见这篇 <a href="http://www.shahuwang.com/?p=213" title="bpython的使用介绍 – 沙湖王" class="http">bpython的使用介绍 – 沙湖王</a> 。<br>
+</p>
+
+<h3>IPython</h3>
+
+<p>
+<a href="http://ipython.org" title="http://ipython.org" class="http">http://ipython.org</a><br>
+</p>
+
+<p>
+在众多python interactive shell中，IPython的功能是最强的，甚至有些方面已经超出了python interactive<br>
+shell这个名词应有的含义（比如<a href="http://ipython.org/ipython-doc/rel-0.12/interactive/qtconsole.html#pylab" title="可以在Qt版本中直接使用matplotlib/scipy制图" class="http">可以在Qt版本中直接使用matplotlib/scipy制图</a>)，再比如<a href="http://ipython.org/ipython-doc/rel-0.12/interactive/shell.html" title="提供一些类似unix shell的功能" class="http">提供一些类似unix shell的功能</a>，甚至<a href="http://ipython.org/ipython-doc/rel-0.12/parallel/index.html" title="分布式计算" class="http">分布式计算</a>)。<br>
+</p>
+
+<p>
+先简单说一下ipython在python shell方面的功能, ipython缺省的前台是终端上的，所以有些<br>
+<ul>
+<li>代码补全, 用tab键触发。但ipython里在输入"import url"后按tab可以显示"urllib urllib2 urlparse"补全</li>
+</ul>
+项，其它python shell好像没有这个能力，只能补全方法; 但ipython不能自动显示函数签名(即形参列表)，<br>
+只能单独用%pdef命令来查询<br>
+<ul>
+<li>introspection方面的: 可用 /obj?/ 察看一个对象是什么，它会</li>
+</ul>
+</p>
+
+
+<p>
+#+CAPTION: ipython as matplotlib shell<br>
+<a href="http://images.51cto.com/files/uploadimg/20120204/122711161.jpg" title="http://images.51cto.com/files/uploadimg/20120204/122711161.jpg" class="http">http://images.51cto.com/files/uploadimg/20120204/122711161.jpg</a><br>
+</p>
+
+<h3>Eric</h3>
+
+<h3>PTK</h3>
+<p>
+<a href="http://pythontoolkit.sourceforge.net" title="PythonToolkit - an interactive environment for python" class="http">PythonToolkit - an interactive environment for python</a><br>
+</p>
+
+
+			<!-- End wiki content -->
+			</div>
+			<hr>
+			<!-- Backlinks -->
+			<div class="footer">
+									<i>No backlinks to this page.</i>
+				<br><br>
+
+				
+			<!-- End Backlinks -->
+			</div>
+		</div>
+	</body>
+</html>

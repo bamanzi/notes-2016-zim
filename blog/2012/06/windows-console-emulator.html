@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>windows-console-emulator</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-align: center;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+			.page { max-width: 1000px;}
+			.menu{
+				float:left; width: 300px;
+			}
+
+			.content { padding-left: 320px;}
+			.notebook{font-variant: small-caps;
+					color:#4e9a06;
+					padding: 0px 20px;}
+			hr{clear:both;}
+		</style>
+
+	</head>
+	<body>
+		<div class="page">
+			<div class="heading">
+									<h1>windows-console-emulator</h1>
+			</div>
+			<hr>
+			<div class="menu">
+				<ul>
+<li><a href="../../../blog.html" title="blog" class="page">blog</a></li>
+<ul>
+<li><a href="../../2012.html" title="2012" class="page">2012</a></li>
+<ul>
+<li><a href="../02.html" title="02" class="page">02</a></li>
+<li><a href="../05.html" title="05" class="page">05</a></li>
+<li><a href="../06.html" title="06" class="page">06</a></li>
+<ul>
+<li><a href="./cherrytree.html" title="cherrytree" class="page">cherrytree</a></li>
+<li><a href="./linuxmint12-gnome3.html" title="linuxmint12-gnome3" class="page">linuxmint12-gnome3</a></li>
+<li><a href="./various-goodies.html" title="various-goodies" class="page">various-goodies</a></li>
+<li><strong class="activepage">windows-console-emulator</strong></li>
+</ul>
+<li><a href="../07.html" title="07" class="page">07</a></li>
+</ul>
+<li><a href="../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+<li><a href="../../../chirps.html" title="chirps" class="page">chirps</a></li>
+<li><a href="../../../misc.html" title="misc" class="page">misc</a></li>
+<li><a href="../../../notes.html" title="notes" class="page">notes</a></li>
+<li><a href="../../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+
+			</div>
+			<div class="content">
+			<!-- Wiki content -->
+				<p>
+Created 星期二 26 六月 2012<br>
+</p>
+
+<h1>Windows下的Console Emulater</h1>
+
+<p>
+对于一个Linux下用管了各种终端和各种shell的人来说，来到Windows实际时，最大的痛苦是那个蹩脚的cmd。虽然有Cygwin和Msys的mintty/rxvt，但它们还是更适合跑bash和它们自己的term类程序，不适合跑Windows的console程序（比如路径的斜线/反斜线问题，比如）<br>
+</p>
+
+<p>
+下面，我们分两方面来找找替代品，这次介绍Console Emulater，类似UNIX下终端仿真器(terminal emulator)那样的东西，让多个字符界面程序（比如cmd/bash/python shell）跑在一个窗口里，下次再介绍类似UNIX下shell那样的东西，切实改进cmd那可怜的交互能力。<br>
+</p>
+
+<h2>推荐: ConEmu</h2>
+
+<p>
+<a href="http://code.google.com/p/conemu-maximus5" title="http://code.google.com/p/conemu-maximus5" class="http">http://code.google.com/p/conemu-maximus5</a><br>
+</p>
+
+<p>
+看看下面的特性列表，颤抖吧！<br>
+<ul>
+<li><a href="http://code.google.com/p/conemu-maximus5/wiki/Tabs" title="支持多标签" class="http">支持多标签</a>，甚至支持将其它的GUI程序（不仅仅是console程序哦，比如<code>putty</code>/记事本等都可以）嵌入为标签页;</li>
+<li><a href="http://code.google.com/p/conemu-maximus5/wiki/Fonts" title="可以选择各种字体" class="http">可以选择各种字体</a>，且自带抗锯齿功能;</li>
+<li>对各种console程序都兼容得很好（比如文件管理器<a href="http://www.farmanager.com" title="Far Manager" class="http">Far Manager</a>，win32版本的vim，比如IPython）;</li>
+<li>支持Quake式的下拉风格（即类似于Guake/Tilda/Yakuake那样的，不用时窗口隐藏，需要时用热键呼出，界面从屏幕顶端拉下来）——这个需要最近的版本（至少2012-06-12之后的）;</li>
+<li><a href="http://code.google.com/p/conemu-maximus5/wiki/TextSelection" title="增强的文字选取" class="http">增强的文字选取</a>（比如缺省按住左Alt+鼠标拖动，可以选择矩形区域）</li>
+<li><a href="http://code.google.com/p/conemu-maximus5/wiki/AnsiEscapeCodes" title="支持ANSI X3.64和xterm 256彩色" class="http">支持ANSI X3.64和xterm 256彩色</a></li>
+<li>很多针对Far Manager文件管理器的增强，比如：让Far Manager支持Windows风格的文件拖放、右键菜单、分隔条，给Far Manager文件列表增加了缩略图和小图标浏览方式（Far Manager可是个基于字符的文件管理器），为查看器/编辑器自动提供新的标签页（即将Far Manager的screen实现为了它的标签页），</li>
+</ul>
+</p>
+
+<p>
+注意: 中文用户请使用2012-06-17之后的版本，因为这个版本刚修正了中文的显示问题（以前的版本会在命令行中出现每个汉字出现两遍的情况。这也是为什么以前我没有推荐这个好工具的主要原因）。<br>
+</p>
+
+<p>
+<img src="./windows-console-emulator/ConEmuAero.png" alt=""><br>
+<img src="./windows-console-emulator/ConEmuTextSelection2.png" alt=""><br>
+<a href="http://conemu-maximus5.googlecode.com/svn/files/ConEmuTextSelection2.png" title="http://conemu-maximus5.googlecode.com/svn/files/ConEmuTextSelection2.png" class="http">http://conemu-maximus5.googlecode.com/svn/files/ConEmuTextSelection2.png</a><br>
+</p>
+
+<p>
+补充说明一下如何将其它程序变为ConEmu里面的标签页（参见<a href="http://code.google.com/p/conemu-maximus5/wiki/LaunchNewTab" title="其Wiki: LaunchNewTab" class="http">其Wiki: LaunchNewTab</a>）：<br>
+<div style='padding-left: 30pt'>
+最简单的方法: 菜单里选择New console...，然后在对话框里面输入程序名称即可，<strong>注意这里不仅仅可以输入cmd/powershell/vim/far这些console程序，你输入putty甚至notepad，都是可以的！</strong><br>
+<img src="./windows-console-emulator/ConEmuCreate.png" alt=""><br>
+另一种方法是，在ConEmu里面跑一个cmd.exe，然后在cmd里面输入<code>putty -new_console，</code>确定，哒哒！<code>putty</code>就变成ConEmu的一个标签页了;  输入: <code>vim -new_console</code> 然后vim就在一个新的标签页里面打开了! （是的，其实这里的<code>-new_console</code>并不是putty或者vim的参数，会被ConEmu拦截并进行处理。）<br>
+</div>
+<ul style='padding-left: 60pt'>
+<li>注意得选用最近几天的版本，并在Settings-&gt;Features中勾选上Inject ComEmuHk。对于以前的版本，得这样：<code>"%ConEmuBaseDir%\ConEmuC.exe" /c vim.exe -new_console:nh0 c:\sources\1.cpp</code>  （详细解释可以参看其Wiki:  <a href="http://code.google.com/p/conemu-maximus5/wiki/NewConsole" title="NewConsole" class="http">NewConsole</a> ）</li>
+<li>另外一个例子: 将grep的结果“重定向”到一个新的标签页：<code>grep </code><strong>-new_console</strong><code> -nHi --color path cmd_autorun.cmd</code>   而当前cmd并不阻塞，可以继续输入其它命令（缺省不想激活新标签页的话可以用<code>-new_console:b</code> )</li>
+</ul>
+</p>
+
+<h2>其它备选</h2>
+
+<h3>1 Console2</h3>
+
+<p>
+<a href="http://sourceforge.net/projects/console" title="http://sourceforge.net/projects/console" class="http">http://sourceforge.net/projects/console</a><br>
+</p>
+
+<p>
+Console2的功能就比较简单，主要是提供了多标签页，另外有一些小的功能（比如可以选择字体、可以半透明等）。<br>
+对各类Console程序兼容性比较好，cmd/python/bash/vim都可以正常运行。<br>
+</p>
+
+<p>
+不过按缺省的设置，在中文系统上使用时，会存在文字错行的问题，解决方法是将如下内容导入注册表<br>
+（注意拷贝到xxxxxx.reg文件时要保存为Unicode编码，然后才能导入。转自: <a href="http://hi.baidu.com/shiguangkejian/item/9aef5242114500ae60d7b9e6" title="介绍几个cmd的替代品_时光可见" class="http">介绍几个cmd的替代品_时光可见</a> ）<br>
+</p>
+
+<pre style='padding-left: 30pt'>
+Windows Registry Editor Version 5.00
+[HKEY_CURRENT_USER\Console\Console2 command window]
+ 
+"CodePage"=dword:000003a8
+"FontSize"=dword:000a0000
+"FontFamily"=dword:00000036
+"FontWeight"=dword:00000190
+"FaceName"="新宋体"
+"HistoryNoDup"=dword:00000000
+</pre>
+
+<p>
+但中文输入还是有问题: 不能激活输入法，也就是说无法输入中文，得在其它地方输入了再粘贴过来。<br>
+</p>
+
+<p>
+<img src="./windows-console-emulator/Console2ChtFont.gif" alt=""><br>
+<a href="http://blog.darkthread.net/blogs/darkthreadtw/archive/2007/02/08/console2.aspx" title="http://blog.darkthread.net/blogs/darkthreadtw/archive/2007/02/08/console2.aspx" class="http">http://blog.darkthread.net/blogs/darkthreadtw/archive/2007/02/08/console2.aspx</a><br>
+</p>
+
+<h3>2. ColorConsole</h3>
+<p>
+<a href="http://www.softwareok.com/?Freeware/ColorConsole" title="http://www.softwareok.com/?Freeware/ColorConsole" class="http">http://www.softwareok.com/?Freeware/ColorConsole</a><br>
+ColorControl也是一个比较简单的多标签Console，附带几个小功能（选中部分文字改变其颜色，带颜色导出终端文字到HTML/RTF，通过菜单快速跳转到某个目录）<br>
+ColorConsole在程序兼容性上有比较严重的问题，不仅无法运行vim/jasspa等全屏程序，而且msys-bash/python/jsdb等命令解释器全都无法正常运行。<br>
+<img src="./windows-console-emulator/ColorConsole1.png" alt=""><br>
+</p>
+
+<h3>3.PowerCmd</h3>
+
+<p>
+上面说的几个工具都可以提供标签页，而不能提供分屏能力，但PowerCmd可以（同时也可以再多标签页）。<br>
+</p>
+
+<p>
+另外有一些小功能:<br>
+<ul>
+<li>路径自动补全（按Tab键触发）</li>
+<li>历史记录</li>
+<li>关键字高亮</li>
+</ul>
+</p>
+
+<p>
+不过我并不推荐这个工具，一方面它不是免费的; 另一方面它有不少问题:  无法运行python shell(jsdb/lua倒可以运行)；跑msys bash时所有msys程序(比如ls,grep)都会segmentation fault；对一些基于屏幕的程序，虽然是象GUI程序一样打开新窗口，但有时不能正确识别(比如jasspa me) 。<br>
+<img src="./windows-console-emulator/powercmd.jpg" alt=""><br>
+(<a href="http://www.soft-go.com/app_images/3465.jpg" title="http://www.soft-go.com/app_images/3465.jpg" class="http">http://www.soft-go.com/app_images/3465.jpg</a> )<br>
+</p>
+
+
+
+
+
+			<!-- End wiki content -->
+			</div>
+			<hr>
+			<!-- Backlinks -->
+			<div class="footer">
+									<i>No backlinks to this page.</i>
+				<br><br>
+
+									<b>Attachments:</b>
+					<table>						<tr><td><a href='./windows-console-emulator/ColorConsole1.png'>ColorConsole1.png</a></td><td>&nbsp;</td><td>22.5kb</td></tr>						<tr><td><a href='./windows-console-emulator/ConEmuAero.png'>ConEmuAero.png</a></td><td>&nbsp;</td><td>207kb</td></tr>						<tr><td><a href='./windows-console-emulator/ConEmuCreate.png'>ConEmuCreate.png</a></td><td>&nbsp;</td><td>25.3kb</td></tr>						<tr><td><a href='./windows-console-emulator/ConEmuTextSelection2.png'>ConEmuTextSelection2.png</a></td><td>&nbsp;</td><td>48.0kb</td></tr>						<tr><td><a href='./windows-console-emulator/Console2ChtFont.gif'>Console2ChtFont.gif</a></td><td>&nbsp;</td><td>24.0kb</td></tr>						<tr><td><a href='./windows-console-emulator/console2.png'>console2.png</a></td><td>&nbsp;</td><td>51.9kb</td></tr>						<tr><td><a href='./windows-console-emulator/powercmd.jpg'>powercmd.jpg</a></td><td>&nbsp;</td><td>34.3kb</td></tr>					</table>
+			<!-- End Backlinks -->
+			</div>
+		</div>
+	</body>
+</html>

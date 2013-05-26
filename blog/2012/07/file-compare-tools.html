@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>文件(目录)比较工具</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-align: center;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+			.page { max-width: 1000px;}
+			.menu{
+				float:left; width: 300px;
+			}
+
+			.content { padding-left: 320px;}
+			.notebook{font-variant: small-caps;
+					color:#4e9a06;
+					padding: 0px 20px;}
+			hr{clear:both;}
+		</style>
+
+	</head>
+	<body>
+		<div class="page">
+			<div class="heading">
+									<h1>文件(目录)比较工具</h1>
+			</div>
+			<hr>
+			<div class="menu">
+				<ul>
+<li><a href="../../../blog.html" title="blog" class="page">blog</a></li>
+<ul>
+<li><a href="../../2012.html" title="2012" class="page">2012</a></li>
+<ul>
+<li><a href="../02.html" title="02" class="page">02</a></li>
+<li><a href="../05.html" title="05" class="page">05</a></li>
+<li><a href="../06.html" title="06" class="page">06</a></li>
+<li><a href="../07.html" title="07" class="page">07</a></li>
+<ul>
+<li><strong class="activepage">file-compare-tools</strong></li>
+<li><a href="./various-goodies.html" title="various-goodies" class="page">various-goodies</a></li>
+<li><a href="./zim-like-org-mode.html" title="zim-like-org-mode" class="page">zim-like-org-mode</a></li>
+</ul>
+</ul>
+<li><a href="../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+<li><a href="../../../chirps.html" title="chirps" class="page">chirps</a></li>
+<li><a href="../../../misc.html" title="misc" class="page">misc</a></li>
+<li><a href="../../../notes.html" title="notes" class="page">notes</a></li>
+<li><a href="../../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+
+			</div>
+			<div class="content">
+			<!-- Wiki content -->
+				<h2>5+ Best Free File Compare and Merge Software List</h2>
+<p>
+<a href="http://open-tube.com/best-free-file-comparison-tools" title="http://open-tube.com/best-free-file-comparison-tools" class="http">http://open-tube.com/best-free-file-comparison-tools</a><br>
+<ul>
+<li>WinMerge (当前仅支持Windows，作者正在开发<a href="https://bitbucket.org/grimmdp/winmerge/wiki/Home" title="v3版本" class="https">v3版本</a> ，改用Qt实现，同时支持Linux)</li>
+<li>Meld (python, gtk)</li>
+<li>FreeFileSync</li>
+<li>Kompare</li>
+<li>DiffMerge</li>
+<li>KDiff3 (KDE or just Qt)</li>
+</ul>
+</p>
+
+
+<h4>Diffuse - graphical tool for merging and comparing text files</h4>
+<p>
+<a href="http://diffuse.sourceforge.net/" title="http://diffuse.sourceforge.net/" class="http">http://diffuse.sourceforge.net/</a><br>
+<img src="./file-compare-tools/diffuse-screenshot" alt="" width="686"><br>
+新发现的的一个文件比较工具，只依赖于python和gtk，适合xfce下使用（比如colinux或者小内存机器）——tkdiff/xdiff的功能太弱了。<br>
+</p>
+
+<p>
+<ul>
+<li><a href="http://diffuse.sourceforge.net/manual.html#version-control" title="可以与版本控制工具相配合" class="http">可以与版本控制工具相配合</a>，与指定revision比较: =diffuse -r 123 foo.C= 不指定revision但只给出一个文件名时，尝试跟最后一个revision进行比较</li>
+<ul>
+<li>在Windows上，还考虑了使用Cygwin的情况，可以调用Cygwin里面的版本控制工具 • 只能比较文件，不能比较目录;</li>
+</ul>
+</ul>
+</p>
+
+
+<h4>KDiff3</h4>
+
+<p>
+没想到KDiff3还有一个Windows版本，从<a href="http://packages.debian.org/squeeze/kdiff3-qt" title="Debian里有个kdiff3-qt版本" class="http">Debian里有个kdiff3-qt版本</a> 来看，这个Windows版本应该是只用了Qt的<br>
+<ul>
+<li><a href="http://www.blog.project13.pl/index.php/coding/1192/setup-git-on-windows-to-use-kdiff3-as-its-mergetool/" title="Setup git on windows to use kdiff3 as it’s mergetool" class="http">Setup git on windows to use kdiff3 as it’s mergetool</a></li>
+<li><a href="http://goodliffe.blogspot.com/2009/04/subversion-kdiff3-and-cygwin.html" title="Subversion, KDiff3, and Cygwin" class="http">Subversion, KDiff3, and Cygwin</a></li>
+</ul>
+<img src="./file-compare-tools/kdiff3-screenshot_merge.png" alt=""><br>
+简单评估（基于Windows版本）:<br>
+<ul style='padding-left: 30pt'>
+<li>文件夹比较是WinMerge的风格（不是Beyond Compare/Meld那种清晰的左右两栏风格），我不太习惯</li>
+<li>文件内容对比时，也不能直接地将选中块复制到对面，而是要先进入merge模式，在第三个窗口中维护结果，这样每处不同都要关注三个窗口，部分完成合并后也不能简单地直接刷新视图以便直接关注剩下的部分（需要重新载入、再merge）。我还是喜欢BC/Meld的风格，甚至TC的文件比较和emacs的ediff都比这方便</li>
+</ul>
+</p>
+
+<p>
+<ul style='padding-left: 30pt'>
+<li>UI设计不怎么样，只有工具条和繁琐的主菜单可以使用，没有右键菜单，没有meld中栏那种“直接复制到对端”的箭头 <a href="http://kdiff3.sourceforge.net/doc/screenshots.html" title="http://kdiff3.sourceforge.net/doc/screenshots.html" class="http">http://kdiff3.sourceforge.net/doc/screenshots.html</a> 倒是跟我用其它KDE程序的感受一致：功能似乎很多，但很繁琐，用着累</li>
+</ul>
+</p>
+
+<p>
+<ul style='padding-left: 30pt'>
+<li>kdiff3不支持syntax highlighting，也不打算支持</li>
+</ul>
+<div style='padding-left: 30pt'>
+<a href="http://kdiff3.sourceforge.net/doc/faq.html#id2569879" title="http://kdiff3.sourceforge.net/doc/faq.html#id2569879" class="http">http://kdiff3.sourceforge.net/doc/faq.html#id2569879</a> 而BC/Meld/WinMerge/Diffuse都是支持的<br>
+</div>
+</p>
+	
+<p>
+<ul style='padding-left: 30pt'>
+<li>另外有一个Windows上qt程序的共性小问题：选择语言为简体中文后，菜单字体总是比较难看的8号字，而且我在网上搜了一圈，好像Windows上没有Linux下qtconfig那样的配置工具，网上说的办法都是修改代码重新编译</li>
+</ul>
+</p>
+
+<p>
+<ul style='padding-left: 60pt'>
+<li>好不容易看到一个<a href="http://www.cnblogs.com/agateriver/archive/2010/05/16/1736626.html" title="『谷歌地球(google earth/GE) 中文版界面默认字体太丑陋？ 那就改成自己喜欢的吧！』" class="http">『谷歌地球(google earth/GE) 中文版界面默认字体太丑陋？ 那就改成自己喜欢的吧！』</a>，我照葫芦画瓢在kdiff3上试验，虽然变更字体的效果达到了，但kdiff3还是会愚蠢地认为foobar.css是要比较的第一个文件</li>
+</ul>
+</p>
+
+<h4>Emacs ediff</h4>
+<p>
+<ul>
+<li><a href="http://www.squidoo.com/ediff" title="Ediff - All About The Emacs Diff Comparison Tool" class="http">Ediff - All About The Emacs Diff Comparison Tool</a></li>
+<li><a href="http://mytechrants.wordpress.com/2008/12/12/an-emacs-diff-ediff-tutorial/" title="An Emacs Diff (Ediff) tutorial « Tech Rants" class="http">An Emacs Diff (Ediff) tutorial « Tech Rants</a></li>
+</ul>
+<img src="./file-compare-tools/ediff4.jpg" alt="" width="512"><br>
+</p>
+
+<h4>misc</h4>
+<p>
+<ul>
+<li><a href="http://www.webupd8.org/2012/02/compare-and-synchronize-folders-with.html" title="Compare And Synchronize Folders With FreeFileSync" class="http">Compare And Synchronize Folders With FreeFileSync</a> </li>
+</ul>
+</p>
+
+
+<p>
+<ol type="1" start="847">
+<li>[工具软件][totalcmd] 将TortoiseSVN里面的TortoiseMerge用作totalcmd的文件比较工具似乎是个不错的主意: wincmd.ini  CompareTool=”c:\path\to\tortoisemerge.exe” 加载还比较快，而且是免费的(BeyondC..虽然好但不免费) [2011-06-07 17:59:38]</li>
+<li>将代码文件与其svn base进行比较: C:\Program Files\TortoiseSVN\bin\TortoiseProc.exe /command:diff /path:%P%N  在TC里配个快捷键，比每次点好几级菜单方便多了 [2011-11-14 17:42:55]</li>
+</ol>
+</p>
+
+<p>
+<ol type="1" start="849">
+<li>这个文件比较工具只依赖于python和gtk，可能更适合xfce里使用(meld依赖gnome, kdiff依赖kde, tkdiff和xdiff又太弱了) Diffuse - graphical tool for merging and comparing text files  <a href="http://diffuse.sourceforge.net/" title="http://diffuse.sourceforge.net/" class="http">http://diffuse.sourceforge.net/</a> [2012-05-16 08:42:49]</li>
+<li>没想到kdiff3还有windows版（从debian网站的信息来看，应该是采用qt的简版 <a href="http://packages.debian.org/squeeze/kdiff3-qt" title="http://packages.debian.org/squeeze/kdiff3-qt" class="http">http://packages.debian.org/squeeze/kdiff3-qt</a> )。试用了一下，文件夹比较是WinMerge的风格（不是Beyond Compare/Meld那种清晰的左右两栏风格）... [2012-06-18 10:20:22]</li>
+<li>续: 文件内容对比时，也不能直接地将选中块复制到对面，而是要先进入merge模式，在第三个窗口中维护结果，这样每处不同都要关注三个窗口，部分完成合并后也不能简单地直接刷新视图以便直接关注剩下的部分（需要重新载入、再merge）。我还是喜欢BC/Meld的风格，甚至TC的文件比较和emacs的ediff都比这方便 [2012-06-18 10:26:22]</li>
+<li>续kdiff3: 另外，UI设计不怎么样，只有工具条和繁琐的主菜单可以使用，没有右键菜单，没有meld中栏那种&amp;quot;直接复制到对端&amp;quot;的箭头 <a href="http://kdiff3.sourceforge.net/doc/screenshots.html" title="http://kdiff3.sourceforge.net/doc/screenshots.html" class="http">http://kdiff3.sourceforge.net/doc/screenshots.html</a>  倒是跟我用其它KDE程序的感受一致：功能似乎很多，但很繁琐，用着累 [2012-06-18 10:31:53]</li>
+<li>续: kdiff3不支持syntax highlighting，也不打算支持  <a href="http://kdiff3.sourceforge.net/doc/faq.html#id2569879" title="http://kdiff3.sourceforge.net/doc/faq.html#id2569879" class="http">http://kdiff3.sourceforge.net/doc/faq.html#id2569879</a>  而BC/Meld/WinMerge都是支持的 [2012-06-18 10:37:29]</li>
+<li>[RIL] Subversion, KDiff3, and Cygwin <a href="http://goodliffe.blogspot.com/2009/04/subversion-kdiff3-and-cygwin.html" title="http://goodliffe.blogspot.com/2009/04/subversion-kdiff3-and-cygwin.html" class="http">http://goodliffe.blogspot.com/2009/04/subversion-kdiff3-and-cygwin.html</a> [2012-06-18 15:51:49]</li>
+</ol>
+</p>
+
+
+
+			<!-- End wiki content -->
+			</div>
+			<hr>
+			<!-- Backlinks -->
+			<div class="footer">
+									<i>No backlinks to this page.</i>
+				<br><br>
+
+									<b>Attachments:</b>
+					<table>						<tr><td><a href='./file-compare-tools/diffuse-screenshot'>diffuse-screenshot</a></td><td>&nbsp;</td><td>166kb</td></tr>						<tr><td><a href='./file-compare-tools/ediff4.jpg'>ediff4.jpg</a></td><td>&nbsp;</td><td>81.8kb</td></tr>						<tr><td><a href='./file-compare-tools/kdiff3-screenshot_merge.png'>kdiff3-screenshot_merge.png</a></td><td>&nbsp;</td><td>10.4kb</td></tr>					</table>
+			<!-- End Backlinks -->
+			</div>
+		</div>
+	</body>
+</html>

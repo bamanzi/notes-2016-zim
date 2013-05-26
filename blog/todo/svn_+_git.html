@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>svn + git</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-align: center;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+			.page { max-width: 1000px;}
+			.menu{
+				float:left; width: 300px;
+			}
+
+			.content { padding-left: 320px;}
+			.notebook{font-variant: small-caps;
+					color:#4e9a06;
+					padding: 0px 20px;}
+			hr{clear:both;}
+		</style>
+
+	</head>
+	<body>
+		<div class="page">
+			<div class="heading">
+									<h1>svn + git</h1>
+			</div>
+			<hr>
+			<div class="menu">
+				<ul>
+<li><a href="../../2012.html" title="2012" class="page">2012</a></li>
+<li><a href="../../blog.html" title="blog" class="page">blog</a></li>
+<ul>
+<li><a href="../2012.html" title="2012" class="page">2012</a></li>
+<li><a href="../todo.html" title="todo" class="page">todo</a></li>
+<ul>
+<li><a href="./gitlab.html" title="gitlab" class="page">gitlab</a></li>
+<li><a href="./python-interacitve-shells-2.html" title="python-interacitve-shells-2" class="page">python-interacitve-shells-2</a></li>
+<li><a href="./sublime_text.html" title="sublime text" class="page">sublime text</a></li>
+<li><strong class="activepage">svn + git</strong></li>
+<li><a href="./tortoisegit-and-ssh-key.html" title="tortoisegit-and-ssh-key" class="page">tortoisegit-and-ssh-key</a></li>
+<li><a href="./window-shell-replacement.html" title="window-shell-replacement" class="page">window-shell-replacement</a></li>
+</ul>
+</ul>
+<li><a href="../../emacs.html" title="emacs" class="page">emacs</a></li>
+<li><a href="../../notes.html" title="notes" class="page">notes</a></li>
+<li><a href="../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+
+			</div>
+			<div class="content">
+			<!-- Wiki content -->
+				<p>
+Created 星期六 22 十二月 2012<br>
+</p>
+
+<h2>svn + git</h2>
+<p>
+ 因为各种原因（比如团队成员的学习进度不一，比如不想影响持续集成的运行），可能需要在一定程度上混用svn和git。总的来说，有以下几种工作模式:<br>
+</p>
+
+<p>
+<ul>
+<li>仍然以svn为中心，各个开发人员在本地使用git，通过git-svn跟svn仓库交互。svn的历史记录信息可以被git-svn读取到本地git仓库中；</li>
+<li>将svn仓库转换为git中心仓库（也是用git-svn来转换），以后就不再使用svn为中心仓库了；</li>
+<li>仍然以svn为中心，各个开发人员在本地使用git，也不使用git-svn。git仅仅是在本地开分支进行试验，开发完成后将正确内容放到working copy，然后通过svn提交；</li>
+<li>还有一种svn + git 双中心的模式，部分开发人员使用svn提交，部分使用git提交到git仓库。不过在两边都有修改导致需要双向同步这个问题上，工具支持得不太好，问题比较多——不过不知道下面说的那个不免费的subgit怎么样</li>
+</ul>
+</p>
+
+<h2>git-svn</h2>
+<p>
+ 这是git的一个插件（也是一个子命令），<br>
+</p>
+
+<p>
+<ul>
+<li>[Git SVN 工作流程] (<a href="http://article.yeeyan.org/view/bianjiang/44287" title="http://article.yeeyan.org/view/bianjiang/44287" class="http">http://article.yeeyan.org/view/bianjiang/44287</a> )</li>
+</ul>
+</p>
+<pre>
+
+
+git svn init -s http://example.com/svn/my_proj
+	git svn fetch
+	git branch -a
+    	git repack -d
+    	git checkout -b new_feature
+    	git commit -m "commit message"
+    	git checkout master
+    	git merge new_feature
+    	git svn rebase
+    	git svn dcommit
+</pre>
+
+
+<p>
+<ul>
+<li>[git svn vs svn2git] git svn需要提取所有svn历史信息，但git svn本身比较慢，这里提到的一个小工具svn2git 比git svn的转换要快得多</li>
+</ul>
+</p>
+
+<p>
+<ul>
+<li>[Converting from Subversion to Git] 这篇文章里阐述了转换过程中的一些细节: </li>
+<ul>
+<li>svn历史中的用户名如何转到git中</li>
+<li>svn的branch/tag如何处理</li>
+</ul>
+</ul>
+</p>
+
+<p>
+[Git SVN 工作流程]: <a href="http://article.yeeyan.org/view/bianjiang/44287" title="http://article.yeeyan.org/view/bianjiang/44287" class="http">http://article.yeeyan.org/view/bianjiang/44287</a><br>
+[git svn vs svn2git]: <a href="http://blogs.perl.org/users/joe_mcmahon1/2012/07/git-svn-vs-svn2git-vs-svn2git.html" title="http://blogs.perl.org/users/joe_mcmahon1/2012/07/git-svn-vs-svn2git-vs-svn2git.html" class="http">http://blogs.perl.org/users/joe_mcmahon1/2012/07/git-svn-vs-svn2git-vs-svn2git.html</a><br>
+[Converting from Subversion to Git]: <a href="http://blokspeed.net/blog/2010/09/converting-from-subversion-to-git/" title="http://blokspeed.net/blog/2010/09/converting-from-subversion-to-git/" class="http">http://blokspeed.net/blog/2010/09/converting-from-subversion-to-git/</a><br>
+</p>
+
+
+<h3>SubGit</h3>
+
+ 
+<p>
+这个工具可以让你建立svn+git双中心。<br>
+</p>
+
+<p>
+[Welcome SubGit - out with Subversion, in with Git]<br>
+</p>
+
+<p>
+Fortunately, a new project has shored up offering the best of both worlds. SubGit is, as you would expect, a bridge between the two repositories. The software installs on the server side, holding two synchronised repositories for both Git and Subversion. So, when a user makes a change in one repository, this is automatically replicated in the other.<br>
+</p>
+
+<p>
+不过这是一个商业应用，并不完全免费，可免费用于三个用户/三个repo.<br>
+</p>
+
+<p>
+另一篇文章 [Git-SVN mirror product: SubGit] 给出了优缺点分析:<br>
+</p>
+
+<p>
+The bad parts are:<br>
+<ul>
+<li>It's new (use at your own risk, in other words: DO NOT install it in your main-line subversion repo used by a 100 devs).</li>
+<li>It's closed source, so you're at the mercy of the SubGit devs for fixing any feature that you need in your special repository.</li>
+<li>It requires instrumentation on the Subversion repository installation. If the repository is beyond your control (hosted externally, or by some separate department), you're stuck with my old setup.</li>
+</ul>
+</p>
+
+<p>
+The good parts:<br>
+<ul>
+<li>Super-sweet functionality! I mean, bi-directional Git/SVN is highly sought after.</li>
+<li>Seems to have a pretty high just-works factor, easy setup.</li>
+<li>It's still free (as long as they're in the EAP phase)</li>
+</ul>
+</p>
+
+<p>
+如果想采用svn+git两个中心仓库，并且双向同步变动的，推荐阅读一下这篇[The Dream of a Bi-directional Git-SVN mirror] 作者的结论是: For the record: I do not recommend the bi-directional syncing repo approach.<br>
+</p>
+
+<p>
+[Welcome SubGit - out with Subversion, in with Git]: <a href="http://jaxenter.com/welcome-subgit-out-with-subversion-in-with-git-43714.html" title="http://jaxenter.com/welcome-subgit-out-with-subversion-in-with-git-43714.html" class="http">http://jaxenter.com/welcome-subgit-out-with-subversion-in-with-git-43714.html</a><br>
+[Git-SVN mirror product: SubGit]: <a href="http://blog.tfnico.com/2011/12/git-svn-mirror-product-subgit.html" title="http://blog.tfnico.com/2011/12/git-svn-mirror-product-subgit.html" class="http">http://blog.tfnico.com/2011/12/git-svn-mirror-product-subgit.html</a><br>
+[The Dream of a Bi-directional Git-SVN mirror]: <a href="http://blog.tfnico.com/2011/03/dream-of-bi-directional-git-svn-mirror.html" title="http://blog.tfnico.com/2011/03/dream-of-bi-directional-git-svn-mirror.html" class="http">http://blog.tfnico.com/2011/03/dream-of-bi-directional-git-svn-mirror.html</a><br>
+</p>
+
+
+<p>
+#### 2.2.3) git-annex<br>
+[Migrating from Subversion to git with git-annex]<br>
+</p>
+
+<p>
+这只是一个辅助性的小工具，主要解决subversion库转换到git时大文件的问题，因为git不会删除不再需要的<br>
+大文件)<br>
+</p>
+
+<p>
+[Migrating from Subversion to git with git-annex]: <a href="http://www.donarmstrong.com/posts/migrating_from_svn_to_git_and_git_annex/" title="http://www.donarmstrong.com/posts/migrating_from_svn_to_git_and_git_annex/" class="http">http://www.donarmstrong.com/posts/migrating_from_svn_to_git_and_git_annex/</a><br>
+</p>
+
+
+<p>
+#### 2.2.4) 参考<br>
+</p>
+
+<p>
+<ul>
+<li>[Migrating SVN to Git with history] (好像没啥实质内容?)</li>
+<li>[GIT和SVN之间的五个基本区别]</li>
+<li>视频详解: [Living with Git and Subversion in Parallel] (vimeo.com在国内被墙?)</li>
+<ul>
+<li>[Part 1: Cloning an SVN repo into a Git mirror]</li>
+<li>[Part 2: Committing back and forth]</li>
+<li>[Part 3: Conflicts]</li>
+<li>[Part 4: Collaborating with other Git users]</li>
+<li>[Part 5: Centralized Git-SVN mirror]</li>
+<li>[Part 6: Grafting together SVN history]</li>
+<li>[Part 7: Leaving SVN behind] </li>
+</ul>
+</ul>
+</p>
+
+<p>
+[Migrating SVN to Git with history]: <a href="http://www.malcolmgroves.com/blog/?p%3D1043" title="http://www.malcolmgroves.com/blog/?p%3D1043" class="http">http://www.malcolmgroves.com/blog/?p%3D1043</a><br>
+[GIT和SVN之间的五个基本区别]: <a href="http://www.aqee.net/2010/10/20/5-fundamental-differences-between-git-svn/" title="http://www.aqee.net/2010/10/20/5-fundamental-differences-between-git-svn/" class="http">http://www.aqee.net/2010/10/20/5-fundamental-differences-between-git-svn/</a><br>
+[Living with Git and Subversion in Parallel]: <a href="http://vimeo.com/28762003" title="http://vimeo.com/28762003" class="http">http://vimeo.com/28762003</a><br>
+[Part 1: Cloning an SVN repo into a Git mirror]: <a href="http://blog.tfnico.com/2010/09/gitsvn-screencasts.html" title="http://blog.tfnico.com/2010/09/gitsvn-screencasts.html" class="http">http://blog.tfnico.com/2010/09/gitsvn-screencasts.html</a><br>
+[Part 2: Committing back and forth]: <a href="http://blog.tfnico.com/2010/09/gitsvn-screencasts.html" title="http://blog.tfnico.com/2010/09/gitsvn-screencasts.html" class="http">http://blog.tfnico.com/2010/09/gitsvn-screencasts.html</a><br>
+[Part 3: Conflicts]: <a href="http://blog.tfnico.com/2010/09/gitsvn-screencasts.html" title="http://blog.tfnico.com/2010/09/gitsvn-screencasts.html" class="http">http://blog.tfnico.com/2010/09/gitsvn-screencasts.html</a><br>
+[Part 4: Collaborating with other Git users]: <a href="http://blog.tfnico.com/2010/10/gitsvn-4-collaborate-with-other-git.html" title="http://blog.tfnico.com/2010/10/gitsvn-4-collaborate-with-other-git.html" class="http">http://blog.tfnico.com/2010/10/gitsvn-4-collaborate-with-other-git.html</a><br>
+[Part 5: Centralized Git-SVN mirror]: <a href="http://blog.tfnico.com/2010/10/gitsvn-5-centralized-git-svn-mirror.html" title="http://blog.tfnico.com/2010/10/gitsvn-5-centralized-git-svn-mirror.html" class="http">http://blog.tfnico.com/2010/10/gitsvn-5-centralized-git-svn-mirror.html</a><br>
+[Part 6: Grafting together SVN history]: <a href="http://blog.tfnico.com/2010/10/gitsvn-6-grafting-together-svn-history.html" title="http://blog.tfnico.com/2010/10/gitsvn-6-grafting-together-svn-history.html" class="http">http://blog.tfnico.com/2010/10/gitsvn-6-grafting-together-svn-history.html</a><br>
+[Part 7: Leaving SVN behind]: <a href="http://blog.tfnico.com/2010/10/gitsvn-7-leaving-svn-behind.html" title="http://blog.tfnico.com/2010/10/gitsvn-7-leaving-svn-behind.html" class="http">http://blog.tfnico.com/2010/10/gitsvn-7-leaving-svn-behind.html</a><br>
+</p>
+
+
+
+			<!-- End wiki content -->
+			</div>
+			<hr>
+			<!-- Backlinks -->
+			<div class="footer">
+									<i>No backlinks to this page.</i>
+				<br><br>
+
+				
+			<!-- End Backlinks -->
+			</div>
+		</div>
+	</body>
+</html>

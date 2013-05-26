@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>perspective</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-align: center;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+			.page { max-width: 1000px;}
+			.menu{
+				float:left; width: 300px;
+			}
+
+			.content { padding-left: 320px;}
+			.notebook{font-variant: small-caps;
+					color:#4e9a06;
+					padding: 0px 20px;}
+			hr{clear:both;}
+		</style>
+
+	</head>
+	<body>
+		<div class="page">
+			<div class="heading">
+									<h1>perspective</h1>
+			</div>
+			<hr>
+			<div class="menu">
+				<ul>
+<li><a href="../../blog.html" title="blog" class="page">blog</a></li>
+<li><a href="../../chirps.html" title="chirps" class="page">chirps</a></li>
+<li><a href="../../misc.html" title="misc" class="page">misc</a></li>
+<li><a href="../../notes.html" title="notes" class="page">notes</a></li>
+<ul>
+<li><a href="../emacs.html" title="emacs" class="page">emacs</a></li>
+<ul>
+<li><strong class="activepage">perspective</strong></li>
+<li><a href="./project.html" title="project" class="page">project</a></li>
+</ul>
+<li><a href="../gfw.html" title="gfw" class="page">gfw</a></li>
+<li><a href="../misc.html" title="misc" class="page">misc</a></li>
+<li><a href="../utils.html" title="utils" class="page">utils</a></li>
+</ul>
+<li><a href="../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+
+			</div>
+			<div class="content">
+			<!-- Wiki content -->
+				<p>
+Created 星期六 14 七月 2012<br>
+</p>
+
+
+
+<h1># Emacs Perspective #</h1>
+<p>
+开始研究Emacs上的screen/perspective类扩展，其实我还没弄清楚我想要的是个啥样的东西，不过persp-mode<br>
+</p>
+
+<h2>## [workgroups](https://github.com/tlh/workgroups.el ) ##</h2>
+<p>
+<ul>
+<li>可记录窗口配置(叫做workgroup, 包括了其当前buffer)，并在多套workgroup之间切换。</li>
+<li>有persistence支持</li>
+<li>可以按buffer切换到其所属的wg，但仅限于该wg当前的窗口中显示了该buffer，未显示的buffer不具有这个能力（也就是说，buffer与wg之间没有perspective.el里面那种强联系)</li>
+<li>可将当前窗口配置设置为本wg的基础设置(wg-update-workgroup)，在以后revert回来。</li>
+<li>各frame之间wg的working config独立的，但每个wg的base config是共享的(文档描述如此，但实验不对?)</li>
+</ul>
+</p>
+
+<h2>## [perspective](https://github.com/nex3/perspective-el ) ##</h2>
+<p>
+<ul>
+<li>可以将buffer添加到某个perspective里面去</li>
+<li>各frame之间persp是独立的，但可以import某个persp过去使用</li>
+<li><a href="http://emacsrookie.com/2011/09/25/workspaces/" title="http://emacsrookie.com/2011/09/25/workspaces/" class="http">http://emacsrookie.com/2011/09/25/workspaces/</a></li>
+</ul>
+</p>
+
+<h2>## elscreen/el-screen/escreen ##</h2>
+<p>
+<ul>
+<li>elscreen用header-line切换，挺方便的，但跟tabbar冲突</li>
+<li>el-screen依赖也挺多，其中el-kit有10多个文件</li>
+</ul>
+</p>
+		
+
+<h2>## [windows-mode](http://www.emacswiki.org/emacs/WindowsMode ) ##</h2>
+<p>
+<ul>
+<li>winring (?)</li>
+</ul>
+</p>
+
+<h2>## [window-layout](https://github.com/kiwanami/emacs-window-layout/ ) ##</h2>
+<p>
+<ul>
+<li>创建一个或多个window layout，每个窗口有名字，可根据名字操作窗口(show/hide/toggle/select/maximize/refresh)，并将buffer显示到窗口上——layout被破坏了怎么办? 没有见到处理。另外也没有见到切换layout的相应支持。无persistence支持。</li>
+</ul>
+</p>
+	
+
+<h2>## frame-bufs.el ##</h2>
+<p>
+<ul>
+<li>[emacs] 用frame-bufs.el[实现了一直想要的类似perspective功能](<a href="https://gist.github.com/2250340" title="https://gist.github.com/2250340" class="https">https://gist.github.com/2250340</a> )。 相比之前研究的perspective.el，现在直接用frame绑定buffer，不同的frame即是不同的透视图，要简单直观得多。perspective.el 定义的透视图在不同的frame之间不是共享的，所以比较适合单一frame的情况 [2012-03-30 17:44:42]	</li>
+</ul>
+</p>
+
+
+
+
+<p>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br>
+</p>
+
+<p>
+<ol type="1" start="817">
+<li>[emacs][RIL] Putting it in Perspective : Nex3 - <a href="http://nex-3.com/posts/72-putting-it-in-perspective" title="http://nex-3.com/posts/72-putting-it-in-perspective" class="http">http://nex-3.com/posts/72-putting-it-in-perspective</a> [2011-05-28 12:02:21]</li>
+<li>[emacs] Putting it in Perspective : <a href="http://nex-3.com/posts/72-putting-it-in-perspective" title="http://nex-3.com/posts/72-putting-it-in-perspective" class="http">http://nex-3.com/posts/72-putting-it-in-perspective</a> 跟tabbar不同的是，tabbar只切换当前window的buffer，perspective切换整个frame内的window和buffer [2011-09-27 08:45:45]</li>
+<li>[Emacs] workgroups-el: manage window layout &amp; configs <a href="https://github.com/tlh/workgroups.el" title="https://github.com/tlh/workgroups.el" class="https">https://github.com/tlh/workgroups.el</a> [2011-09-22 07:30:35]</li>
+<li>[emacs] 不过用了一会儿觉得这个perspective跟tabbar有点冲突啊（不是功能上的冲突，是用户体验上的），得想法改改tabbar的group方法，将两者协调起来 [2011-09-27 08:46:51]</li>
+<li>[emacs] 这个perspective功能上跟elscreen有点象(可能没它强，毕竟elscreen是个大包，有好多个文件)，只不过elscreen跟tabbar抢header-line [2011-09-27 09:02:48]</li>
+<li>[emacs] 多窗口布局管理，我应该用哪个呢？ elscreen, escreen, perspective, workgroups [2011-09-29 18:25:18]</li>
+<li>[emacs] 多窗口配置方面又发现了两个新东西 el-screen (不是elscreen) <a href="https://github.com/medikoo/el-screen" title="https://github.com/medikoo/el-screen" class="https">https://github.com/medikoo/el-screen</a> 和 windows-mode <a href="http://www.emacswiki.org/emacs/WindowsMode" title="http://www.emacswiki.org/emacs/WindowsMode" class="http">http://www.emacswiki.org/emacs/WindowsMode</a> 不过我发现我的需求目前用自带的register可以搞定 [2011-11-15 15:08:23]</li>
+<li>[emacs] 用frame-bufs.el实现了一直想要的类似perspective功能 <a href="https://gist.github.com/2250340" title="https://gist.github.com/2250340" class="https">https://gist.github.com/2250340</a>  相比之前研究的perspective.el，现在直接用frame绑定buffer，不同的frame即是不同的透视图，要简单直观得多。perspective.el 定义的透视图在不同的frame之间不是共享的，所以比较适合单一frame的情况 [2012-03-30 17:44:42]</li>
+<li>workgroups for windows ( emacs layouts) | Open Sauce <a href="http://splash-of-open-sauce.blogspot.com/2010/09/workgroups-for-windows-emacs-layouts.html" title="http://splash-of-open-sauce.blogspot.com/2010/09/workgroups-for-windows-emacs-layouts.html" class="http">http://splash-of-open-sauce.blogspot.com/2010/09/workgroups-for-windows-emacs-layouts.html</a> [2012-01-21 16:24:48]</li>
+</ol>
+</p>
+
+
+			<!-- End wiki content -->
+			</div>
+			<hr>
+			<!-- Backlinks -->
+			<div class="footer">
+									<i>No backlinks to this page.</i>
+				<br><br>
+
+				
+			<!-- End Backlinks -->
+			</div>
+		</div>
+	</body>
+</html>

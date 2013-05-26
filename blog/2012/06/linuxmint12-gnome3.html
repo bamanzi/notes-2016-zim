@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>linuxmint12-gnome3</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-align: center;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+			.page { max-width: 1000px;}
+			.menu{
+				float:left; width: 300px;
+			}
+
+			.content { padding-left: 320px;}
+			.notebook{font-variant: small-caps;
+					color:#4e9a06;
+					padding: 0px 20px;}
+			hr{clear:both;}
+		</style>
+
+	</head>
+	<body>
+		<div class="page">
+			<div class="heading">
+									<h1>linuxmint12-gnome3</h1>
+			</div>
+			<hr>
+			<div class="menu">
+				<ul>
+<li><a href="../../../blog.html" title="blog" class="page">blog</a></li>
+<ul>
+<li><a href="../../2012.html" title="2012" class="page">2012</a></li>
+<ul>
+<li><a href="../02.html" title="02" class="page">02</a></li>
+<li><a href="../05.html" title="05" class="page">05</a></li>
+<li><a href="../06.html" title="06" class="page">06</a></li>
+<ul>
+<li><a href="./cherrytree.html" title="cherrytree" class="page">cherrytree</a></li>
+<li><strong class="activepage">linuxmint12-gnome3</strong></li>
+<li><a href="./various-goodies.html" title="various-goodies" class="page">various-goodies</a></li>
+<li><a href="./windows-console-emulator.html" title="windows-console-emulator" class="page">windows-console-emulator</a></li>
+</ul>
+<li><a href="../07.html" title="07" class="page">07</a></li>
+</ul>
+<li><a href="../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+<li><a href="../../../chirps.html" title="chirps" class="page">chirps</a></li>
+<li><a href="../../../misc.html" title="misc" class="page">misc</a></li>
+<li><a href="../../../notes.html" title="notes" class="page">notes</a></li>
+<li><a href="../../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+
+			</div>
+			<div class="content">
+			<!-- Wiki content -->
+				<p>
+Created 星期六 23 六月 2012<br>
+</p>
+
+<p>
+<span class="zim-tag">@linuxmint</span> <span class="zim-tag">@gnome</span> <br>
+</p>
+
+<h1>LinuxMint 12历险记（以及GNOME 3逃逸办法）</h1>
+
+<h2>1. GDM: Could not update .ICEAuthoritiy</h2>
+
+<p>
+ 上周三晚，因为想使用launchpad上提供的wine-1.4 （现在比较懒得自己编译 了），又觉得自己的LinuxMint比较老了（还是Mint 11 Katya，而Mint 13 Maya 在上个月都出来了），于是就决定来个 apt-get dist-upgrade 。 <br>
+ 打完收工，重启系统，问题来了——图形界面进不去，在GDM里面输入用户名、密码 再回车后，系统忙一阵，蹦出来一个提示框: <a href="https://www.maow.net/ICEauthority" title="https://www.maow.net/ICEauthority" class="https">https://www.maow.net/ICEauthority</a> <br>
+ <img src="./linuxmint12-gnome3/gdm3-authority-error.png" alt=""><br>
+</p>
+ 
+<p>
+ 网上一阵狂搜，有很多很多很多人出现这个，大都说是权限问题，但我一个个试 了，没一个能解决问题——唯一的收获是发现这东西跟GNOME 3有关。之前听说 GNOME 3需要3D加速，我这集显看来是跑不起来了？ <br>
+ 不详细说折腾过程了，反正白天上班的空档就阅读一下LinuxMint 12/13的 Release Notes (12 Lisa/13 Maya 和Whats New (12 Lisa/13 Maya )，尤其是跟 GNOME 3相关的部分，然后每晚折腾一下，到周六晚终于搞定了——其实解决方法很 简单，就是GDM 3在作祟，我干掉它换用 LightDM 就行了——至于具体原因我也懒 得去深究，反正就一登录界面嘛——而且我中间下载过LinuxMint 12的virtualbox 磁盘镜像，发现这个版本缺省的就是使用的LightDM。 <br>
+</p>
+ 
+
+<h2>2. 如何逃离GNOME 3</h2>
+
+<p>
+ 下面介绍一下对我在这个过程中了解到LinuxMint对GNOME 3提供的一些解决方案， 供各位参考(之前在各个网站上听到过不少对GNOME 3的争论，其实我还一直没有 真正用过它，下面只是我在解决上述问题中了解到的一些内容——而短期内我还是 选择GNOME 2，也就是MATE）:  <br>
+</p>
+ 
+<p>
+ Linux Mint对GNOME的用户提供了三种升级方案，Linux Mint 12提供了Gnome Shell+MGSE和MATE，而Linux Mint 13增加了一个Cinnamon。 这三者是可以共存的:  "You can install Cinnamon alongside other desktops (including MATE and Gnome Shell/MGSE). " - Linux Mint Blog: Introduing Cinnamon)。 <br>
+</p>
+
+<h3>2.1 MGSE: 如果你喜欢玩新东西</h3>
+
+<p>
+LinuxMint了解到用户们对于GNOME 3(Gnome Shell)的可用性有很多抱怨，于 是在LinuxMint 12 (Lisa)里面提供了MGSE和MATE两个东西。MGSE即Mint Gnome Shell Extensions，是LinuxMint对Gnome Shell添加的一些扩展（本身 也是基于Gnome Shell的扩展技术来开发的)，主要是包含了底部面板(GS缺省 只有一个顶部面板)、应用程序菜单、窗口列表和Alt-Tab修正（GS缺省只能切 换应用程序，不能直接切换窗口）。—— New Features in Linux Mint 12: Gnome 3 and MGSE <br>
+<img src="./linuxmint12-gnome3/mgse_shell_extension_desktop.png" alt="" height="416"><br>
+</p>
+
+<h3>2.2 MATE: 如果你想找回老版GNOME的感觉</h3>
+
+<p>
+而MATE则是基于Gnome 2.x的一个分支(Many users refused to accept the new GNOME, calling on someone to continue development of GNOME 2.)， 为了避免跟Gnome 3.x的一些包相冲突而改了名字（以及一些代码）。MATE的 大部分包名是将 gnome 几个字母换成了 *mate*，比如 mate-panel,    mate-terminal, 有些原本不包含"gnome"字样的也改了，比如 eog -&gt;    mate-image-viewer, totem -&gt; mate-video-player ，但有几个例外，比如 nautilus -&gt; caja, metacity -&gt; marco <br>
+</p>
+
+<p>
+ Linux Mint 12的CD版本只集成了MGSE，而没有MATE（但DVD版本有)，需要自 己安装: apt-get install mint-meta-mate 。但Linux Mint 12带的MATE还 是1.0，它自己在Release Notes里也说 MATE is at a really early stage    of its development and isn't stable yet ，不过这里有最新的包(当前是 1.2.0): <a href="http://mate.karapetsas.com/" title="http://mate.karapetsas.com/" class="http">http://mate.karapetsas.com/</a> (安装方法是将 deb    <a href="http://packages.mate-desktop.org/repo/ubuntu/" title="http://packages.mate-desktop.org/repo/ubuntu/" class="http">http://packages.mate-desktop.org/repo/ubuntu/</a> oneiric main 加入 /etc/apt/source.list.d/mate.list后，=apt-get update &amp;&amp; apt-get install -t oneiric mate-desktop= <br>
+</p>
+ 
+<p>
+ Linux Mint 13则提供了两种CD，一种是MATE 1.2，一种是Cinnamon 1.4。 <br>
+ 一开始我还以为MATE是LinuxMint创造的，网上搜了一下才发现是由Arch Linux发起的(Wikipedia: MATE (desktop environment): History，目前支持 Arch/Mint/Debian/Ubuntu，但集成到发行版的只有Mint (参见: <a href="http://mate-desktop.org/about/" title="http://mate-desktop.org/about/" class="http">http://mate-desktop.org/about/</a>). <br>
+</p>
+
+<p>
+ <img src="./linuxmint12-gnome3/thumb_mate.png" alt=""><br>
+(原图)<br>
+</p>
+
+<h3>2.3 Cinnamon: 比MGSE更新的玩具</h3>
+
+<p>
+考虑到MGSE只能基于Gnome Shell开发，能力有限，Linux Mint 13又多出来一 个东西: Cinnamon，它是在GNOME 3(Gnome Shell)上分支出来的，旨在提供一 个接近传统风格的桌面(Linux Mint Blog: Introducing Cinnamon)。但底层 仍然采用Gnome 3的技术，比如，还是需要3D加速（参见: New features of Linux Mint 13 - Cinnamon 1.4）。 <br>
+</p>
+
+<p>
+ 前面说过，MGSE,MATE和Cinnamon可以共存的，不过Linx Mint 13的CD还是发 了Mate和Cinnamon两个版本。 <br>
+</p>
+ 
+<p>
+<img src="./linuxmint12-gnome3/cinnamon_thumb_2.png" alt=""><br>
+</p>
+
+<h2>3. 其它</h2>
+<p>
+<ul style='padding-left: 30pt'>
+<li>LinuxMint基于Ubuntu Oneiric，找软件仓库时需要记牢这个。LinuxMint与Ubuntu各个版本的对应表都在这里:<a href="http://www.linuxmint.com/oldreleases.php" title="http://www.linuxmint.com/oldreleases.php" class="http">http://www.linuxmint.com/oldreleases.php</a></li>
+<li>LinuxMint 12启动时黑屏(black splash screen)居然是"设计如此"(bydesign) <a href="http://linuxmint.com/rel\_lisa.php#info" title="http://linuxmint.com/rel\_lisa.php#info" class="http">http://linuxmint.com/rel\_lisa.php#info</a></li>
+<li>在VirtualBox里面跑GNOME 3，需要在VB里将虚拟机的显存设置为至少64M。倒不一定要在VB里启用2D/3D加速（不过我这里3D加速的选项被禁用了，可能是因为host pc的显卡是集显）</li>
+<li>一直奇怪linuxmint下 /etc/lsb-release 和 /etc/issue 总是被自动修改回老版本的版本号(该回初始安装是的linuxmint 10，后来升级到11，现在升级到12，居然都不会变)，刚才上网查了一下，原来是有个/usr/lib/linuxmint/mintSystem/mint-adjust.py 在自动修改，这个文件由 mintsystem 这个包提供。要禁止掉这个“特性“，可以修改/etc/linuxmint/mintSystem.conf</li>
+<li>LinuxMint推荐用重新安装的方式来做大版本升级（How to upgrade to a newer release - Linux Mint Community)，而不推荐用apt-getdist-upgrade(Upgrade linux mint in-place using apt - Linux Mint Community)，看来也是有它自己的道理的 :-)</li>
+</ul>
+</p>
+
+
+
+<p>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br>
+<a href="" title="从http://mate.karapetsas.com/" class="page">从http://mate.karapetsas.com/</a> 升级 python-mate-menu和python-mate-desktop到最新的1.2.0版本后，mintmenu可以添加到面板上了<br>
+linuxmint 12, mate 1.2.0, mintmenu 5.2.8<br>
+<img src="./linuxmint12-gnome3/mate-mintmenu-1.2.png" alt="" height="400"><br>
+</p>
+
+
+			<!-- End wiki content -->
+			</div>
+			<hr>
+			<!-- Backlinks -->
+			<div class="footer">
+									<i>No backlinks to this page.</i>
+				<br><br>
+
+									<b>Attachments:</b>
+					<table>						<tr><td><a href='./linuxmint12-gnome3/cinnamon_thumb_2.png'>cinnamon_thumb_2.png</a></td><td>&nbsp;</td><td>122kb</td></tr>						<tr><td><a href='./linuxmint12-gnome3/gdm3-authority-error.png'>gdm3-authority-error.png</a></td><td>&nbsp;</td><td>9.21kb</td></tr>						<tr><td><a href='./linuxmint12-gnome3/mate-mintmenu-1.2.png'>mate-mintmenu-1.2.png</a></td><td>&nbsp;</td><td>159kb</td></tr>						<tr><td><a href='./linuxmint12-gnome3/mgse_shell_extension_desktop.png'>mgse_shell_extension_desktop.png</a></td><td>&nbsp;</td><td>755kb</td></tr>						<tr><td><a href='./linuxmint12-gnome3/thumb_mate.png'>thumb_mate.png</a></td><td>&nbsp;</td><td>72.9kb</td></tr>					</table>
+			<!-- End Backlinks -->
+			</div>
+		</div>
+	</body>
+</html>

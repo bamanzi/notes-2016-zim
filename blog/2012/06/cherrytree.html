@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>cherrytree</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-align: center;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+			.page { max-width: 1000px;}
+			.menu{
+				float:left; width: 300px;
+			}
+
+			.content { padding-left: 320px;}
+			.notebook{font-variant: small-caps;
+					color:#4e9a06;
+					padding: 0px 20px;}
+			hr{clear:both;}
+		</style>
+
+	</head>
+	<body>
+		<div class="page">
+			<div class="heading">
+									<h1>cherrytree</h1>
+			</div>
+			<hr>
+			<div class="menu">
+				<ul>
+<li><a href="../../../blog.html" title="blog" class="page">blog</a></li>
+<ul>
+<li><a href="../../2012.html" title="2012" class="page">2012</a></li>
+<ul>
+<li><a href="../02.html" title="02" class="page">02</a></li>
+<li><a href="../05.html" title="05" class="page">05</a></li>
+<li><a href="../06.html" title="06" class="page">06</a></li>
+<ul>
+<li><strong class="activepage">cherrytree</strong></li>
+<li><a href="./linuxmint12-gnome3.html" title="linuxmint12-gnome3" class="page">linuxmint12-gnome3</a></li>
+<li><a href="./various-goodies.html" title="various-goodies" class="page">various-goodies</a></li>
+<li><a href="./windows-console-emulator.html" title="windows-console-emulator" class="page">windows-console-emulator</a></li>
+</ul>
+<li><a href="../07.html" title="07" class="page">07</a></li>
+</ul>
+<li><a href="../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+<li><a href="../../../chirps.html" title="chirps" class="page">chirps</a></li>
+<li><a href="../../../misc.html" title="misc" class="page">misc</a></li>
+<li><a href="../../../notes.html" title="notes" class="page">notes</a></li>
+<li><a href="../../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+
+			</div>
+			<div class="content">
+			<!-- Wiki content -->
+				<p>
+Created 星期六 23 六月 2012<br>
+</p>
+
+<p>
+<span class="zim-tag">@工具软件</span> <br>
+</p>
+
+<h1>推荐跨平台笔记软件CherryTree</h1>
+
+<p>
+前两天看见UbuntuHome发了这篇 <a href="http://www.ubuntuhome.com/pg-cherrytree.html" title="[程序员专用笔记CherryTree" class="http">[程序员专用笔记CherryTree</a>], 下载下来试用了一阵之后，感觉很不错，于是在公司的电脑上就从minipad2切换过来; 家里的Linux上也装上了它，开始把我一些零散的笔记挪进去。<br>
+</p>
+
+<p>
+CherryTree是个树状笔记软件，有着其它类似软件的功能<br>
+<ul style='padding-left: 30pt'>
+<li>支持富文本（粗体/斜体/等宽/下划线/链接/背景色/前景色）</li>
+<li>支持类似HTML的h1..h3多级标题</li>
+<li>支持无序列表/有序列表/TO-DO列表</li>
+<li>支持嵌入图片</li>
+</ul>
+</p>
+
+<p>
+特色功能是：<br>
+<ul style='padding-left: 30pt'>
+<li>支持嵌入表格</li>
+<li>支持嵌入代码框（可以语法高亮哦）</li>
+<li>扫描整个笔记本，生成文档目录</li>
+<li>有丰富的导入功能，可以导入Basket, KeepNote, Leo, NoteCase, Tomboy, TreePad, TuxCards等笔记软件的文件</li>
+<li>可将整个笔记本（或者其中一部分）导出成HTML，每个节点一个文件，都带有树状索引</li>
+</ul>
+</p>
+
+<p>
+另外，CherryTree是将整个笔记本保存为一个文件（sqlite格式或者xml格式），图片/表格这些都是在保存在里面的。<br>
+</p>
+
+<p>
+CherryTree采用python+gtk编写，也提供了windows binary包，安装比较省事。 <br>
+</p>
+
+<p>
+<img src="./cherrytree/cherrytree-main_window_text.png" alt=""><br>
+</p>
+
+<h3>为什么选择CherryTree？</h3>
+
+<p>
+（这一部分更多是描述个人偏好，不感兴趣可以跳过）<br>
+</p>
+
+<p>
+前面一篇博文里面说过，我用EverNote还是比较多的，但它主要还是用做”知识仓库“，存放比较系统化的一些内容。<br>
+</p>
+
+<p>
+但其实还有两个场景，都不太适合用EverNote：<br>
+一个是写东西 （authoring），比如写博客文章、写会议记录什么的，这要求编辑器的能力要比较强，比如能方便地调整章节、编辑表格什么的，之前我一直是用emacs org-mode来干这个的; <br>
+</p>
+
+<p>
+另一个场景是随手记点东西，有的是有待整理后放到笔记里，有的是临时的代码片段，有的只是在较短时间内的备忘（比如某台服务器的IP地址什么的），这种一般我会按照主题（比如Emacs，shell等，内容多了会再分子主题）。之前我在上班时主要是用flashpad/minipad2来做这个，在家里用Linux时，就一直没有什么趁手的工具，都是用<a href="https://addons.mozilla.org/zh-CN/firefox/addon/quickfox-notes/?src=search" title="Firefox扩展QuickFox Notes" class="https">Firefox扩展QuickFox Notes</a>来应付。<br>
+</p>
+
+<p>
+flashpad/minipad2/quickfox notes这几个的缺点是：<br>
+<ul>
+<li>都只支持纯文本，有时候很期望用加粗、颜色什么的来标识需要注意的内容，标题、链接什么的最好也有（倒是可以接受非所见即所得的方式，比如FloatNotes采用Markdown格式编写，以HTML方式呈现）; </li>
+<li>都不支持嵌入图片，有时候截屏是比较简单方便的记录方式; </li>
+<li>flashpad/minipad2不跨平台;</li>
+<li>QuickFox Notes采用标签页来呈现所有的，内容多了之后，标签栏两头来回找，太麻烦了（以前我是将短期不太关系的内容放到“收藏夹”里面去了，而且还有个搜索框，觉得挺方便的。直到前几天我从奇怪Firefox同步的内容总是不全才发现这个“收藏夹”的英文原文是Archive，放进去的笔记是归档到本机文件系统去了，不会自动同步）</li>
+</ul>
+</p>
+
+<p>
+而且改用CherryTree的话，这两个场景都可以用同一个工具了。<br>
+</p>
+
+<p>
+-------------------------------------------------------------------------------------<br>
+</p>
+
+<h2>之前不是使用flashpad/minipad2么?</h2>
+
+<p>
+抛弃flashpad/minipad2的原因是 <br>
+</p>
+
+
+<p>
+但因为EverNote没有Linux版本（虽然有个Java版本的NixNote，但是体验不佳），加上公司的proxy禁止了EverNote客户端同步，导致我只能通过浏览器访问evernote.com来使用它。再考虑到现在霸气的G_fw导致的网速——所以我还是需要另外一个软件。<br>
+</p>
+
+<p>
+<ul>
+<li style="list-style-image: url(../../../_resources/unchecked-box.png)">FIXME</li>
+</ul>
+</p>
+
+<p>
+我就在公司电脑上(Windows XP)抛弃了之前在用的minipad2（之前又因 为minipad2又抛弃了曾经在博客上介绍过的flashpad（见介绍几个Windows下的小 工具））<br>
+</p>
+
+
+
+			<!-- End wiki content -->
+			</div>
+			<hr>
+			<!-- Backlinks -->
+			<div class="footer">
+									<i>No backlinks to this page.</i>
+				<br><br>
+
+									<b>Attachments:</b>
+					<table>						<tr><td><a href='./cherrytree/cherrytree-main_window_text.png'>cherrytree-main_window_text.png</a></td><td>&nbsp;</td><td>99.2kb</td></tr>					</table>
+			<!-- End Backlinks -->
+			</div>
+		</div>
+	</body>
+</html>

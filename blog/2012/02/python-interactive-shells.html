@@ -1,0 +1,270 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>python-interactive-shells</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-align: center;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+			.page { max-width: 1000px;}
+			.menu{
+				float:left; width: 300px;
+			}
+
+			.content { padding-left: 320px;}
+			.notebook{font-variant: small-caps;
+					color:#4e9a06;
+					padding: 0px 20px;}
+			hr{clear:both;}
+		</style>
+
+	</head>
+	<body>
+		<div class="page">
+			<div class="heading">
+									<h1></h1>
+			</div>
+			<hr>
+			<div class="menu">
+				<ul>
+<li><a href="../../../blog.html" title="blog" class="page">blog</a></li>
+<ul>
+<li><a href="../../2012.html" title="2012" class="page">2012</a></li>
+<ul>
+<li><a href="../02.html" title="02" class="page">02</a></li>
+<ul>
+<li><a href="./a-few-windows-utils.html" title="a-few-windows-utils" class="page">a-few-windows-utils</a></li>
+<li><strong class="activepage">python-interactive-shells</strong></li>
+<li><a href="./some_emacs_comics.html" title="some emacs comics" class="page">some emacs comics</a></li>
+</ul>
+<li><a href="../05.html" title="05" class="page">05</a></li>
+<li><a href="../06.html" title="06" class="page">06</a></li>
+<li><a href="../07.html" title="07" class="page">07</a></li>
+</ul>
+<li><a href="../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+<li><a href="../../../chirps.html" title="chirps" class="page">chirps</a></li>
+<li><a href="../../../misc.html" title="misc" class="page">misc</a></li>
+<li><a href="../../../notes.html" title="notes" class="page">notes</a></li>
+<li><a href="../../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+
+			</div>
+			<div class="content">
+			<!-- Wiki content -->
+				<p>
+#+TITLE: 几个Python Interactive Shell<br>
+#+OPTIONS: img:t<br>
+</p>
+
+<h2>介绍几个Python Interactive Shell (Part I)</h2>
+<p>
+<span class="zim-tag">@python</span>  <br>
+</p>
+
+<p>
+用Python编程，免不得需要做些实验，你可以python interactive shell 里面试一下某个表达式是否正确，某个包<br>
+是怎样使用的，用dir(obj)看看一个对象都有些啥属性，用help(foo)查看帮助。。。<br>
+</p>
+
+<p>
+另外一方面，matplotlib这类扩展（或者说应用？）更是以interactive shell作为主要交互界面了。<br>
+</p>
+
+<p>
+#+begin_html<br>
+&lt;img src="<a href="http://www.annedawson.net/Idle_image022.jpg" title="http://www.annedawson.net/Idle_image022.jpg" class="http">http://www.annedawson.net/Idle_image022.jpg</a>" border="0"/&gt;&lt;p&gt;<br>
+#+end_html<br>
+<img src="./python-interactive-shells/interpreter.png" alt=""><br>
+</p>
+
+<p>
+不过python自己的interactive shell 还是弱了一点，比如没有代码补全，没有语法高亮，不能一次选择历史里面<br>
+的多行进行重用。下面简单介绍几个增强型的Python Interactive Shell.<br>
+</p>
+
+<h3>IDLE</h3>
+<p>
+<a href="http://wiki.python.org/moin/IDLE" title="http://wiki.python.org/moin/IDLE" class="http">http://wiki.python.org/moin/IDLE</a><br>
+</p>
+
+<p>
+#+begin_html<br>
+&lt;img src="<a href="http://www.bogotobogo.com/python/images/python_modules_idle/idle.png" title="http://www.bogotobogo.com/python/images/python_modules_idle/idle.png" class="http">http://www.bogotobogo.com/python/images/python_modules_idle/idle.png</a>" border="0"/&gt;<br>
+#+end_html<br>
+<img src="./python-interactive-shells/idle.png" alt=""><br>
+</p>
+
+<p>
+IDLE 是python的自带IDE（是的，它有编辑器、有调试器、还有这里讨论的interactive shell功能)，采用tk编写<br>
+界面，虽然功能不是太强，但好在自带，并且跨平台，可以救急用用。<br>
+</p>
+
+<p>
+IDLE里面的interactive shell相对终端版本(就是不带参数运行python，或者带-i参数执行时出现的shell)而言，<br>
+多了几个功能:<br>
+<ul>
+<li>代码高亮</li>
+<li>代码补全(按tab键出现)</li>
+<li>显示函数说明，比如输入"os.path.isfile("后它会以提示框现实os.path.isfile这个函数的signature和文档</li>
+</ul>
+</p>
+
+<p>
+BTW: idle的shell里重用历史记录的快捷键是Alt-p(上一条)和Alt-n(下一条) —— Emacs用户表示这很自然 :-)。<br>
+</p>
+
+<p>
+又: 有个<a href="http://idlex.sourceforge.net" title="IdleX项目" class="http">IdleX项目</a>， 为IDLE提供了一些增强扩展和插件，在编辑、执行、帮助、shell各方面都有增强，有兴趣的<br>
+可以试试。下面是与shell相关的增强:<br>
+<ul>
+<li>Terminal-like behavior for Shell. Cursor stays in prompt and up/down arrow keys cycle the</li>
+</ul>
+command history.<br>
+<ul>
+<li>Persistent history of Shell commands across sessions.</li>
+<li>Paste and run multiple lines in the shell.</li>
+<li>Non-blocking interactive GUI development for Tkinter, GTK, Qt, Qt4, PySide, wxPython</li>
+<li>Matplotlib support for interactive figures when using the subprocess.</li>
+<li>Clear Shell Window without restarting.</li>
+<li>Capture large output and display it as an expandable button.</li>
+</ul>
+</p>
+
+
+<h3>DreamPie</h3>
+
+<p>
+<a href="http://dreampie.sourceforge.net/" title="http://dreampie.sourceforge.net/" class="http">http://dreampie.sourceforge.net/</a><br>
+</p>
+
+<p>
+#+begin_html<br>
+&lt;img title="The DreamPie window" src="<a href="http://dreampie.sourceforge.net/screenshot1.png" title="http://dreampie.sourceforge.net/screenshot1.png" class="http">http://dreampie.sourceforge.net/screenshot1.png</a>" border="0"/&gt;&lt;br&gt;&lt;br&gt;<br>
+&lt;img title="Function documentation and filename completion. There's attribute completion too, of course!"<br>
+src="<a href="http://dreampie.sourceforge.net/screenshot2.png" title="http://dreampie.sourceforge.net/screenshot2.png" class="http">http://dreampie.sourceforge.net/screenshot2.png</a>" border="0"/&gt;&lt;br&gt;&lt;br/&gt;<br>
+&lt;img title="Long output sections are automatically folded."<br>
+src="<a href="http://dreampie.sourceforge.net/screenshot6.png" title="http://dreampie.sourceforge.net/screenshot6.png" class="http">http://dreampie.sourceforge.net/screenshot6.png</a>" border="0"/&gt;&lt;br&gt;<br>
+#+end_html<br>
+</p>
+
+<p>
+<img src="./python-interactive-shells/dreampie.png" alt=""><img src="./python-interactive-shells/dreampie2.png" alt=""><img src="./python-interactive-shells/dreampie3.png" alt=""><br>
+DreamPie 的功能定位比较单一，没有IPython里面的并发、shell命令等功能，它只是要改善一般使用interactive<br>
+shell时候的不便: 多行输入/重用不方便、没有代码补全，没有即时的函数帮助(calltip)等。<br>
+</p>
+
+<p>
+dreampie有几个特色功能:<br>
+</p>
+
+<p>
+<ul>
+<li>支持代码高亮，随着你的输入自动变色，而且支持色彩主题（缺省提供dark/light两套，要自己配置也可以）;</li>
+<li>在界面下方提供了一个多行输入框，你可以方便地编辑多行输入，比如回到上一行去修改;</li>
+<li>如果一段输出比较长，它可以将它折叠起来，方便你查看前面的内容;</li>
+<li>支持Python/Jython/IronPython;</li>
+<li>可以将整个交互过程保存为一个漂亮的HTML，颜色/缩进都很好地保留下来了——而且你下次还可以加载这份历</li>
+</ul>
+史，继续探索!<br>
+<ul>
+<li>如果你的语句进入了死循环，或者因为I/O等原因无法完成，你可以用Ctrl-C中止它，但你的会话不会就此中</li>
+</ul>
+止了(但在wxpy的python shell里面(见下节)，就会中止)，你的历史记录也还在<br>
+</p>
+
+<h3>wxpython里面的PyShell, PyCrust和PyAlaMode</h3>
+
+<p>
+这是wxpython里面自带的工具，其实PyCrust = PyAlaCarte + PyFilling, 而PyAlaMode = PyAlaCarte +<br>
+PyShell + PyFilling。其中PyShell是python shell交互功能，PyAlaCarte是个简单的Python代码编辑<br>
+器，PyFilling是个对象察看器。所以PyAlaMode就是相对PyCrust多了文件编辑的功能。<br>
+</p>
+
+<p>
+#+begin_html<br>
+&lt;img src="<a href="http://wiki.woodpecker.org.cn/moin/WxPythonInAction/ChapterFour?action=AttachFile&do=get&target=w4.6.gif" title="http://wiki.woodpecker.org.cn/moin/WxPythonInAction/ChapterFour?action=AttachFile&amp;do=get&amp;target=w4.6.gif" class="http">http://wiki.woodpecker.org.cn/moin/WxPythonInAction/ChapterFour?action=AttachFile&amp;do=get&amp;target=w4.6.gif</a>" border="0"/&gt;&lt;br&gt;<br>
+&lt;img src="<a href="http://wiki.woodpecker.org.cn/moin/WxPythonInAction/ChapterFour?action=AttachFile&do=get&target=w4.8.gif" title="http://wiki.woodpecker.org.cn/moin/WxPythonInAction/ChapterFour?action=AttachFile&amp;do=get&amp;target=w4.8.gif" class="http">http://wiki.woodpecker.org.cn/moin/WxPythonInAction/ChapterFour?action=AttachFile&amp;do=get&amp;target=w4.8.gif</a>" border="0"/&gt;<br>
+#+end_html<br>
+<img src="./python-interactive-shells/pycrust.gif" alt=""><br>
+在代码高亮、自动补全、自动显示帮助方面，wxpy跟其它python shell差不多，不再多数。唯一需要介绍的是<br>
+PyCrust/PyAlaMode下方面板里面的几个标签: <br>
+<ul style='padding-left: 30pt'>
+<li>Namespace 标签的功能相当于dir()函数，它列出当前python shell名字空间里面的所有对象，以及它们的属性;</li>
+<li>Display 标签的功能相当于print()函数，它会以字符串方式展示出一个对象，而且是调用pprint模块来显示的，用法是在shell里面想使用print()的时候改用pp()这个函数，该对象就会在这里列出结果了;</li>
+<li>Calltip 标签页显示一个函数的signature和帮助，这个函数是你在shell里最后一次输入的函数名</li>
+<li>History 标签页列出在shell中所输入的全部历史</li>
+<li>Dispatcher 标签页——我不太清楚 :-(</li>
+</ul>
+</p>
+
+<p>
+参考文档:<br>
+<ul>
+<li>官方文档: <a href="http://www.wxpython.org/PyManual.html" title="The Py Manual" class="http">The Py Manual</a> （写得太简单了，你会失望的）</li>
+<li><a href="http://wiki.woodpecker.org.cn/moin/WxPythonInAction/ChapterFour" title="用PyCrust使得wxPython更易处理" class="http">用PyCrust使得wxPython更易处理</a> ，来自wxPython in Action一书中相关章节，中文的。</li>
+</ul>
+</p>
+
+<h3>PyCrust的改进版本: PySlices</h3>
+<p>
+<a href="http://code.google.com/p/wxpysuite/" title="http://code.google.com/p/wxpysuite/" class="http">http://code.google.com/p/wxpysuite/</a><br>
+</p>
+
+<p>
+<a href="http://wxpysuite.googlecode.com/svn/trunk/PySlicesScreenshot.png" title="http://wxpysuite.googlecode.com/svn/trunk/PySlicesScreenshot.png" class="http">http://wxpysuite.googlecode.com/svn/trunk/PySlicesScreenshot.png</a><br>
+<img src="./python-interactive-shells/pyslices.png" alt=""><br>
+这是PyShell/PyCrust的改进版本:<br>
+<ul style='padding-left: 30pt'>
+<li>PySlices改进了多行输入的方式，一般的python shell只是在class/def/if/for这类语句后面呈现多行输入方式，等你输入下一行。但PySlices缺省是多行输入，你可以在输入多行后，按Ctrl-Enter一并提交执行。也可以切换到旧方式(在菜单Options-&gt;Settings-&gt;Enable Shell Mode)。</li>
+<li>PySlices还从IPython学了几个功能过来:</li>
+<ul>
+<li>函数调用的括号是可选的，比如"dir a"等同于"dir(a)"</li>
+<li>支持一些常用unix shell命令，比如pwd, cd, ls</li>
+<li>支持调用外部命令，只要命令行前面添加!就可以了，比如"!grep --help"</li>
+</ul>
+<li>多行的输入/输出可以折叠起来，跟DreamPie差不多</li>
+</ul>
+</p>
+
+<p>
+最后说一下安装，从wxPython的ChangeLog看，应该是在2.8.11就合入了wxPython，但在Debian的安装包里又没有看到，很奇怪。所以可以先安装<a href="http://packages.debian.org/python-wxtools" title="python-wxtools" class="http">python-wxtools</a> 包，<a href="" title="然后从http://code.google.com/p/wxpysuite/downloads/list" class="page">然后从http://code.google.com/p/wxpysuite/downloads/list</a> 这里下载，然后将PySlices*.*这几个文件提取出来即可（需要简单修改一下两个py文件，将 ="import wx_py as py"= 修改为 ="import wx.py as py"= ; 如果你不安装python-wxtools的话，也可以直接全部使用这里下载的，那就用不着修改了)。<br>
+</p>
+
+
+
+
+
+
+
+
+			<!-- End wiki content -->
+			</div>
+			<hr>
+			<!-- Backlinks -->
+			<div class="footer">
+									<i>No backlinks to this page.</i>
+				<br><br>
+
+									<b>Attachments:</b>
+					<table>						<tr><td><a href='./python-interactive-shells/dreampie.png'>dreampie.png</a></td><td>&nbsp;</td><td>26.8kb</td></tr>						<tr><td><a href='./python-interactive-shells/dreampie2.png'>dreampie2.png</a></td><td>&nbsp;</td><td>43.5kb</td></tr>						<tr><td><a href='./python-interactive-shells/dreampie3.png'>dreampie3.png</a></td><td>&nbsp;</td><td>42.7kb</td></tr>						<tr><td><a href='./python-interactive-shells/idle.png'>idle.png</a></td><td>&nbsp;</td><td>28.8kb</td></tr>						<tr><td><a href='./python-interactive-shells/interpreter.png'>interpreter.png</a></td><td>&nbsp;</td><td>7.31kb</td></tr>						<tr><td><a href='./python-interactive-shells/pycrust.gif'>pycrust.gif</a></td><td>&nbsp;</td><td>13.2kb</td></tr>						<tr><td><a href='./python-interactive-shells/pycrust2.gif'>pycrust2.gif</a></td><td>&nbsp;</td><td>15.0kb</td></tr>						<tr><td><a href='./python-interactive-shells/pyslices.png'>pyslices.png</a></td><td>&nbsp;</td><td>50.7kb</td></tr>					</table>
+			<!-- End Backlinks -->
+			</div>
+		</div>
+	</body>
+</html>

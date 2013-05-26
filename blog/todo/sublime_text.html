@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>sublime text</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-align: center;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+			.page { max-width: 1000px;}
+			.menu{
+				float:left; width: 300px;
+			}
+
+			.content { padding-left: 320px;}
+			.notebook{font-variant: small-caps;
+					color:#4e9a06;
+					padding: 0px 20px;}
+			hr{clear:both;}
+		</style>
+
+	</head>
+	<body>
+		<div class="page">
+			<div class="heading">
+									<h1>sublime text</h1>
+			</div>
+			<hr>
+			<div class="menu">
+				<ul>
+<li><a href="../../2012.html" title="2012" class="page">2012</a></li>
+<li><a href="../../blog.html" title="blog" class="page">blog</a></li>
+<ul>
+<li><a href="../2012.html" title="2012" class="page">2012</a></li>
+<li><a href="../todo.html" title="todo" class="page">todo</a></li>
+<ul>
+<li><a href="./gitlab.html" title="gitlab" class="page">gitlab</a></li>
+<li><a href="./python-interacitve-shells-2.html" title="python-interacitve-shells-2" class="page">python-interacitve-shells-2</a></li>
+<li><strong class="activepage">sublime text</strong></li>
+<li><a href="./svn_%2B_git.html" title="svn + git" class="page">svn + git</a></li>
+<li><a href="./tortoisegit-and-ssh-key.html" title="tortoisegit-and-ssh-key" class="page">tortoisegit-and-ssh-key</a></li>
+<li><a href="./window-shell-replacement.html" title="window-shell-replacement" class="page">window-shell-replacement</a></li>
+</ul>
+</ul>
+<li><a href="../../emacs.html" title="emacs" class="page">emacs</a></li>
+<li><a href="../../notes.html" title="notes" class="page">notes</a></li>
+<li><a href="../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+
+			</div>
+			<div class="content">
+			<!-- Wiki content -->
+				<p>
+Created 星期六 22 十二月 2012<br>
+</p>
+
+<p>
+** Sublime Text<br>
+   这个编辑器在网上的好评不断，我也下载下来进行试用了。我的感受如下:<br>
+   - 界面挺清爽、干净，除了SideBar，主编辑区有几种缺省布局可以选<br>
+     - Emacs有点烦人的是: 我想把上方两个比较大的窗口固定作为代码编辑区，但那些临时buffer会以我不理解<br>
+       的规则抢占窗口——除非安装ECB，然后将那些临时buffer设置为compilation buffers<br>
+   - 它是用Python写的，考虑到现在<a href="http://pypi.python.org][%E7%BD%91%E7%BB%9C%E4%B8%8A%E6%B5%B7%E9%87%8F%E7%9A%84python%E5%8C%85" title="http://pypi.python.org][%E7%BD%91%E7%BB%9C%E4%B8%8A%E6%B5%B7%E9%87%8F%E7%9A%84python%E5%8C%85" class="http">http://pypi.python.org][%E7%BD%91%E7%BB%9C%E4%B8%8A%E6%B5%B7%E9%87%8F%E7%9A%84python%E5%8C%85</a>， 这个编辑器应该比较容易扩展。事实上也是如此，<br>
+     仅仅是由社区开发的插件，目前就<a href="http://wbond.net/sublime_packages/community][%E5%B7%B2%E6%9C%89400%E5%A4%9A%E4%B8%AA" title="http://wbond.net/sublime_packages/community][%E5%B7%B2%E6%9C%89400%E5%A4%9A%E4%B8%AA" class="http">http://wbond.net/sublime_packages/community][%E5%B7%B2%E6%9C%89400%E5%A4%9A%E4%B8%AA</a> 可以直接通过Package Control进行安装<br>
+   - Goto Anything很酷，在这个框里，可以输入@前缀就列出所有的函数名，输入:前缀就按表示行号跳转<br>
+</p>
+
+<p>
+   然后呢，我不知道了:<br>
+   - 它不是一个完全面向GUI的编辑器，没有层层叠叠的设置界面，各种Settings都是要编辑一个JSON文件，而我<br>
+     不知道有哪些选项可以写到哪个文件里面去<br>
+</p>
+     
+<p>
+     比如这篇<a href="http://lucifr.com/139225/sublime-text-2-tricks-and-tips/][%E3%80%8ASublime Text 2 入门及技巧》" title="http://lucifr.com/139225/sublime-text-2-tricks-and-tips/][%E3%80%8ASublime Text 2 入门及技巧》" class="http">http://lucifr.com/139225/sublime-text-2-tricks-and-tips/][%E3%80%8ASublime Text 2 入门及技巧》</a>里面说到如何开启 *Vim模式*:<br>
+     #+begin_quote<br>
+     ...调出 Preferences：Settings - User，并按下回车。<br>
+</p>
+
+<p>
+         以上两步也可以直接用cmd + ,完成。<br>
+</p>
+
+<p>
+     这时会打开一个 Preferences.sublime-settings 的文件，如果是第一次修改，它应该是个空文件，把以下文本粘贴进去：<br>
+</p>
+
+<p>
+     {<br>
+         "ignored_packages": []<br>
+     }<br>
+     #+end_quote<br>
+     然后我就晕了，这个 =ignored_packages= 哪里来的，为什么把它设置为空就表示启用了Vim模式<br>
+</p>
+
+<p>
+   - 也用过不少编辑器了，为了避免编辑器本身能力的不足，或者减轻对某个特定编辑器的依赖，我倾向于用外部<br>
+     工具来完成很多事情，也就是类似Vim的quickfix方式：调用一个外部命令（比如grep/ack, ctags, jslint），然后编辑<br>
+     器读取并显示输出，我一边看输出，一边跳转到对应的文件。在Emacs里面我这么干，在SciTE里面这么干。<br>
+</p>
+
+<p>
+     但到了ST，我都没有看到怎么启动一个外部命令，<br>
+</p>
+
+<p>
+  基于上面这几个情况，我觉得这个编辑器是要多投入一些精力去学习一下才能发挥出作用的。但我对Emacs已经比<br>
+  较了解了，虽有一些不爽的地方，但我没打算离它而去，同时现在还有其它方面的东西需要学习，恐怕没有时间<br>
+  投入到这个上面来。更何况，它不是一个免费软件，是要花60多美刀的——虽然现在可以一直“试用”。<br>
+</p>
+
+<p>
+  所以，我打算把它先放到一边，然后把下面这些链接从我的Read It Later列表上挪到这里来，真正地“以后再说”吧<br>
+</p>
+
+
+			<!-- End wiki content -->
+			</div>
+			<hr>
+			<!-- Backlinks -->
+			<div class="footer">
+									<i>No backlinks to this page.</i>
+				<br><br>
+
+				
+			<!-- End Backlinks -->
+			</div>
+		</div>
+	</body>
+</html>

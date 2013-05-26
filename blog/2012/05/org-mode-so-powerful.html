@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>org-mode-so-powerful</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-align: center;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+			.page { max-width: 1000px;}
+			.menu{
+				float:left; width: 300px;
+			}
+
+			.content { padding-left: 320px;}
+			.notebook{font-variant: small-caps;
+					color:#4e9a06;
+					padding: 0px 20px;}
+			hr{clear:both;}
+		</style>
+
+	</head>
+	<body>
+		<div class="page">
+			<div class="heading">
+									<h1></h1>
+			</div>
+			<hr>
+			<div class="menu">
+				<ul>
+<li><a href="../../../blog.html" title="blog" class="page">blog</a></li>
+<ul>
+<li><a href="../../2012.html" title="2012" class="page">2012</a></li>
+<ul>
+<li><a href="../02.html" title="02" class="page">02</a></li>
+<li><a href="../05.html" title="05" class="page">05</a></li>
+<ul>
+<li><a href="./emacs-ancient-glossary.html" title="emacs-ancient-glossary" class="page">emacs-ancient-glossary</a></li>
+<li><a href="./firefox-km-extensions.html" title="firefox-km-extensions" class="page">firefox-km-extensions</a></li>
+<li><strong class="activepage">org-mode-so-powerful</strong></li>
+</ul>
+<li><a href="../06.html" title="06" class="page">06</a></li>
+<li><a href="../07.html" title="07" class="page">07</a></li>
+</ul>
+<li><a href="../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+<li><a href="../../../chirps.html" title="chirps" class="page">chirps</a></li>
+<li><a href="../../../misc.html" title="misc" class="page">misc</a></li>
+<li><a href="../../../notes.html" title="notes" class="page">notes</a></li>
+<li><a href="../../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+
+			</div>
+			<div class="content">
+			<!-- Wiki content -->
+				<p>
+#+TITLE: [Emacs] 神器Org-Mode介绍<br>
+</p>
+
+<p>
+<span class="zim-tag">@emacs</span><br>
+</p>
+
+<h1>神器org-mode</h1>
+<p>
+<a href="http://orgmode.org" title="Org-Mode" class="http">Org-Mode</a> 是Emacs上的一个扩展包，算是个神器，概括地说，有四种用法：<br>
+</p>
+
+<h2>1.写文档</h2>
+
+<h3>相对其它的文字处理程序而言，org-mode优点是:</h3>
+<p>
+<ul style='padding-left: 30pt'>
+<li>采用纯文本记录内容，你完全可以将文档纳入svn/git管理</li>
+<li>分节、列表的创建和导航都相当简单方便（你有没有在MS Word里面调整章节号死活调不对的经历？)，一个简单的tab键即可折叠起不关注的章节</li>
+<li>调整分节、列表的顺序相当方便：你不需要来回剪切、粘贴，你只需要M-up/down/left/right就可以了</li>
+<li>内嵌的代码片段也支持代码高亮哦，多种语言的代码/配置文件集于一处</li>
+<li>可嵌入图片、链接</li>
+<li>可以嵌入表格，甚至是带公式的电子表格</li>
+<li>可导出为HTML、Latex、DocBook等格式，后两种还可以进一步变成PDF格式</li>
+</ul>
+</p>
+
+<h3>入门指导</h3>
+<p>
+<div style='padding-left: 30pt'>
+Emacs中文网上的这篇<a href="http://emacser.com/org-mode-yupeng.htm" title="Emacs的Org Mode " class="http">Emacs的Org Mode </a>包含了一些基本的入门知识:<br>
+</div>
+<ul style='padding-left: 30pt'>
+<li>文档结构: 基本的分级标题、列表</li>
+<li>添加脚注</li>
+<li>表格</li>
+<li>引用文字和代码</li>
+<li>插入图片、链接</li>
+</ul>
+</p>
+
+<p>
+<div style='padding-left: 30pt'>
+一些示例: <a href="http://emacser.com" title="Emacs中文网(emacser.com)" class="http">Emacs中文网(emacser.com)</a>的很多文章都是以org-mode文档投稿的，站长ahei把它们都放在<a href="http://code.google.com/p/dea/source/browse/#svn%2Ftrunk%2Femacser.com" title="这个 googlecode仓库里" class="http">这个 googlecode仓库里</a> 了，比如前面说的<a href="http://emacser.com/org-mode-yupeng.htm" title="Emacs的Org Mode" class="http">Emacs的Org Mode</a>这篇文章的源文件就在<a href="http://code.google.com/p/dea/source/browse/trunk/emacser.com/org-mode.org" title="这里" class="http">这里</a>， 各位可以对照着看看。<br>
+</div>
+</p>
+
+
+<h4>一些高级用法</h4>
+<p>
+<ul style='padding-left: 30pt'>
+<li><a href="http://orgmode.org/worg/org-tutorials/org-spreadsheet-intro.html" title="Org as a spreadsheet system: a short introduction" class="http">Org as a spreadsheet system: a short introduction</a></li>
+<li><a href="http://orgmode.org/worg/code/org-info-js/" title="EMACS ORG-INFO.JS" class="http">EMACS ORG-INFO.JS</a>: 简单地在你的org文件头部添加 <code>#+INFOJS_OPTS: view:info </code> 然后你导出的HTML文件就可以呈现为texinfo的风格了：每次呈现一节, 按n显示下一节，按C显示目录，按i显示tags index... (这个链接里的网页就是用这种方式生成的，你不妨点击它页面上的 HELP / toggle view 两个链接试试)</li>
+<li>嵌入UML diagram: <a href="http://emacser.com/emacs-ditaa.htm" title="Emacs中绘图 － ditaa篇 " class="http">Emacs中绘图 － ditaa篇 </a></li>
+<li>写演示胶片:</li>
+<ul>
+<li><a href="http://orgmode.org/worg/org-tutorials/non-beamer-presentations.html" title="Writing Non-Beamer presentations in org-mode" class="http">Writing Non-Beamer presentations in org-mode</a></li>
+<li><a href="https://github.com/takaxp/org-tree-slide/blob/master/org-tree-slide.el" title="org-tree-slide.el: A presentation tool for org-mode - GitHub" class="https">org-tree-slide.el: A presentation tool for org-mode - GitHub</a></li>
+<li><a href="https://github.com/eschulte/epresent" title="epresent: Simple presentation mode for Emacs Org-mode - GitHub" class="https">epresent: Simple presentation mode for Emacs Org-mode - GitHub</a></li>
+<li><a href="https://github.com/relevance/org-html-slideshow" title="relevance/org-html-slideshow" class="https">relevance/org-html-slideshow</a></li>
+<li><a href="https://github.com/sigma/org-s5" title="sigma/org-s5" class="https">sigma/org-s5</a></li>
+</ul>
+</ul>
+</p>
+
+<h3>2.记录笔记</h3>
+<p>
+<ul style='padding-left: 30pt'>
+<li><a href="http://sachachua.com/blog/2008/01/outlining-your-notes-with-org/" title="Outlining Your Notes with Org " class="http">Outlining Your Notes with Org </a></li>
+<li>给一则笔记添加标签(tags): <a href="http://orgmode.org/manual/Setting-tags.html#Setting-tags" title="Setting tags - The Org Manual" class="http">Setting tags - The Org Manual</a>，然后还可以按tags搜索笔记: <a href="http://orgmode.org/manual/Tag-searches.html#Tag-searches" title="Tag searches - The Org Manual" class="http">Tag searches - The Org Manual</a></li>
+<li>你可以在Emacs中编辑其它文档/其它代码时，“捕捉"(capture)一段文字/一个想法/一段比较到你的笔记本里面去: <a href="http://orgmode.org/manual/Using-capture.html#Using-capture" title="Using capture - The Org Manual" class="http">Using capture - The Org Manual</a></li>
+<li>你可以在Firefox/Opera浏览器、Acrobat Reader里面根据当前正在阅读的内容”捕捉“一条笔记: <a href="http://orgmode.org/worg/org-contrib/org-protocol.html" title="org-protocol.el – Intercept calls from emacsclient to trigger custom actions" class="http">org-protocol.el – Intercept calls from emacsclient to trigger custom actions</a></li>
+</ul>
+</p>
+
+<h3>3.作为GTD工具，跟踪待办事宜</h3>
+<p>
+<ul style='padding-left: 30pt'>
+<li><a href="http://orgmode.org/manual/TODO-Items.html#TODO-Items" title="TODO Items - The Org Manual" class="http">TODO Items - The Org Manual</a></li>
+<li><a href="http://orgmode.org/manual/Dates-and-Times.html#Dates-and-Times" title="Dates and Times - The Org Manual" class="http">Dates and Times - The Org Manual</a></li>
+<li><a href="http://orgmode.org/manual/Agenda-Views.html#Agenda-Views" title="Agenda Views - The Org Manual" class="http">Agenda Views - The Org Manual</a></li>
+<li><a href="http://orgmode.org/manual/MobileOrg.html#MobileOrg" title="MobileOrg - The Org Manual" class="http">MobileOrg - The Org Manual</a> 将你的笔记/待办事宜在Emacs与iPhone/Android之间同步（需要在手机上安装MobileOrg这个应用)</li>
+</ul>
+    	<a href="http://images.macworld.com/appguide/images/335/805/599/ss0.jpg" title="http://images.macworld.com/appguide/images/335/805/599/ss0.jpg" class="http">http://images.macworld.com/appguide/images/335/805/599/ss0.jpg</a><br>
+    	<a href="http://images.macworld.com/appguide/images/335/805/599/ss2.jpg" title="http://images.macworld.com/appguide/images/335/805/599/ss2.jpg" class="http">http://images.macworld.com/appguide/images/335/805/599/ss2.jpg</a><br>
+<ul style='padding-left: 30pt'>
+<li><a href="http://emacser.com/org-mode.htm#sec-3" title="Emacs中文网 - Emacs org mode学习笔记 - 3. 用Org Mode管理个人事务" class="http">Emacs中文网 - Emacs org mode学习笔记 - 3. 用Org Mode管理个人事务</a></li>
+<li><a href="http://members.optusnet.com.au/~charles57/GTD/orgmode.html" title="Using Emacs org-mode for GTD" class="http">Using Emacs org-mode for GTD</a></li>
+<li><a href="http://newartisans.com/2007/08/using-org-mode-as-a-day-planner/" title="Using org-mode as a Day Planner " class="http">Using org-mode as a Day Planner </a></li>
+</ul>
+</p>
+
+
+<h3>4.Literate Programming</h3>
+<p>
+<div style='padding-left: 30pt'>
+一种编程方法，还是高德纳发明的，我不知道怎么翻译，维基百科上翻译为<a href="http://zh.wikipedia.org/wiki/%E6%96%87%E5%AD%A6%E7%BC%96%E7%A8%8B" title="&quot;文学编程&quot;" class="http">"文学编程"</a>， 我觉得也不是太恰当。大<br>
+体的思想是: 将代码、设计文档都所有与一个项目相关的内容都放在一个文件里，以一种与编程语言无关的结构化<br>
+方式来表达整体的结构。<br>
+</div>
+</p>
+	
+<p>
+<div style='padding-left: 30pt'>
+——估计还是没说清楚， 不过大家可以看看<a href="http://zh.wikipedia.org/wiki/%E6%96%87%E5%AD%A6%E7%BC%96%E7%A8%8B#.E4.BE.8B.E5.AD.90" title="维基上举的例子" class="http">维基上举的例子</a>。 另外ZoomQuiet一直在<a href="http://leo.sourceforge.net" title="Leo这个编辑器" class="http">Leo这个编辑器</a> 上实践这种编程<br>
+方式，<a href="http://wiki.woodpecker.org.cn/moin/LiterateProgramming" title="他的wiki上" class="http">他的wiki上</a> 也有相关介绍。 再一个介绍: 这个<a href="https://www.ibm.com/developerworks/cn/linux/l-cpyide/#IDAOKEHE" title="IBM developerWorks - 点评 Python IDE" class="https">IBM developerWorks - 点评 Python IDE</a> 也有一段都有介绍<br>
+Leo的文字。<br>
+</div>
+</p>
+	
+<p>
+<div style='padding-left: 30pt'>
+org-mode不仅仅是可以用结构化的方式来存放代码块，而是可以执行这些代码块([[<a href="http://orgmode.org/manual/Evaluating-code-blocks.html#Evaluating-code-blocks][Evaluating" title="http://orgmode.org/manual/Evaluating-code-blocks.html#Evaluating-code-blocks][Evaluating" class="http">http://orgmode.org/manual/Evaluating-code-blocks.html#Evaluating-code-blocks][Evaluating</a> code blocks - The<br>
+Org Manual]]，并且可以将执行结果更新到org文档中去(<a href="http://orgmode.org/manual/Results-of-evaluation.html#Results-of-evaluation" title="Results of evaluation - The Org Manual" class="http">Results of evaluation - The Org Manual</a>)，还支持在一份<br>
+org文档中同时使用多种编程语言(<a href="http://orgmode.org/manual/Languages.html#Languages" title="Languages - The Org Manual" class="http">Languages - The Org Manual</a>)。 <br>
+</div>
+</p>
+	
+<p>
+<ul style='padding-left: 30pt'>
+<li>嵌入diagram图: <a href="http://emacser.com/emacs-ditaa.htm" title="Emacs中绘图 － ditaa篇 " class="http">Emacs中绘图 － ditaa篇 </a></li>
+<li><a href="http://justinlilly.com/emacs/literate_programming.html" title="literate programming with org-babel" class="http">literate programming with org-babel</a></li>
+<li><a href="http://www.johndcook.com/blog/2012/02/09/python-org-mode/" title="Running Python and R inside Emacs — The Endeavour" class="http">Running Python and R inside Emacs — The Endeavour</a></li>
+<li>[ ] 用org-mode 管理你的 dotemacs配置</li>
+<ul>
+<li><a href="http://codeherb.com/emacs-config/" title="Manging your .emacs file" class="http">Manging your .emacs file</a></li>
+</ul>
+</ul>
+</p>
+
+
+<h3>References</h3>
+<p>
+<ul>
+<li><a href="http://justinlilly.com/emacs/literate_programming.html" title="Literate Programming with org-babel" class="http">Literate Programming with org-babel</a></li>
+<li><a href="http://www.johndcook.com/blog/2012/02/09/python-org-mode/" title="Running Python and R inside Emacs" class="http">Running Python and R inside Emacs</a></li>
+<li><a href="http://renard.github.com/o-blog/" title="o-blog: Quick start Guide" class="http">o-blog: Quick start Guide</a></li>
+<li><a href="http://groups.google.com/group/clojure/browse_thread/thread/ca843239664e554e/f2f8fc13dd0af99f?show_docid=f2f8fc13dd0af99f" title="Literate programming in emacs" class="http">Literate programming in emacs</a></li>
+<li><a href="http://www.jstatsoft.org/v46/i03" title="A Multi-Language Computing Environment for Literate Programming and Reprodu" class="http">A Multi-Language Computing Environment for Literate Programming and Reprodu</a></li>
+</ul>
+</p>
+
+
+
+
+			<!-- End wiki content -->
+			</div>
+			<hr>
+			<!-- Backlinks -->
+			<div class="footer">
+									<i>No backlinks to this page.</i>
+				<br><br>
+
+				
+			<!-- End Backlinks -->
+			</div>
+		</div>
+	</body>
+</html>
