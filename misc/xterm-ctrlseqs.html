@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>问题的提出</title>
+		<title></title>
 		<meta name='Generator' content='Zim 0.60'>
 		<style type='text/css'>
 			a          { text-decoration: none      }
@@ -14,48 +14,35 @@
 			tt         { color: #2e3436;            }
 			pre        { color: #2e3436;
 			             margin-left: 20px          }
-			h1         { text-align: center;
+			h1         { text-decoration: underline;
 			             color: #4e9a06             }
 			h2         { color: #4e9a06             }
 			h3         { color: #4e9a06             }
 			h4         { color: #4e9a06             }
 			h5         { color: #4e9a06             }
 			span.insen { color: grey                }
-			.page { max-width: 1000px;}
-			.menu{
-				float:left; width: 300px;
-			}
-
-			.content { padding-left: 320px;}
-			.notebook{font-variant: small-caps;
-					color:#4e9a06;
-					padding: 0px 20px;}
-			hr{clear:both;}
 		</style>
-
 	</head>
 	<body>
-		<div class="page">
-			<div class="heading">
-									<h1>问题的提出</h1>
-			</div>
-			<hr>
-			<div class="menu">
-				<ul>
-<li><a href="../blog.html" title="blog" class="page">blog</a></li>
-<li><a href="../chirps.html" title="chirps" class="page">chirps</a></li>
-<li><a href="../misc.html" title="misc" class="page">misc</a></li>
-<ul>
-<li><strong class="activepage">xterm-ctrlseqs</strong></li>
-</ul>
-<li><a href="../notes.html" title="notes" class="page">notes</a></li>
-<li><a href="../todo.html" title="todo" class="page">todo</a></li>
-</ul>
 
-			</div>
-			<div class="content">
-			<!-- Wiki content -->
-				<a href="http://mobaxterm.mobatek.net/" title="MobaXterm" class="http">MobaXterm</a>之后就不是大问题了，这个后面再单独详细介绍），所以上次写了一篇《<a href="http://www.cnblogs.com/bamanzi/archive/2012/12/08/tips-about-emacs-on-term.html" title="终端下使用Emacs 的一些Tips" class="http">终端下使用Emacs 的一些Tips</a>》，不过 *最大的问题还是组合键的问题之类的（比如我常用的Shift+Up/Down/Left/Right, Ctrl+F1..F12, Ctrl+Home/End）。<br>
+<!-- Header -->
+
+	[ <a href='../chirps/javaeye_chats/2011Q1.html'>Prev</a> ]
+
+			[ <a href='../sitemap.html.html'>Index</a> ]
+
+	[ <a href='../notes.html'>Next</a> ]
+
+<!-- End Header -->
+
+<hr />
+
+<!-- Wiki content -->
+
+<h1>终端下使用Emacs时的组合健</h1>
+
+<h3>问题的提出</h3><br>
+前一段由于工作方面的关系，我需要在终端下访问Linux，修改一些代码（由于涉及多个主机，要来回切换，所以还是觉得直接用putty比较直接。至于使用X11版本的Emacs，在本地安装、启动一个X server也挺麻烦的——不过这个问题在发现<a href="http://mobaxterm.mobatek.net/" title="MobaXterm" class="http">MobaXterm</a>之后就不是大问题了，这个后面再单独详细介绍），所以上次写了一篇《<a href="http://www.cnblogs.com/bamanzi/archive/2012/12/08/tips-about-emacs-on-term.html" title="终端下使用Emacs 的一些Tips" class="http">终端下使用Emacs 的一些Tips</a>》，不过 *最大的问题还是组合键的问题之类的（比如我常用的Shift+Up/Down/Left/Right, Ctrl+F1..F12, Ctrl+Home/End）。<br>
 <br>
 春节前两天有些时间，将以往搜集到<a href="http://getpocket.com" title="Pocket " class="http">Pocket </a>里面的相关文章研究了一遍，算是基本找到了一些解决办法。<br>
 <br>
@@ -67,7 +54,7 @@
 <br>
 简单总结一下来说，当在终端里运行应用程序时，按下一个组合键之后的事情是这样:<br>
 <li style="list-style-image: url(../_resources/1..png)">终端模拟器将其翻译为对应的Xterm control sequences，发送给对端主机;</li>
-<li style="list-style-image: url(../_resources/2..png)">对端主机根据 ~TERM~ 在terminfo中查找翻译表，翻译为对应的按键信息，传递给应用程序;</li>
+<li style="list-style-image: url(../_resources/2..png)">对端主机根据 <code>TERM</code> 在terminfo中查找翻译表，翻译为对应的按键信息，传递给应用程序;</li>
 <li style="list-style-image: url(../_resources/3..png)">应用程序对组合健做出响应。</li>
 <br>
 所以可能存在的问题是:<br>
@@ -136,7 +123,7 @@ Linux环境下，Gnome Terminal支持的是VT102/VT220序列。<br>
 <h4>关于control sequences</h4>
 <li>同一个按键，可能有多种表示方法，不过你的TERM可能只支持其中一种。以 <code>^[[</code> 开始的序列叫做 <a href="http://en.wikipedia.org/wiki/ANSI_escape_code#CSI_codes%20" title="CSI序列" class="http">CSI序列</a>，以 <code>^[O</code> 开始的序列叫做SS3序列，还有其它的序列。不过CSI算是“主流”，支持的按键比较多，受各种terminfo支持的比率也比较大(不过很多时候是混合使用的，比如下面的XFree86 xterm在<code>F1..F4</code>使用了SS3序列，在<code>F5..F12</code>使用了CSI序列);</li>
 
-<li>对于Ctrl/Alt/Shift这些 ~modifier~, 是在类别前缀后面添加 /;m/ ，这里m是个数字，其值本来是按位运算的规则来的，分别是: <code>Shift: 1, Alt:2, Ctrl: 4</code> ，不过还要再加上1。例如:</li>
+<li>对于Ctrl/Alt/Shift这些 <em>modifier</em>, 是在类别前缀后面添加 <code>;m</code> ，这里m是个数字，其值本来是按位运算的规则来的，分别是: <code>Shift: 1, Alt:2, Ctrl: 4</code> ，不过还要再加上1。例如:</li>
 <br>
 &lt;code&gt;<br>
 <pre>
@@ -144,7 +131,6 @@ Linux环境下，Gnome Terminal支持的是VT102/VT220序列。<br>
 | Emacs         | &lt;insert&gt; | &lt;S-insert&gt; | &lt;M-insert&gt; | &lt;M-S-insert&gt;  | &lt;C-insert&gt; | &lt;C-S-insert&gt;   | &lt;C-M-insert&gt; |
 | Xterm ctrlseq | ^[[2~    | ^[[2;2~    | ^[[2;3~    | ^[[2;4~       | ^[[2;5~    | ^[[2;6~        | ^[[2;7~      |
 </pre>
-<br>
 &lt;/code&gt;<br>
 <br>
 <h4>关于功能键F1..F12</h4>
@@ -280,18 +266,20 @@ Linux环境下，Gnome Terminal支持的是VT102/VT220序列。<br>
 
 
 
-			<!-- End wiki content -->
-			</div>
-			<hr>
-			<!-- Backlinks -->
-			<div class="footer">
-									<i>No backlinks to this page.</i>
-				<br><br>
+<!-- End wiki content -->
 
-									<b>Attachments:</b>
-					<table>						<tr><td><a href='./xterm-ctrlseqs/Keyboard-Settings.png'>Keyboard-Settings.png</a></td><td>&nbsp;</td><td>14.4kb</td></tr>					</table>
-			<!-- End Backlinks -->
-			</div>
-		</div>
+<hr />
+
+<!-- Attachments and Backlinks -->
+
+	<i>No backlinks to this page.</i>
+<br><br>
+
+	<b>Attachments:</b>
+	<table>		<tr><td><a href='./xterm-ctrlseqs/Keyboard-Settings.png'>Keyboard-Settings.png</a></td><td>&nbsp;</td><td>14.4kb</td></tr>	</table>
+
+<!-- End Attachments and Backlinks -->
+
 	</body>
+
 </html>
