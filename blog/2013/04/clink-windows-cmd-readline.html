@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>clink: 让Windows Cmd拥有readline能力</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-align: center;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+			.page { max-width: 1000px;}
+			.menu{
+				float:left; width: 300px;
+			}
+
+			.content { padding-left: 320px;}
+			.notebook{font-variant: small-caps;
+					color:#4e9a06;
+					padding: 0px 20px;}
+			hr{clear:both;}
+		</style>
+
+	</head>
+	<body>
+		<div class="page">
+			<div class="heading">
+									<h1>clink: 让Windows Cmd拥有readline能力</h1>
+			</div>
+			<hr>
+			<div class="menu">
+				<ul>
+<li><a href="../../../blog.html" title="blog" class="page">blog</a></li>
+<ul>
+<li><a href="../../2012.html" title="2012" class="page">2012</a></li>
+<li><a href="../../2013.html" title="2013" class="page">2013</a></li>
+<ul>
+<li><a href="../02.html" title="02" class="page">02</a></li>
+<li><a href="../04.html" title="04" class="page">04</a></li>
+<ul>
+<li><strong class="activepage">clink-windows-cmd-readline</strong></li>
+</ul>
+<li><a href="../05.html" title="05" class="page">05</a></li>
+</ul>
+<li><a href="../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+<li><a href="../../../chirps.html" title="chirps" class="page">chirps</a></li>
+<li><a href="../../../misc.html" title="misc" class="page">misc</a></li>
+<li><a href="../../../notes.html" title="notes" class="page">notes</a></li>
+<li><a href="../../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+
+			</div>
+			<div class="content">
+			<!-- Wiki content -->
+				<p>
+Created 星期四 30 五月 2013<br>
+</p>
+
+<p>
+<span class="zim-tag">@windows</span> <span class="zim-tag">@cmdline</span> <span class="zim-tag">@readline</span><br>
+</p>
+
+<p>
+用惯了Linux下的bash，在Windows下对于那个cmd.exe很恼火，且不说双引号区分参数这样的“高级”问题，就是调个历史命令都麻烦得很，命令行编辑能力相当弱。<br>
+</p>
+
+<p>
+最近发现了clink这个扩展，可以让cmd.exe拥有几乎readline的全部能力。<br>
+</p>
+
+<p>
+<strong>clink: Bringing Bash's powerful command line editing to Microsoft Windows' cmd.exe</strong><br>
+</p>
+
+<p>
+<a href="http://code.google.com/p/clink/" title="http://code.google.com/p/clink/" class="http">http://code.google.com/p/clink/</a><br>
+</p>
+
+<p>
+<ul>
+<li>Powerful Bash-like line editing from GNU's Readline library. <a href="http://cnswww.cns.cwru.edu/php/chet/readline/readline.html#SEC3" title="Read more" class="http">Read more</a> on Readline's keyboard shortcuts.</li>
+<li>Superior path completion (TAB).</li>
+<li>Paste from clipboard (Ctrl-V).</li>
+<li>Support for the completion of executables/commands, and environment variables.</li>
+<li>Undo/Redo (Ctrl-_ or Ctrl-X, Ctrl-U)</li>
+<li>Improved command line history.</li>
+<ul>
+<li>Persists across sessions.</li>
+<li>Searchable (Ctrl-R and Ctrl-S).</li>
+<li><a href="http://cnswww.cns.cwru.edu/php/chet/readline/history.html#SEC3" title="History expansion" class="http">History expansion</a> (e.g. !!, !&lt;string&gt;, and !$).</li>
+</ul>
+<li>Scriptable completion using Lua.</li>
+</ul>
+</p>
+
+<p>
+ <img src="./clink-windows-cmd-readline/15211618-4081fcfbb9b8460f9d38178c7f530456.png" alt=""><br>
+<strong>跟随cmd自动启动clink</strong><br>
+</p>
+
+<p>
+clink的安装程序带有“Autorun when cmd.exe starts"选项，但如果你不想使用安装程序，又想要在启动cmd时自动启动clink，可以按如下办法:<br>
+</p>
+
+<p>
+<ul>
+<li>打开注册表编辑器，找到（或者新建）<code>HKEY_CURRENT_USER\Software\Microsoft\Command Processor</code></li>
+<li>在该键下新建一个字符串项，名为<code>AutoRun</code></li>
+<li>将<code>AutoRun</code>的值设置为一个bat文件的路径，比如<code>d:\cmdstart.cmd</code></li>
+<li>编辑<code>d:\cmdstart.cmd</code>，里面写一句 <code>d:\tools\clink /inject</code> （当然你也可以再添加其他命令）</li>
+</ul>
+</p>
+
+<p>
+ <img src="./clink-windows-cmd-readline/15211643-ee590f8427aa4c5cbf03a6930eb7a482.png" alt="" height="210"><br>
+</p>
+
+ 
+
+
+			<!-- End wiki content -->
+			</div>
+			<hr>
+			<!-- Backlinks -->
+			<div class="footer">
+									<i>No backlinks to this page.</i>
+				<br><br>
+
+									<b>Attachments:</b>
+					<table>						<tr><td><a href='./clink-windows-cmd-readline/15211618-4081fcfbb9b8460f9d38178c7f530456.png'>15211618-4081fcfbb9b8460f9d38178c7f530456.png</a></td><td>&nbsp;</td><td>27.4kb</td></tr>						<tr><td><a href='./clink-windows-cmd-readline/15211643-ee590f8427aa4c5cbf03a6930eb7a482.png'>15211643-ee590f8427aa4c5cbf03a6930eb7a482.png</a></td><td>&nbsp;</td><td>35.6kb</td></tr>					</table>
+			<!-- End Backlinks -->
+			</div>
+		</div>
+	</body>
+</html>

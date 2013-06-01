@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>cygwin-emacs-w32</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-align: center;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+			.page { max-width: 1000px;}
+			.menu{
+				float:left; width: 300px;
+			}
+
+			.content { padding-left: 320px;}
+			.notebook{font-variant: small-caps;
+					color:#4e9a06;
+					padding: 0px 20px;}
+			hr{clear:both;}
+		</style>
+
+	</head>
+	<body>
+		<div class="page">
+			<div class="heading">
+									<h1>cygwin-emacs-w32</h1>
+			</div>
+			<hr>
+			<div class="menu">
+				<ul>
+<li><a href="../../../blog.html" title="blog" class="page">blog</a></li>
+<ul>
+<li><a href="../../2012.html" title="2012" class="page">2012</a></li>
+<ul>
+<li><a href="../02.html" title="02" class="page">02</a></li>
+<li><a href="../05.html" title="05" class="page">05</a></li>
+<li><a href="../06.html" title="06" class="page">06</a></li>
+<li><a href="../07.html" title="07" class="page">07</a></li>
+<li><a href="../08.html" title="08" class="page">08</a></li>
+<li><a href="../09.html" title="09" class="page">09</a></li>
+<li><a href="../12.html" title="12" class="page">12</a></li>
+<ul>
+<li><strong class="activepage">cygwin-emacs-w32</strong></li>
+<li><a href="./emacs-find-modify-all-occurences.html" title="emacs-find-modify-all-occurences" class="page">emacs-find-modify-all-occurences</a></li>
+<li><a href="./emacs-on-xterm.html" title="emacs-on-xterm" class="page">emacs-on-xterm</a></li>
+</ul>
+</ul>
+<li><a href="../../2013.html" title="2013" class="page">2013</a></li>
+<li><a href="../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+<li><a href="../../../chirps.html" title="chirps" class="page">chirps</a></li>
+<li><a href="../../../misc.html" title="misc" class="page">misc</a></li>
+<li><a href="../../../notes.html" title="notes" class="page">notes</a></li>
+<li><a href="../../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+
+			</div>
+			<div class="content">
+			<!-- Wiki content -->
+				<p>
+Created 星期三 29 五月 2013<br>
+</p>
+
+<p>
+<span class="zim-tag">@cygwin</span> <span class="zim-tag">@emacs</span> <br>
+</p>
+
+<h2>Emacs 24.3支持cygwin上使用Win32 GUI</h2>
+
+<p>
+刚看见GNU Emacs 24.3<a href="http://lists.gnu.org/archive/html/emacs-devel/2012-11/msg00458.html" title="发了第一个pretest版本(24.2.90)" class="http">发了第一个pretest版本(24.2.90)</a>，我从git仓库里打开<a href="http://git.savannah.gnu.org/cgit/emacs.git/plain/etc/NEWS" title="NEWS" class="http">NEWS</a>看了一下，发现了这么一条:<br>
+</p>
+
+<p>
+　　<em>** Cygwin builds can use the native MS Windows user interface.　　Pass --with-w32 to configure. The default remains the X11 interface.</em><br>
+</p>
+
+<p>
+哈，这正是我原来一直梦想着的特性：底层采用Cygwin的POSIX兼容层，界面采用Win32原生GUI——这在以前看到rxvt的win32原生GUI版本时就有了这个愿望。<br>
+</p>
+
+<h3>这样有什么好处呢？</h3>
+
+<h4>1 底层采用Cygwin的POSIX兼容层</h4>
+
+<p>
+<ul>
+<li>Emacs与shell和其它程序的交互就跟UNIX下面一样了，这样很多win32特有的兼容性问题就不存在了，比如调用一个shell命令时的引号问题（比如悲摧的find-grep，比如<code>M-x shell-toggle-cd</code>里面的"<code>cd /path/to/somewhere</code>"和"<code>cd /d x:\path\to\somewhere</code>"问题）；反过来，你在git/hg里面可以很方便地调用<code>ediff</code>和e<code>merge</code>来比较文件、解决合并冲突了</li>
+<li>cygwin有虚拟终端支持，这样你可以用<code>M-x term</code>来运行各类终端程序，比如bpython, midnight commander。反过来，如果用cygwin版本的Emacs，你也可以在screen里面跑emacs</li>
+</ul>
+</p>
+
+<h4>2. GUI采用win32 gui</h4>
+
+<p>
+<ul>
+<li>相对terminal版本，GUI的优势是有丰富的颜色、字体以及fringe修饰</li>
+<li>相对原来的X11 GUI版本，优势是不必启动一个X11 server了</li>
+<li>这个cygwin-w32版本有win32 native版本的几乎所有功能</li>
+<ul>
+<li>可以从Windows程序(比如资源管理器)拖放文件到Emacs</li>
+<li>可以使用Windows所管理的字体，也就是你不用自己再安装配置X11字体</li>
+<li>可以使用&lt;lwindow&gt;, &lt;rwindow&gt;, &lt;apps&gt;等键，也就是说<code>w32-lwindow-modifier</code>等变量仍然可以设置</li>
+<li>缺省打开浏览器的方法与win32 native版本和cygwin原来的设置都是一样的: <code>browse-url-default-windows-browser</code></li>
+<li>虽然缺省shell改成了bash (由Cygwin提供的环境变量SHELL决定），但你应该可以用<code>(let ((shell-file-name "cmd")) (shell))</code>的方式来运行cmd（不过我不推荐你用(setq shell-file-name "cmd")修改掉缺省的shell——调用很多外部程序时需要这个设置，而cmd实在是配合不好）</li>
+</ul>
+</ul>
+</p>
+
+<h4>3. 为什么不用native win32 gui版本?</h4>
+
+<p>
+这主要是Cygwin的优势了:<br>
+</p>
+
+<p>
+从安装的方便性上来说，很多外部程序（比如find, grep, diff, git），你不用繁琐地到处去寻找win32 native port来安装了，你可以很方便地安装和使用cygwin的版本（在此推荐一下<a href="http://code.google.com/p/cyg-apt/" title="cyg-apt" class="http">cyg-apt</a> ，你只要简单地cyg-apt install w3m就可以安装上w3m了。另外 <a href="http://www.cnblogs.com/bamanzi/archive/2012/09/08/cyg-apt-for-multi-repo.html" title="我也略做过改进，以支持多个repo" class="http">我也略做过改进，以支持多个repo</a>），何况有些程序目前没有win32 native port，比如dict, sdcv<br>
+</p>
+
+<h4>4. 目前发现的一些小问题:</h4>
+
+<p>
+<ul>
+<li>窗口没有图标（我发现nt/emacs.rc并没有被编译、包含进可执行文件，但手工加了一下之后，窗口还是没有图标——待有空仔细看看代码看问题在哪里）</li>
+</ul>
+</p>
+ 
+
+<p>
+附两张截图：<br>
+</p>
+
+<p>
+Emacs 24.2.90 cygwin build, with Win32 GUI  <br>
+</p>
+
+
+<p>
+快写完的时候，邮箱收到了cygwin-announce邮件列表的通知，说是<a href="http://cygwin.com/ml/cygwin-announce/2012-12/msg00000.html" title="已经提供了23.2.90的测试版本" class="http">已经提供了23.2.90的测试版本</a>，这次新增的w32 gui版本也提供了，所以你只要打开Cygwin setup.exe，选择安装emacs-w32就可以了。<br>
+</p>
+
+<p>
+如果你用cyg-apt的话，那么就是这么几步:<br>
+</p>
+
+<pre>
+cyg-apt setup    #第一次运行cyg-apt的话，需要用这个建立配置文件~/.cyg-apt
+cyg-apt update   # update setup.ini
+cyg-apt install emacs-w32
+</pre>
+
+
+
+<p>
+P.S. 根据<a href="http://lists.gnu.org/archive/html/emacs-devel/2012-11/msg00448.html" title="这个HAVE_MOUSE补丁" class="http">这个HAVE_MOUSE补丁</a>，新的Emacs不需要跟X11库链接也可以在terminal下支持鼠标了（这个补丁也可以在老版本的Emacs源代码上使用）——但你还是需要在运行期执行M-x xterm-mouse-mode打开鼠标支持<br>
+</p>
+
+
+			<!-- End wiki content -->
+			</div>
+			<hr>
+			<!-- Backlinks -->
+			<div class="footer">
+									<i>No backlinks to this page.</i>
+				<br><br>
+
+									<b>Attachments:</b>
+					<table>						<tr><td><a href='./cygwin-emacs-w32/emacs-cygwin-w32-gui-2.png'>emacs-cygwin-w32-gui-2.png</a></td><td>&nbsp;</td><td>25.7kb</td></tr>						<tr><td><a href='./cygwin-emacs-w32/emacs-cygwin-w32-gui.png'>emacs-cygwin-w32-gui.png</a></td><td>&nbsp;</td><td>30.9kb</td></tr>					</table>
+			<!-- End Backlinks -->
+			</div>
+		</div>
+	</body>
+</html>

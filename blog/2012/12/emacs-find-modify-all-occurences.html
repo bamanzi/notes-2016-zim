@@ -1,0 +1,351 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>[Emacs] 小技巧: 高亮/修改所有同名符号</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-align: center;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+			.page { max-width: 1000px;}
+			.menu{
+				float:left; width: 300px;
+			}
+
+			.content { padding-left: 320px;}
+			.notebook{font-variant: small-caps;
+					color:#4e9a06;
+					padding: 0px 20px;}
+			hr{clear:both;}
+		</style>
+
+	</head>
+	<body>
+		<div class="page">
+			<div class="heading">
+									<h1>[Emacs] 小技巧: 高亮/修改所有同名符号</h1>
+			</div>
+			<hr>
+			<div class="menu">
+				<ul>
+<li><a href="../../../blog.html" title="blog" class="page">blog</a></li>
+<ul>
+<li><a href="../../2012.html" title="2012" class="page">2012</a></li>
+<ul>
+<li><a href="../02.html" title="02" class="page">02</a></li>
+<li><a href="../05.html" title="05" class="page">05</a></li>
+<li><a href="../06.html" title="06" class="page">06</a></li>
+<li><a href="../07.html" title="07" class="page">07</a></li>
+<li><a href="../08.html" title="08" class="page">08</a></li>
+<li><a href="../09.html" title="09" class="page">09</a></li>
+<li><a href="../12.html" title="12" class="page">12</a></li>
+<ul>
+<li><a href="./cygwin-emacs-w32.html" title="cygwin-emacs-w32" class="page">cygwin-emacs-w32</a></li>
+<li><strong class="activepage">emacs-find-modify-all-occurences</strong></li>
+<li><a href="./emacs-on-xterm.html" title="emacs-on-xterm" class="page">emacs-on-xterm</a></li>
+</ul>
+</ul>
+<li><a href="../../2013.html" title="2013" class="page">2013</a></li>
+<li><a href="../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+<li><a href="../../../chirps.html" title="chirps" class="page">chirps</a></li>
+<li><a href="../../../misc.html" title="misc" class="page">misc</a></li>
+<li><a href="../../../notes.html" title="notes" class="page">notes</a></li>
+<li><a href="../../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+
+			</div>
+			<div class="content">
+			<!-- Wiki content -->
+				<p>
+Created 星期四 30 五月 2013<br>
+</p>
+
+<p>
+<span class="zim-tag">@emacs</span> <span class="zim-tag">@editor</span><br>
+</p>
+
+<p>
+(此篇面向初级用户，写的比较啰嗦，请中高级用户见谅。<br>
+</p>
+
+<p>
+其实这篇的草稿是9月初写的，躺在草稿箱里面3个月了，最近工作和生活都比较忙，没时间来整理格式 :-( ）<br>
+</p>
+
+<h2>** hi-lock-mode</h2>
+
+<p>
+Emacs自带hi-lock-mode (hi-lock.el)，里面提供了一下几个很有用的命令:<br>
+</p>
+
+<p>
+<ul>
+<li><code>highlight-phrase (M-s h p)</code></li>
+<li><code>highlight-regexp (M-s h r)</code></li>
+<li><code>highlight-lines-matching-regexp (M-s h l)</code></li>
+</ul>
+</p>
+
+<p>
+使用时直接输入上面命令或快捷键即可，不用先打开 <code>hi-lock-mode</code> ，Emacs会自动打开。<br>
+</p>
+
+<p>
+使用时Emacs会先问你要高亮什么内容，如果你不想手工输入的话，得事先拷贝好内容再在这里粘贴。<br>
+</p>
+
+<p>
+然后Emacs会问你使用那种风格(face)来显示高亮，除了hi-lock.el提供的 <code>hi-yellow, hi-pink, hi-green</code> 等颜色之外，你也可以使用Emacs里面其它的face。<br>
+</p>
+
+<p>
+要去除高亮，用 <code>M-x unhighlight-regexp (M-s h u)</code>，它会自动提供当前已有条目（刚才通过上 述三个命令输入的内容）供你选择。<br>
+</p>
+
+<h2>** highlight-symbol</h2>
+
+<p>
+<a href="http://nschum.de/src/emacs/highlight-symbol/" title="http://nschum.de/src/emacs/highlight-symbol/" class="http">http://nschum.de/src/emacs/highlight-symbol/</a><br>
+</p>
+
+<p>
+这个第三方库其实是对<code>hi-lock-mode</code>的封装，使得用户用起来更方便:<br>
+</p>
+
+<p>
+<ul>
+<li>highlight-symbol-at-point: 因为大多数时候我们只关注当前焦点所在的符号，所以可以省略输入高亮内容那一步，颜色也不用用户输入了，它会自己随机挑一个，这个命令正是这样工作的；</li>
+<li>可以方便地跳转到当前符号的上一次/下一此出现位置(<code>highlight-symbol-prev, highlight-symbol-next</code>)</li>
+<li>还可以限定只在当前函数里面查找(<code>highlight-symbol-next-in-defun, highlight-symbol-prev-in-defun</code>)</li>
+</ul>
+</p>
+
+<p>
+这就跟vim用户很喜欢的*和#键功能差不多了，我绑定的快捷键也是沿用了这两个符号:<br>
+</p>
+
+<pre style='padding-left: 30pt'>
+(require 'highlight-symbol) ;;Use autoload' oridle-require' if you like
+
+(global-set-key (kbd "M-s j") 'highlight-symbol-at-point) 
+(global-set-key (kbd "&lt;C-double-mouse-1") 'highlight-symbol-at-point)
+
+(global-set-key (kbd "M-s *") 'highlight-symbol-next) 
+(global-set-key (kbd "M-s #") 'highlight-symbol-prev)
+
+(global-set-key (kbd "C-*") 'highlight-symbol-next) 
+(global-set-key (kbd "C-#") 'highlight-symbol-prev)
+</pre>
+
+
+<p>
+后两个(<code>C-*, C-#</code>)是为了应付连续按的场景的，单次按键比多次要方便一点。不过这两个组合键在xterm(console, gnome-terminal, putty等)下面是没法用的（我比较少有在term下用emacs，如果用得比较多，倒是可以考虑绑定到<code>M-*</code>和<code>M-#</code> 上)。<br>
+</p>
+
+<h2>** idle-highlight</h2>
+
+<p>
+<a href="https://github.com/nonsequitur/idle-highlight-mode" title="https://github.com/nonsequitur/idle-highlight-mode" class="https">https://github.com/nonsequitur/idle-highlight-mode</a><br>
+</p>
+
+<p>
+很多朋友很喜欢能够自动高亮当前焦点所在的符号，当焦点移开之后又自动取消高 亮， idle-highlight.el 就是干这个的。<br>
+</p>
+
+<p>
+将idle-highlight.el放到load-path内，然后在dotemacs里面加入:<br>
+</p>
+
+<p>
+<div style='padding-left: 30pt'>
+<code>(autoload 'idle-highlight-mode "idle-highlight" "highlight the word the point is on" t)</code><br>
+</div>
+</p>
+
+<p>
+使用时只要<code>M-x idle-highlight-mode RET</code> 就可以了。<br>
+</p>
+
+<p>
+如果想打开文件时自动开启该功能 如果要自动对所有文件都打开该功能，在dotemacs里面加入:<br>
+</p>
+ 
+<p>
+<div style='padding-left: 30pt'>
+<code>(add-hook 'find-file-hook 'idle-highlight-mode)</code><br>
+</div>
+</p>
+ 
+<p>
+如果只对某些主模式打开，则加入:<br>
+</p>
+
+<pre style='padding-left: 30pt'>
+(add-hook 'emacs-lisp-mode-hook 'idle-highlight-mode)
+(add-hook 'python-mode-hook 'idle-highlight-mode)
+(add-hook 'js-mode-hook 'idle-highlight-mode)
+</pre>
+
+
+<p>
+Emacs 24里面将所有编程语言的major mode做了变更，都变成继承自prog-mode了，这种情况下只 需要这样就可以对所有编程语言添加此功能（而其它文本编辑不受影响）:<br>
+</p>
+
+<p>
+<div style='padding-left: 30pt'>
+<code>(add-hook 'prog-mode-hook 'idle-highlight-mode)</code><br>
+</div>
+</p>
+
+
+<h2>** semantic-idle-local-symbol-highlight-mode</h2>
+
+<p>
+CEDET里面提供了一个 <code>semantic-idle-local-symbol-highlight-mode</code> ，跟<code>idle-highlight</code>功能类 似，但依赖于CEDET的语法解析功能。我不怎么用CEDET，所以不能给出评价。有兴趣的可以看看Emacs中文网的这篇 [<a href="http://emacser.com/cedet.htm" title="用CEDET浏览和编辑C++代码" class="http">用CEDET浏览和编辑C++代码</a>] 里面的 [<a href="http://emacser.com/cedet.htm#sec-4.1.4" title="相应说明" class="http">相应说明</a>]。<br>
+</p>
+
+<h2>** iedit</h2>
+
+<p>
+<a href="https://github.com/victorhge/iedit/" title="https://github.com/victorhge/iedit/" class="https">https://github.com/victorhge/iedit/</a><br>
+</p>
+
+<p>
+<a href="http://www.emacswiki.org/emacs/Iedit" title="http://www.emacswiki.org/emacs/Iedit" class="http">http://www.emacswiki.org/emacs/Iedit</a><br>
+</p>
+
+<p>
+修改代码的时候尝尝需要对函数名、变量名进行修改，这就需要对同一符号的多次出现 (occurrence)进行批量替换（这个活儿在重构里面叫做<a href="http://en.wikipedia.org/wiki/Rename_Method" title="rename method" class="http">rename method</a> 或者rename field。<br>
+</p>
+
+<p>
+iedit.el可以部分实现这个目标。之所以说"部分"是因为它只是个编辑功能，只能应付单一文件的 情况，做不到基于工程或者语法来修改所有调用到的地方。<br>
+</p>
+
+<p>
+iedit.el提供的iedit-mode是个临时模式，使用方法如下:<br>
+</p>
+
+<p>
+<ol type="1" start="1">
+<li>加载iedit.el: 将iedit.el放到site-lisp目录下，然后</li>
+</ol>
+  a). 动态加载: <code>M-x load-library RET iedit.el RET</code><br>
+  b). Emacs启动时加载: 在dotemacs里面加入:<br>
+</p>
+<pre style='padding-left: 30pt'>
+(autoload 'iedit-mode "iedit"
+  "Edit multiple regions with the same content simultaneously." t)
+</pre>
+
+
+<p>
+<ol type="1" start="2">
+<li>需要修改某个符号(函数名、变量名)时，将光标移动到该符号上，然后 <code>M-x iedit-mode RET</code> (或者按<code>C-;</code>  这是缺省配置的快捷键)即可进入<strong>批量修改</strong>模式，使用该符号的所有地方会被高亮。通过编辑修改该符号的名称，所做改动会即时反馈到所有高亮的地方。</li>
+</ol>
+</p>
+
+<p>
+<ol type="1" start="3">
+<li>修改完成后，重新输入 <code>M-x iedit-mode RET</code> 退出此模式。</li>
+</ol>
+</p>
+
+<p>
+如前所说，iedit比较简单，没有语法分析能力，所以如果你一个文件里有两个类用了同名的变 量，它也区分不了，解决办法是结合<a href="http://emacswiki.org/emacs/Narrowing" title="Emacs Narrowing" class="http">Emacs Narrowing</a>来实现: Emacs narrowing功能使得我们可以只编辑一个文件的一部分，而其它部分并不在可编辑范围内。所以实现上述目标的方法是:<br>
+</p>
+
+<p>
+<ol type="1" start="1">
+<li>选择(mark)要修改的函数(C-M-h)或者类；</li>
+<li>输入 <code>M-x narrow-to-region</code> (或者 <code>C-x n n</code>), 如果你是第一次使用这个功能，Emacs 会问你是否要启用该功能（因为这个功能会导致初学者晕头，所以为防止误入，缺省被禁用了）；</li>
+<li>好了，Emacs现在只显示你选中的那一块代码了，你现在做全buffer的替换，并不会影响文件的其它部分：用上面的 <code>M-x iedit-mode RET</code> 来做替换吧；</li>
+<li>修改完成，再用C-; 退出<code>iedit-mode</code></li>
+<li>用 <code>M-x widen RE</code>T (或者 C-x n w) 回到编辑整个文件的模式</li>
+</ol>
+</p>
+
+<p>
+参考: - <a href="http://emacs-fu.blogspot.de/2010/02/interactive-replacement.html" title="emacs-fu: interactive replacement" class="http">emacs-fu: interactive replacement</a><br>
+</p>
+
+<h2>** 其它补充</h2>
+
+<h3>* auto-highlight-symbol-mode</h3>
+
+<p>
+<a href="https://github.com/mitsuo-saito/auto-highlight-symbol-mode/wiki/" title="https://github.com/mitsuo-saito/auto-highlight-symbol-mode/wiki/" class="https">https://github.com/mitsuo-saito/auto-highlight-symbol-mode/wiki/</a><br>
+</p>
+
+<p>
+这是写这篇文章时翻到的一个扩展，看说明它用一个el文件把上述几个功能都包含了，并不需要三个文件:<br>
+</p>
+
+<p>
+<ul>
+<li>automatic highlighting current symbol like eclipse IDE.</li>
+<li>cycle through highlighted locations.</li>
+<li>can specify the range to highlight.</li>
+<li>can edit the highlighted symbols at a time.</li>
+</ul>
+</p>
+
+<p>
+我还没有试过，有兴趣的朋友自己试试吧。<br>
+</p>
+
+<h3>* occur: 列出所有包含某个符号的行</h3>
+
+<p>
+用 <code>M-x list-matching-lines RET</code> (缺省绑定到了<code>M-s o</code>) 然后输入要查找的符号即可。Emacs会在一个新的窗口列出结 果，可以用 <code>M-g n</code>和<code>M-g p</code> 跳转到下一次、上一次出现的地方。(注: 此命令有个比较简短的别名: <code>occur</code> ），<br>
+</p>
+
+<p>
+如果想将当前符号作为输入，免去每次输入的麻烦，可以用下面这个函数:<br>
+</p>
+
+<pre style='padding-left: 30pt'>
+(require 'thingatpt)
+ 
+(defun occur-at-point (nlines)
+ (interactive "P")
+ (occur (format "%s" (thing-at-point 'symbol)) nlines))
+ 
+(define-key search-map "O" 'occur-at-point)
+</pre>
+
+
+<p>
+要深入研究一下occur的话: <a href="http://emacswiki.org/emacs/OccurMode" title="http://emacswiki.org/emacs/OccurMode" class="http">http://emacswiki.org/emacs/OccurMode</a><br>
+</p>
+
+
+			<!-- End wiki content -->
+			</div>
+			<hr>
+			<!-- Backlinks -->
+			<div class="footer">
+									<i>No backlinks to this page.</i>
+				<br><br>
+
+				
+			<!-- End Backlinks -->
+			</div>
+		</div>
+	</body>
+</html>

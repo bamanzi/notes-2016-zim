@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>终端下使用Emacs的一些Tips</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-align: center;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+			.page { max-width: 1000px;}
+			.menu{
+				float:left; width: 300px;
+			}
+
+			.content { padding-left: 320px;}
+			.notebook{font-variant: small-caps;
+					color:#4e9a06;
+					padding: 0px 20px;}
+			hr{clear:both;}
+		</style>
+
+	</head>
+	<body>
+		<div class="page">
+			<div class="heading">
+									<h1>终端下使用Emacs的一些Tips</h1>
+			</div>
+			<hr>
+			<div class="menu">
+				<ul>
+<li><a href="../../../blog.html" title="blog" class="page">blog</a></li>
+<ul>
+<li><a href="../../2012.html" title="2012" class="page">2012</a></li>
+<ul>
+<li><a href="../02.html" title="02" class="page">02</a></li>
+<li><a href="../05.html" title="05" class="page">05</a></li>
+<li><a href="../06.html" title="06" class="page">06</a></li>
+<li><a href="../07.html" title="07" class="page">07</a></li>
+<li><a href="../08.html" title="08" class="page">08</a></li>
+<li><a href="../09.html" title="09" class="page">09</a></li>
+<li><a href="../12.html" title="12" class="page">12</a></li>
+<ul>
+<li><a href="./cygwin-emacs-w32.html" title="cygwin-emacs-w32" class="page">cygwin-emacs-w32</a></li>
+<li><a href="./emacs-find-modify-all-occurences.html" title="emacs-find-modify-all-occurences" class="page">emacs-find-modify-all-occurences</a></li>
+<li><strong class="activepage">emacs-on-xterm</strong></li>
+</ul>
+</ul>
+<li><a href="../../2013.html" title="2013" class="page">2013</a></li>
+<li><a href="../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+<li><a href="../../../chirps.html" title="chirps" class="page">chirps</a></li>
+<li><a href="../../../misc.html" title="misc" class="page">misc</a></li>
+<li><a href="../../../notes.html" title="notes" class="page">notes</a></li>
+<li><a href="../../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+
+			</div>
+			<div class="content">
+			<!-- Wiki content -->
+				<p>
+Created 星期四 30 五月 2013<br>
+</p>
+
+<p>
+这里说的终端，其实主要是指终端模拟器，也即putty/mintty, xshell, gnome-terminal, xfce4-terminal等。虽然说理论上来说，大多数内容也适用于控制台，但我并没有在上面验证过。<br>
+</p>
+
+<h2>* 多frame</h2>
+
+<p>
+如果你像我一样用<a href="http://www.emacswiki.org/emacs/FrameBufs" title="Frame Bufs" class="http">Frame Bufs</a>这个扩展将不同“工程”的buffer组织在不同的frame上，那么肯定也想问终端下是否支持frame，答案是肯定的。仍然使用C-x 5 2来创建新的frame, 用C-x 5 o切换frame。与GUI下的差别是你不能调整frame的大小了，因为一致都是全屏——如果你想要用半个终端来跑别的东西，建议用tmux或者 Emacs里面的ansi-term-mode.<br>
+</p>
+
+<p>
+参考: <a href="http://emacs-journey.blogspot.com/2012/10/cli-emacs-and-multiple-frames.html" title="Emacs Journey: CLI Emacs and multiple-frames" class="http">Emacs Journey: CLI Emacs and multiple-frames</a><br>
+</p>
+
+<h2>* 鼠标</h2>
+
+<p>
+除了终端模拟器自己的拷贝、粘贴和右键菜单，终端模拟器里面跑的应用程序其实也是可以使用鼠标的，这些终端模拟器大都支持一种叫做<a href="http://www.xfree86.org/current/ctlseqs.html#Mouse%20Tracking" title="Xterm mouse tracking" class="http">Xterm mouse tracking</a>的功能: 终端模拟器收到鼠标时，先看看是不是应该用来应对自己的功能（比如文字拷贝、粘贴和右键菜单），如果不是，则将按键信息通过Xterm control sequences将按键信息发送给应用程序。<br>
+</p>
+
+<p>
+GNU Emacs可以通过<code>M-x xterm-mouse-mode</code>打开终端下的鼠标功能。<br>
+</p>
+
+<p>
+不过有几点值得注意:<br>
+</p>
+
+<p>
+<ul>
+<li>所用的Emacs必须编译进了鼠标支持才能使用<code>xterm-mouse-mode</code>。一般来说，如果你安装的Emacs是带X11版本的，那么就没有问题；如果你安装的是emacs-nox，那么就不支持鼠标了。</li>
+<ul>
+<li>（其实这个说法并不严谨，但根据Emacs的缺省编译设置，的确是在有window-system的时候才打开HAVE_MOUSE这个定义，configure脚本没有单独对鼠标支持提供开关。而最近的一个<a href="http://lists.gnu.org/archive/html/emacs-devel/2012-11/msg00448.html" title="HAVE_MOUSE补丁" class="http">HAVE_MOUSE补丁</a>则完全放开了鼠标支持，你可以在老版本Emacs代码上打上这个补丁重新编译）</li>
+</ul>
+</ul>
+</p>
+
+<p>
+<ul>
+<li>如果你想为鼠标事件增加Ctrl,Alt和Shift修饰键(modifier)的支持，比如绑定<code>&lt;S-mouse-1&gt;</code>或者<code>&lt;M-mouse-3&gt;</code>到某个事件，虽然理论上是支持的，但实际上都比较悲摧，自己用<code>C-h k</code>试试就知道了（唯一比较幸运一点的是Ctrl）</li>
+</ul>
+</p>
+
+<p>
+<ul>
+<li>鼠标滚轮可以用。不过跟GUI下不同的是，几乎没有带修饰键的版本可用（也就是说不能绑定<code>&lt;C-mouse-4&gt;, &lt;M-mouse-4&gt;</code>这些事件 (P.S. 在Linux系统上，鼠标滚轮事件名叫<code>&lt;mouse-4&gt;</code>和<code>&lt;mouse-5&gt;</code>，跟Windows下的<code>&lt;wheel-up&gt;</code>和<code>&lt;wheel-down&gt;</code>并不一样（不清楚Mac OS X等系统））</li>
+</ul>
+</p>
+
+<p>
+<ul>
+<li>终端模拟器都有一些自己鼠标功能(比如选择文本拷贝到本地剪贴板，显示右键菜单），可能会保留Ctrl/Alt/Shift中的某一个用来做这方面的用途</li>
+<ul>
+<li>这个设置在Putty里面是<a href="http://the.earth.li/~sgtatham/putty/0.62/htmldoc/Chapter4.html#config-mouseshift" title="Configuration-&gt;Window-&gt;Selection-&gt;Shift overrides application's use of mouse" class="http">Configuration-&gt;Window-&gt;Selection-&gt;Shift overrides application's use of mouse</a>; 在Mintty里则是 <a href="http://mintty.googlecode.com/svn/trunk/docs/mintty.1.html?1354975974#25" title="Configuration-&gt;Mouse-&gt;Modifier key for overriding default" class="http">Configuration-&gt;Mouse-&gt;Modifier key for overriding default</a> ; 而Gnome Terminal里则不提供配置，右键(&lt;mouse-3&gt;)始终被自己接管，按住Shift始终是本地的选择文字功能，里面跑的应用程序永远无法得到这两个事件</li>
+</ul>
+</ul>
+</p>
+
+
+<h2>* 颜色</h2>
+
+<p>
+如果你用终端模拟器(gnome-terminal，guake, putty或者mintty)来运行emacs, 其实它们也是支持256色的。这样你的语法高亮配色就有了更多选择。<br>
+</p>
+
+<p>
+如果你的UNIX比较新，terminfo里面有xterm-256color 这个类型的终端描述的话，只要先执行如下语句:<br>
+</p>
+
+<p>
+<div style='padding-left: 30pt'>
+<code>export TERM=xterm-256color</code><br>
+</div>
+</p>
+
+<p>
+然后再启动emacs，那么emacs就有了256色了, 用<code>M-x list-colors-display</code>看看列出了多少颜色就知道生效与否了。<br>
+</p>
+
+<h3>** 终端模拟器支持</h3>
+
+<p>
+putty缺省是支持256色的，只要你没有在选项Window-&gt;Colours里面关闭<em>Allow terminal to use xterm 256-color mode</em>这一项。那么用上面的TERM环境变量就够了。<br>
+</p>
+
+<p>
+mintty 里面，你可以直接在<em>Options-&gt;Terminal-&gt;Type</em>里面选择xterm-256color，这样进去之后shell就会继承这个设置，不用手工设置TERM环境变量了——当然你在交互式方式或者<code>~/.bashrc</code>里面设置也行，不过这本来就应该是终端模拟器端的设置。<br>
+</p>
+
+<p>
+另外，如果你又在终端模拟器(gnome-terminal, putty)里面跑了screen/tmux的话，那么得启动screen/tmux之前把TERM设置成256色模式(<code>xterm-256color</code>或者<code>rxvt-256color</code>之类），然后在screen/tmux的window中把TERM设置为screen-256color，详细内容请参看<a href="https://wiki.archlinux.org/index.php/Tmux#Setting_the_correct_term" title="ArchWiki: Tmux: Set the correct TERM" class="https">ArchWiki: Tmux: Set the correct TERM</a><br>
+</p>
+
+<p>
+<div style='padding-left: 30pt'>
+    一些文章上说，只要在tmux里面启动一个window后，在里面执行<code>export TERM=screen-256color</code>（或者在~/.tmux.conf里面添加<code>set -g default-terminal "screen-256color"</code> 来自动设置），但根据我的试验，启动tmux之前不设置TERM为支持256色的值（比如xterm-256clor，那么进入tmux是实际上得不到256种不同颜色的。<br>
+</div>
+</p>
+
+
+<h3>** terminfo问题</h3>
+
+<p>
+如果用的Linux比较老，terminfo数据库里没有<code>xterm-256color</code>或者<code>screen-256color</code>这个类型的定义（用<code>ls /lib/terminfo/s/</code>可以列举所有以s开头的terminal type），那么你就没法用这个功能了（FIXME: 怎么加上这个类型定义？)<br>
+</p>
+
+<p>
+实测是否真支持256色（而不是名义上有256色却有很多重复的颜色）的一个方法是用<strike>这篇The 256 color of xterm里面提供的perl脚本256colors2.pl </strike>这篇<a href="http://www.robmeerman.co.uk/unix/256colours" title="Colour colour everywhere! 256 colour-mode for Linux consoles" class="http">Colour colour everywhere! 256 colour-mode for Linux consoles</a> 里面提供的<a href="http://www.robmeerman.co.uk/_media/unix/256colors2.pl" title="256color2.pl" class="http">256color2.pl</a> 。它会显示类似如下的图:<br>
+<img src="./emacs-on-xterm/256colors2.png" alt=""><br>
+xterm 256 color test<br>
+</p>
+
+<p>
+而只有16色时显示的图是这样:<br>
+</p>
+
+<p>
+<img src="./emacs-on-xterm/16colors.png" alt=""><br>
+</p>
+ 
+
+<h2>* 待续</h2>
+
+<p>
+<ul>
+<li>快捷键(key bindings)</li>
+<li>Emacs菜单问题 (lacarte)</li>
+<li>Emacs overlay和fringe (auto-complete, hideshow-fringe, qtmstr-outline etc)</li>
+</ul>
+</p>
+
+
+			<!-- End wiki content -->
+			</div>
+			<hr>
+			<!-- Backlinks -->
+			<div class="footer">
+									<i>No backlinks to this page.</i>
+				<br><br>
+
+									<b>Attachments:</b>
+					<table>						<tr><td><a href='./emacs-on-xterm/16colors.png'>16colors.png</a></td><td>&nbsp;</td><td>6.39kb</td></tr>						<tr><td><a href='./emacs-on-xterm/256colors2.png'>256colors2.png</a></td><td>&nbsp;</td><td>1.58kb</td></tr>					</table>
+			<!-- End Backlinks -->
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Hack: 支持多个repo的cyg-apt</title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-align: center;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+			.page { max-width: 1000px;}
+			.menu{
+				float:left; width: 300px;
+			}
+
+			.content { padding-left: 320px;}
+			.notebook{font-variant: small-caps;
+					color:#4e9a06;
+					padding: 0px 20px;}
+			hr{clear:both;}
+		</style>
+
+	</head>
+	<body>
+		<div class="page">
+			<div class="heading">
+									<h1>Hack: 支持多个repo的cyg-apt</h1>
+			</div>
+			<hr>
+			<div class="menu">
+				<ul>
+<li><a href="../../../blog.html" title="blog" class="page">blog</a></li>
+<ul>
+<li><a href="../../2012.html" title="2012" class="page">2012</a></li>
+<ul>
+<li><a href="../02.html" title="02" class="page">02</a></li>
+<li><a href="../05.html" title="05" class="page">05</a></li>
+<li><a href="../06.html" title="06" class="page">06</a></li>
+<li><a href="../07.html" title="07" class="page">07</a></li>
+<li><a href="../08.html" title="08" class="page">08</a></li>
+<li><a href="../09.html" title="09" class="page">09</a></li>
+<ul>
+<li><strong class="activepage">cyg-apt-for-multi-repos</strong></li>
+<li><a href="./duckduckgo-bang.html" title="duckduckgo-bang" class="page">duckduckgo-bang</a></li>
+</ul>
+<li><a href="../12.html" title="12" class="page">12</a></li>
+</ul>
+<li><a href="../../2013.html" title="2013" class="page">2013</a></li>
+<li><a href="../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+<li><a href="../../../chirps.html" title="chirps" class="page">chirps</a></li>
+<li><a href="../../../misc.html" title="misc" class="page">misc</a></li>
+<li><a href="../../../notes.html" title="notes" class="page">notes</a></li>
+<li><a href="../../../todo.html" title="todo" class="page">todo</a></li>
+</ul>
+
+			</div>
+			<div class="content">
+			<!-- Wiki content -->
+				<p>
+Created 星期四 30 五月 2013<br>
+</p>
+
+<p>
+<span class="zim-tag">@cygwin</span> <span class="zim-tag">@python</span> <span class="zim-tag">@pkgmgr</span><br>
+</p>
+
+<p>
+原本是为了在Cygwin下面安装deepgrep这个工具（见介绍 <a href="http://noone.org/blog/English/Computer/Debian/CoolTools/deepgrep.futile" title="deepgrep: grep nested archives with one command" class="http">deepgrep: grep nested archives with one command</a> )，但我发现自己编译它有点麻烦，然后又发现<a href="http://sourceware.org/cygwinports/" title="Cygwin Ports" class="http">Cygwin Ports</a>这个非官方仓库里面有这个strigi包。<br>
+</p>
+
+<p>
+但这个strigi包的依赖又有点多，用cygwin setup下载很有点受不了：cygwin setup缺省会下载所有的更新，虽然可以选择不管它们，但界面操作起来可有点麻烦，本来一次性麻烦一点也就罢了，但因为这个镜像很不稳定，一旦在某个包上卡死，或者发现它正在下某个我不想下载的大软件包（比如emacs24)，就得重来。。。<br>
+</p>
+
+<p>
+也试用了<a href="http://code.google.com/p/apt-cyg-multi/" title="apt-cyg-multi" class="http">apt-cyg-multi</a>，但它不支持跨repo的包依赖，比如这个strigi的依赖里有几个包是在官方仓库里的，而我没有安装，它就一会儿又报告一个错误，我把缺的安装上了，再跑它，它又报告一个错误，我又得去装缺的那个。。。<br>
+</p>
+
+<p>
+算了，还是自己动手吧，看了一下apt-cyg-multi的代码，用bash写的，我觉得可读性不是太好，调试也比较麻烦，不想在这个上面改。<br>
+</p>
+
+<p>
+于是又拿起了自己简单修改过的<a href="http://code.google.com/p/cyg-apt/" title="cyg-apt" class="http">cyg-apt</a>，是python写的，bootstrap代价有点大，但对我而言python是必装的，也不是大问题了。<br>
+</p>
+
+<p>
+~~完成的代码在这里: <a href="http://code.google.com/p/bamanzi-misc/source/browse/trunk/cygwin/cyg-apt" title="http://code.google.com/p/bamanzi-misc/source/browse/trunk/cygwin/cyg-apt" class="http">http://code.google.com/p/bamanzi-misc/source/browse/trunk/cygwin/cyg-apt</a>~~ ，还没有在cyg-apt原项目网站上提交patch。<br>
+<div style='padding-left: 30pt'>
+(挪到了: <a href="http://bitbucket.org/bamanzi/misc-utils/src/default/cygwin/cyg-apt" title="http://bitbucket.org/bamanzi/misc-utils/src/default/cygwin/cyg-apt" class="http">http://bitbucket.org/bamanzi/misc-utils/src/default/cygwin/cyg-apt</a> )<br>
+</div>
+</p>
+
+<p>
+支持多repo的方法是在~/.cyg-apt里面添加一个mirrors配置项，格式为python的dict格式，例如:<br>
+</p>
+
+<p>
+<div style='padding-left: 30pt'>
+<code>mirrors = { 'main': 'http://ftp.cn.debian.org/cygwin', 'ports': 'http://downloads.sourceforge.net/cygwin-ports' }</code><br>
+</div>
+</p>
+
+<p>
+然后执行:<br>
+</p>
+
+<pre style='padding-left: 30pt'>
+cyg-apt update
+cyg-apt install strigi
+</pre>
+
+
+<p>
+就等着安装完成吧。<br>
+</p>
+
+<p>
+(不过，尚不支持同一类仓库的多个mirror——如果想一个mirror连不上时，转向另一个mirror去下载，目前是不支持的。因为我觉得暂时没有太大必要，因为在<code>~/.cyg-apt</code>里换一个mirror就是了，至于原来下载下来的包虽说是按mirror url分目录存放的，但手工挪一下倒也不难）<br>
+</p>
+
+<p>
+另外，我改掉了cyg-apt原本每次都去自动更新setup.ini的行为，改为<code>cyg-apt update</code>时才更新，这跟Debian apt-get的行为一致 —— 不过cyg-apt原本的对某些子命令(比如<code>install</code>）会自动更新setup.ini行为并未删除，而是改到配置项<code>auto_update</code>（或者命令行选项'-a'）上了。<br>
+</p>
+
+
+			<!-- End wiki content -->
+			</div>
+			<hr>
+			<!-- Backlinks -->
+			<div class="footer">
+									<i>No backlinks to this page.</i>
+				<br><br>
+
+				
+			<!-- End Backlinks -->
+			</div>
+		</div>
+	</body>
+</html>
