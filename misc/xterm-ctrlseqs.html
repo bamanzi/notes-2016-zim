@@ -27,9 +27,9 @@
 
 <!-- Header -->
 
-	[ <a href='../chirps/javaeye_chats/2011Q1.html'>Prev</a> ]
+	[ <a href='../buzz/javaeye_chats/2011Q1.html'>Prev</a> ]
 
-			[ <a href='../sitemap.html.html'>Index</a> ]
+			[ <a href='../index.html.html'>Index</a> ]
 
 	[ <a href='../notes.html'>Next</a> ]
 
@@ -41,44 +41,76 @@
 
 <h1>终端下使用Emacs时的组合健</h1>
 
-<h3>问题的提出</h3><br>
-前一段由于工作方面的关系，我需要在终端下访问Linux，修改一些代码（由于涉及多个主机，要来回切换，所以还是觉得直接用putty比较直接。至于使用X11版本的Emacs，在本地安装、启动一个X server也挺麻烦的——不过这个问题在发现<a href="http://mobaxterm.mobatek.net/" title="MobaXterm" class="http">MobaXterm</a>之后就不是大问题了，这个后面再单独详细介绍），所以上次写了一篇《<a href="http://www.cnblogs.com/bamanzi/archive/2012/12/08/tips-about-emacs-on-term.html" title="终端下使用Emacs 的一些Tips" class="http">终端下使用Emacs 的一些Tips</a>》，不过 *最大的问题还是组合键的问题之类的（比如我常用的Shift+Up/Down/Left/Right, Ctrl+F1..F12, Ctrl+Home/End）。<br>
-<br>
-春节前两天有些时间，将以往搜集到<a href="http://getpocket.com" title="Pocket " class="http">Pocket </a>里面的相关文章研究了一遍，算是基本找到了一些解决办法。<br>
-<br>
-<h3>问题分析</h3><br>
-上一篇博客里面提到过，终端模拟器在组合键方面大多遵循一种叫做 <a href="http://www.xfree86.org/current/ctlseqs.html" title="Xtermcontrol sequences" class="http">Xtermcontrol sequences</a> 的“规范”，这个“规范”简单地表达一下就是：对于有对应ASCII字符的组合健，就发送对应的ASCII字符，否则用一个特殊序列来表示，比如 F1 就用 <code>^[OP</code> （也就是先按<code>Ctrl+[</code>, 然后按<code>O</code>，然后再按<code>P</code>），或者用 <code>^[[11~</code> 来表示， <code>Ctrl-F7</code> 就用 <code>^[[18;5~</code> 表示 。这个序列一般都是以 ESC（也即ASCII码中的27，对应实际按键 ESC 或者 <code>Ctrl+[</code> ，常写为 <code>\e </code>或者 <code>^[</code> ）开始，所以也常常叫做<code>Escape sequences</code>（除了表达按键之外，它还用来表达<a href="http://en.wikipedia.org/wiki/ANSI_escape_code#Colors" title="终端颜色控制" class="http">终端颜色控制</a>）。<br>
-<br>
-注意我上面给”规范“二字加了引号，因为“规范”常常有一个共同的问题：“我们有很多规范”。Xterm control sequences也是这样，一方面有实现先于规范导致的问题，另一方面有一个比较重要的原因：我们有很多种键盘。这也是为什么Putty对于F1..F12功能键盘支持了6种模式: <code>ESC [n~, Linux, Xterm, VT400, VT100+, SCO （见 </code><a href="http://the.earth.li/~sgtatham/putty/0.62/htmldoc/Chapter4.html#config-funkeys" title="Putty Docs: Changing the action of the function keys and keypad" class="http">Putty Docs: Changing the action of the function keys and keypad</a><code> )。</code>
-<img src="./xterm-ctrlseqs/Keyboard-Settings.png" alt=""><br>
-<br>
-简单总结一下来说，当在终端里运行应用程序时，按下一个组合键之后的事情是这样:<br>
-<li style="list-style-image: url(../_resources/1..png)">终端模拟器将其翻译为对应的Xterm control sequences，发送给对端主机;</li>
-<li style="list-style-image: url(../_resources/2..png)">对端主机根据 <code>TERM</code> 在terminfo中查找翻译表，翻译为对应的按键信息，传递给应用程序;</li>
-<li style="list-style-image: url(../_resources/3..png)">应用程序对组合健做出响应。</li>
-<br>
-所以可能存在的问题是:<br>
-<li style="list-style-image: url(../_resources/1..png)">终端模拟器不能将某些组合键翻译为Xterm control sequences</li>
-<li style="list-style-image: url(../_resources/2..png)">终端模拟器与terminfo中的翻译表不一致</li>
+<p>
+#+OPTIONS: num:t toc:t<br>
+</p>
 
-<h3>解决办法</h3><br>
+
+<h3>问题的提出</h3>
+<p>
+前一段由于工作方面的关系，我需要在终端下访问Linux，修改一些代码（由于涉及多个主机，要来回切换，所以还是觉得直接用putty比较直接。至于使用X11版本的Emacs，在本地安装、启动一个X server也挺麻烦的——不过这个问题在发现<a href="http://mobaxterm.mobatek.net/" title="MobaXterm" class="http">MobaXterm</a>之后就不是大问题了，这个后面再单独详细介绍），所以上次写了一篇《<a href="http://www.cnblogs.com/bamanzi/archive/2012/12/08/tips-about-emacs-on-term.html" title="终端下使用Emacs 的一些Tips" class="http">终端下使用Emacs 的一些Tips</a>》，不过 *最大的问题还是组合键的问题之类的（比如我常用的Shift+Up/Down/Left/Right, Ctrl+F1..F12, Ctrl+Home/End）。<br>
+</p>
+
+<p>
+春节前两天有些时间，将以往搜集到<a href="http://getpocket.com" title="Pocket " class="http">Pocket </a>里面的相关文章研究了一遍，算是基本找到了一些解决办法。<br>
+</p>
+
+<h3>问题分析</h3>
+<p>
+上一篇博客里面提到过，终端模拟器在组合键方面大多遵循一种叫做 <a href="http://www.xfree86.org/current/ctlseqs.html" title="Xtermcontrol sequences" class="http">Xtermcontrol sequences</a> 的“规范”，这个“规范”简单地表达一下就是：对于有对应ASCII字符的组合健，就发送对应的ASCII字符，否则用一个特殊序列来表示，比如 F1 就用 <code>^[OP</code> （也就是先按<code>Ctrl+[</code>, 然后按<code>O</code>，然后再按<code>P</code>），或者用 <code>^[[11~</code> 来表示， <code>Ctrl-F7</code> 就用 <code>^[[18;5~</code> 表示 。这个序列一般都是以 ESC（也即ASCII码中的27，对应实际按键 ESC 或者 <code>Ctrl+[</code> ，常写为 <code>\e </code>或者 <code>^[</code> ）开始，所以也常常叫做<code>Escape sequences</code>（除了表达按键之外，它还用来表达<a href="http://en.wikipedia.org/wiki/ANSI_escape_code#Colors" title="终端颜色控制" class="http">终端颜色控制</a>）。<br>
+</p>
+
+<p>
+注意我上面给”规范“二字加了引号，因为“规范”常常有一个共同的问题：“我们有很多规范”。Xterm control sequences也是这样，一方面有实现先于规范导致的问题，另一方面有一个比较重要的原因：我们有很多种键盘。这也是为什么Putty对于F1..F12功能键盘支持了6种模式: <code>ESC [n~, Linux, Xterm, VT400, VT100+, SCO （见 </code><a href="http://the.earth.li/~sgtatham/putty/0.62/htmldoc/Chapter4.html#config-funkeys" title="Putty Docs: Changing the action of the function keys and keypad" class="http">Putty Docs: Changing the action of the function keys and keypad</a><code> )。</code><br>
+<img src="./xterm-ctrlseqs/Keyboard-Settings.png" alt=""><br>
+</p>
+
+<p>
+简单总结一下来说，当在终端里运行应用程序时，按下一个组合键之后的事情是这样:<br>
+<ol type="1" start="1">
+<li>终端模拟器将其翻译为对应的Xterm control sequences，发送给对端主机;</li>
+<li>对端主机根据 <code>TERM</code> 在terminfo中查找翻译表，翻译为对应的按键信息，传递给应用程序;</li>
+<li>应用程序对组合健做出响应。</li>
+</ol>
+</p>
+
+<p>
+所以可能存在的问题是:<br>
+<ol type="1" start="1">
+<li>终端模拟器不能将某些组合键翻译为Xterm control sequences</li>
+<li>终端模拟器与terminfo中的翻译表不一致</li>
+</ol>
+</p>
+
+<h3>解决办法</h3>
+<p>
 针对这两个问题来考虑:<br>
-<br>
-<h4>对于第一个问题</h4><br>
+</p>
+
+<h4>对于第一个问题</h4>
+<p>
 你得找一个支持较多（或者可以定制的）Xterm control sequences的终端模拟器<br>
-<br>
+</p>
+
+<p>
 Windows环境下, mintty支持的组合键比较全，在mintty里面用ssh连接主机是个不错的主意，不过有少数还是不支持）;<br>
 <a href="http://code.google.com/p/mintty/wiki/Keycodes" title="Keycodes - mintty - Character sequences sent by keys in mintty" class="http">Keycodes - mintty - Character sequences sent by keys in mintty</a> <br>
-<br>
+</p>
+
+<p>
 Linux环境下，Gnome Terminal支持的是VT102/VT220序列。<br>
-<a href="http://help.gnome.org/users/gnome-terminal/stable/gnome-terminal.html.en" title="http://help.gnome.org/users/gnome-terminal/stable/gnome-terminal.html.en" class="http">http://help.gnome.org/users/gnome-terminal/stable/gnome-terminal.html.en</a>
+<a href="http://help.gnome.org/users/gnome-terminal/stable/gnome-terminal.html.en" title="http://help.gnome.org/users/gnome-terminal/stable/gnome-terminal.html.en" class="http">http://help.gnome.org/users/gnome-terminal/stable/gnome-terminal.html.en</a><br>
 <a href="http://www.xfree86.org/current/ctlseqs.html#VT220-Style%20Function%20Keys" title="http://www.xfree86.org/current/ctlseqs.html#VT220-Style%20Function%20Keys" class="http">http://www.xfree86.org/current/ctlseqs.html#VT220-Style%20Function%20Keys</a><br>
-<br>
+</p>
+
+<p>
 如果还是不够多，怎么办： <br>
 如果你用的是Windows，那么可以用AutoHotKey拦截组合键，自行翻译到control sequences发送出去:<br>
 <div style='padding-left: 30pt'>
 &lt;code&gt;<br>
-<pre>
+</div>
+</p>
+<pre style='padding-left: 30pt'>
 #if WinActive("ahk_class PuTTY") or WinActive("ahk_class mintty")
 ;;** Ctrl+Fn
 ^F1::SendInput  {ESC}[1;5P
@@ -88,20 +120,26 @@ Linux环境下，Gnome Terminal支持的是VT102/VT220序列。<br>
 ^F5::SendInput  {Esc}[15;5~
 ^F6::SendInput  {Esc}[17;5~
 </pre>
-</div>
 	
+<p>
 <div style='padding-left: 30pt'>
 &lt;/code&gt;<br>
 </div>
 (完整的代码见这里: <a href="https://bitbucket.org/bamanzi/misc-utils/src/default/autohotkey/putty-ctlseqs.ahk" title="bamanzi / misc-utils / source / autohotkey / putty-ctlseqs.ahk — Bitbucket" class="https">bamanzi / misc-utils / source / autohotkey / putty-ctlseqs.ahk — Bitbucket</a>)<br>
-<br>
+</p>
+
+<p>
 备注一下，我的办公用机是Windows，我用的终端模拟器是putty及其变种（包括<a href="http://code.google.com/p/mintty/" title="mintty" class="http">mintty</a>, <a href="http://sourceforge.net/projects/putty-nd/" title="putty-nd" class="http">putty-nd</a>以及<a href="http://mobaxterm.mobatek.net/" title="MobaXterm" class="http">MobaXterm</a>）。至于在家，一直是在X桌面上，也很少需要进行telnet/ssh远程链接。所以对于在X上如何自己拦截按键，还不知道什么工具可用。<br>
-<br>
-<h4>对于第二个问题</h4><br>
+</p>
+
+<h4>对于第二个问题</h4>
+<p>
 通常的办法是修改terminfo数据库，将control sequences到按键的映射加进去，然后用tic编译。但这个麻烦了一点，我们有个更好的办法: <strong>Emacs可以自己将control sequences翻译为按键信息</strong> :<br>
 <div style='padding-left: 30pt'>
 &lt;code&gt;<br>
-<pre>
+</div>
+</p>
+<pre style='padding-left: 30pt'>
 (define-key input-decode-map "\eO5P"    [C-f1])
 (define-key input-decode-map "\eO5Q"    [C-f2])
 (define-key input-decode-map "\eO5R"    [C-f3])
@@ -109,34 +147,53 @@ Linux环境下，Gnome Terminal支持的是VT102/VT220序列。<br>
 (define-key input-decode-map "\e[15;5~" [C-f5])
 (define-key input-decode-map "\e[17;5~" [C-f6])
 </pre>
-</div>
 	
+<p>
 <div style='padding-left: 30pt'>
 &lt;/code&gt;<br>
 </div>
 (完整的代码可参照这里: <a href="http://www.dur.ac.uk/p.j.heslin/Software/Emacs/Download/xterm-extras.el" title="http://www.dur.ac.uk/p.j.heslin/Software/Emacs/Download/xterm-extras.el" class="http">http://www.dur.ac.uk/p.j.heslin/Software/Emacs/Download/xterm-extras.el</a> )<br>
-<br>
+</p>
+
+<p>
 当然，对于其它应用程序，就不一定能自己翻译了，你得硬着头皮去研究terminfo（但有的程序想了一些方法来避免让用户直接了解这些，比如Midnight Commander提供了一个<a href="http://digiland.tw/uploads/2_mc_learn_keys2.gif" title="Learn Keys对话框" class="http">Learn Keys对话框</a>来提示用户输入各种键以将它们与具体键码对应起来）。<br>
-<br>
+</p>
+
 <h3>烦人的细节</h3>
 
-<h4>关于control sequences</h4>
+<h4>control sequences的基本说明</h4>
+<p>
+<ul>
 <li>同一个按键，可能有多种表示方法，不过你的TERM可能只支持其中一种。以 <code>^[[</code> 开始的序列叫做 <a href="http://en.wikipedia.org/wiki/ANSI_escape_code#CSI_codes%20" title="CSI序列" class="http">CSI序列</a>，以 <code>^[O</code> 开始的序列叫做SS3序列，还有其它的序列。不过CSI算是“主流”，支持的按键比较多，受各种terminfo支持的比率也比较大(不过很多时候是混合使用的，比如下面的XFree86 xterm在<code>F1..F4</code>使用了SS3序列，在<code>F5..F12</code>使用了CSI序列);</li>
+</ul>
+</p>
 
+<p>
+<ul>
 <li>对于Ctrl/Alt/Shift这些 <em>modifier</em>, 是在类别前缀后面添加 <code>;m</code> ，这里m是个数字，其值本来是按位运算的规则来的，分别是: <code>Shift: 1, Alt:2, Ctrl: 4</code> ，不过还要再加上1。例如:</li>
-<br>
+</ul>
+</p>
+
+<p>
 &lt;code&gt;<br>
+</p>
 <pre>
 | Key           | Ins      | Shift+Ins  | Alt+Ins    | Alt+Shift+Ins | Ctrl+Ins   | Ctrl+Shift+Ins | Ctrl+Alt+Ins |
 | Emacs         | &lt;insert&gt; | &lt;S-insert&gt; | &lt;M-insert&gt; | &lt;M-S-insert&gt;  | &lt;C-insert&gt; | &lt;C-S-insert&gt;   | &lt;C-M-insert&gt; |
 | Xterm ctrlseq | ^[[2~    | ^[[2;2~    | ^[[2;3~    | ^[[2;4~       | ^[[2;5~    | ^[[2;6~        | ^[[2;7~      |
 </pre>
+<p>
 &lt;/code&gt;<br>
 <br>
+</p>
 <h4>关于功能键F1..F12</h4>
-
-<li>一个比较详细的列表 (来自: <a href="http://aperiodic.net/phil/archives/Geekery/term-function-keys.html" title="Terminal Function Key Escape Codes" class="http">Terminal Function Key Escape Codes</a>):</li>
+<p>
+<br>
+<ul>
+<li>一个比较详细的列表 (来自: <a href="http://aperiodic.net/phil/archives/Geekery/term-function-keys.html" title="Terminal Function Key Escape Codes" class="http">Terminal Function Key Escape Codes</a> ):</li>
+</ul>
 &lt;code&gt;<br>
+</p>
 <pre>
 | key | VT100 | VT220  | X11R6 xterm | XFree86 xterm | rxvt   | screen |
 |-----+-------+--------+-------------+---------------+--------+--------|
@@ -153,116 +210,171 @@ Linux环境下，Gnome Terminal支持的是VT102/VT220序列。<br>
 | F11 |       | ^[[23~ | ^[[23~      | ^[[23~        | ^[[23~ | ^[[23~ |
 | F12 |       | ^[[24~ | ^[[24~      | ^[[24~        | ^[[24~ | ^[[24~ |
 </pre>
-<br>
+
+<p>
 &lt;/code&gt;<br>
+<ul>
 <li><code>F1..F4</code> 跟 <code>F5..F12</code> 差异蛮大，即使在CS1序列中，F1也有 <code>^[[11~和 ^[1P</code> 两种表示方法，而F5只有 <code>^[[15~</code> 这一种表示方法。这是因为在历史上<a href="http://vt100.net/docs/vt100-ug/figure3-2.html" title="VT100键盘" class="http">VT100键盘</a> 只有PF1..PF4这四个功能键，并且是在小键盘顶部，所以SSO序列就只有 <code>^[OP</code>= 到 =<code>^[OS </code>这四个功能键;</li>
 <li>注意CSI序列中F1到F12的数字并不是连续的，在F6这里有个跳跃(<code>^[[15~</code> )，在F11这里又有一个( <code>^[[23</code> )——我不知道这里是个什么典故;</li>
 <li>在历史上(也许现在还有)，一些终端不止12个功能键，还有<code>F13, F14...F48</code>! （真难以想象）。不过在X11R6/XFree86 xterm的实现中，<code>F13</code> 跟 <code>Shift+F1</code> 的control sequences是一样的( <code>^[[11;2~</code> )，<code>F24</code> 跟 <code>Shift+F12</code> 是一样的( <code>^[[24;2</code> )，而 <code>F25</code> 跟 <code>Ctrl+F1</code> 是一样的（ <code>^[[11;5~ </code>)，<code>F37</code> 跟 <code>Ctrl+Shift+F1</code>= 是一样的 ( <code>^[[24;6~</code> )。而rxvt和VT220的编码方式就完全不一样了（详情请查看<a href="http://aperiodic.net/phil/archives/Geekery/term-function-keys.html" title="Terminal Function Key Escape Codes" class="http">Terminal Function Key Escape Codes</a>);</li>
+<li>X下面的程序不支持C-M-f1..f12, 因为这是保留给切换VT使用的, term/xterm.el里面也没有相应的映射</li>
+<li><code>C-return, C-, C-;</code> 这些键在xterm-2.16以上版本支持, 但需要发送特殊序列打开。term/xterm.el会检测是否是xterm&gt;2.16，然后通知xterm打开。其它终端不支持</li>
+</ul>
+</p>
 
 <h4>Emacs里面的一些细节</h4>
+<p>
+<ul>
 <li>注意Emacs处理Shift有点特殊：如果你按下 <code>Shift+F1</code> , 它会先按 <code>&lt;S-f1&gt;</code> 来查keybinding，如果没有绑定任何功能，则会自动检查不带~Shift~ 的组合（也就是&lt;f1&gt;），如果有对应命令，就调用。如果你用 <code>C-h k</code> 查看某个组合键是否存在绑定，它也会按上面的规则来检查，不会提示 ~&lt;S-f1&gt; is undefined~ , 而是会把f1作为 <code>help-map</code> 的前缀键; </li>
+</ul>
+</p>
 
+<p>
+<ul>
 <li>关于Emacs里面的 <code>function-key-map</code>: Emacs里面有三个keymap用于“翻译”按键信息: <code>input-decode-map</code>, <code>function-key-map</code> 和 <code>key-translation-map</code> , 功能比较接近，但也存在一些区别(详情可查看<a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Translation-Keymaps.html" title="Translation Keymaps - GNU Emacs Lisp Reference Manual" class="http">Translation Keymaps - GNU Emacs Lisp Reference Manual</a>)：</li>
+<ul>
 <li>这三者的查找顺序是: <code>input-decode-map</code> -&gt; <code>local-function-key-map</code> -&gt; <code>key-translation-map</code></li>
 <li><code>function-key-map</code> 与另外两个的区别还有一个区别: 它不是全局性的，而是可以针对多个键盘设备进行设置 (其实是<code>local-function-key-map</code> ） 。不过，除非你在一个Emacs会话里使用多种终端（比如daemon模式），否则你应该不会需要针对多种多个键盘设备进行设置;</li>
 <li>在具体能力上，三者差异倒不大，更多地只是约定俗成而已:</li>
+<ul>
 <li><code>key-translation-map</code> 一般不用于Xterm control sequences的转换，而是用于功能的替代，比如用&lt;f11&gt;替代&lt;C-x&gt;的功能:</li>
+</ul>
+</ul>
+</ul>
+</p>
 <pre style='padding-left: 90pt'>
 &lt;code&gt;
 (define-key key-translation-map (kbd "&lt;f11&gt;") (kbd "C-x"))
 &lt;/code&gt;
 </pre>
 
+<p>
+<ul style='padding-left: 60pt'>
 <li><code>input-decode-map</code> 的描述是 <em>Keymap that decodes input escape sequences</em>, 所以它的用途正是进行我们这里需要的（所以我觉得上面说那个<a href="http://www.dur.ac.uk/p.j.heslin/Software/Emacs/Download/xterm-extras.el" title="xterm-extra.el" class="http">xterm-extra.el</a>里面的用法并不太正确）</li>
+</ul>
+</p>
 
 <h4>各种终端</h4>
+<p>
+<ul>
 <li>对于PC键盘，一个比较直观的键码表是mintty的wiki文档: <a href="http://code.google.com/p/mintty/wiki/Keycodes" title="Keycodes - mintty - Character sequences sent by keys in mintty" class="http">Keycodes - mintty - Character sequences sent by keys in mintty</a> , 这比那份 <a href="http://euc.jp/i18n/ctlseqs.txt" title="Xterm control sequences" class="http">Xterm control sequences</a>要容易懂得多</li>
+</ul>
+</p>
 
+<p>
+<ul>
 <li>各个终端上的快捷键序列:</li>
+</ul>
+</p>
 <pre>
 &lt;code&gt;
-|          | putty(win) | putty(linux) | mintty   | xfce-terminal | gnome-terminal |   |
-|----------+------------+--------------+----------+---------------+----------------+---|
-| up       | ^[[A       | ^[[A         | ^[[A     | ^[[A          | ^[[A           |   |
-| down     | ^[[B       | ^[[B         | ^[[B     | ^[[B          | ^[[B           |   |
-| right    | ^[[C       | ^[[C         | ^[[C     | ^[[C          | ^[[C           |   |
-| left     | ^[[D       | ^[[D         | ^[[D     | ^[[D          | ^[[D           |   |
-| S-up     | -          | -            | (term)   | (term)        | ^[[2A          |   |
-| S-down   | -          | -            | (term)   | (term)        | ^[[2B          |   |
-| S-right  | -          | -            | ^[[1;2C  | ^[[1;2C       | ^[[2C          |   |
-| S-left   | -          | -            | ^[[1;2D  | ^[[1;2D       | ^[[2D          |   |
-| M-up     | ^[^[[A     | ^[^[[A       | ^[[1;3A  | ^[[1;3A       | ^[[3A          |   |
-| M-down   | ^[^[[B     | ^[^[[B       | ^[[1;3B  | ^[[1;3B       | ^[[3B          |   |
-| M-right  | ^[^[[C     | ^[^[[C       | ^[[1;3C  | ^[[1;3C       | ^[[3C          |   |
-| M-left   | ^[^[[D     | ^[^[[D       | ^[[1;3D  | ^[[1;3D       | ^[[3D          |   |
-| C-up     | -          | -            | ^[[1;5A  | ^[[1;5A       | ^[[5A          |   |
-| C-down   | -          | -            | ^[[1;5B  | ^[[1;5B       | ^[[5B          |   |
-| C-right  | /          | -            | ^[[1;5C  | ^[[1;5C       | ^[[5C          |   |
-| C-left   | /          | -            | ^[[1;5D  | ^[[1;5D       | ^[[5D          |   |
-| C-M-up   | ^[^[OA     | ^[^[OA       | ^[[1;7A  | ^[[1;7A       | ^[[1;7A        |   |
-|----------+------------+--------------+----------+---------------+----------------+---|
-|          | putty(win) | putty(linux) | mintty   | xfce-terminal | gnome-terminal |   |
-|----------+------------+--------------+----------+---------------+----------------+---|
-| home     | ^[[1~      | ^[[1~        | ^[[H     | ^[OH          | ^[OH           |   |
-| end      | ^[[4~      | ^[[4~        | ^[[F     | ^[OF          | ^[OF           |   |
-| insert   | ^[[2~      | ^[[2~        | ^[[2~    | ^[[2~         | ^[[2~          |   |
-| delete   | ^[[3~      | ^[[3~        | ^[[3~    | ^[[3~         | ^[[3~          |   |
-| pgup     | ^[[5~      | ^[[5~        | ^[[5~    | ^[[5~         | ^[[5~          |   |
-| pgdn     | ^[[6~      | ^[[6~        | ^[[6~    | ^[[6~         | ^[[6~          |   |
-| S-home   | -          | -            | (term)   | (term)        | (term)         |   |
-| S-end    | ^[[4~      | -            | (term)   | (term)        | (term)         |   |
-| S-insert | (paste)    | -            | (paste)  | (paste)       | (paste)        |   |
-| S-delete | ^[[3~      | -            | ^[[3;2~  | ^[[3;2~       | ^[[3;2~        |   |
-| S-pgup   | (term)     | /            | (term)   | (term)        | (term)         |   |
-| S-pgdn   | (term)     | /            | (term)   | (term)        | (term)         |   |
-| M-home   | ^[^[[1~    | ^[^[[1~      | ^[[1;3H  | -             | -              |   |
-| M-end    | ^[^[[4~    | ^[^[[4~      | ^[[1;3F  | -             | -              |   |
-| M-insert | ^[^[[2~    | ^[^[[2~      | ^[[2;3~  | ^[[2;3~       | ^[[2;3~        |   |
-| M-delete | ^[^[[3~    | ^[^[[3~      | ^[[3;3~  | ^[[3;3~       | ^[[3;3~        |   |
-| M-pgup   | ^[^[[5~    | ^[^[[5~      | ^[[5;3~  | ^[[5;3~       | ^[[5;3~        |   |
-| M-pgdn   | ^[^[[6~    | ^[^[[6~      | ^[[6;3~  | ^[[6;3~       | ^[[6;3~        |   |
-| C-home   | /          | /            | ^[[1;5H  | -             | -              |   |
-| C-end    | /          | /            | ^[[1;5F  | -             | -              |   |
-| C-insert | /          | /            | (copy)   | ^[[2~   ?     | (copy)         |   |
-| C-delete | /          | /            | ^[[3;5~  | ^[[3~   ?     | ^[[3;5~        |   |
-| C-pgup   | (term)     | /            | ^[[5;5~  | ^[[5~   ?     | ^[[5;5~        |   |
-| C-pgdn   | (term)     | /            | ^[[6;5~  | ^[[6~   ?     | ^[[6;5~        |   |
-|----------+------------+--------------+----------+---------------+----------------+---|
-|          | putty(win) | putty(linux) | mintty   | xfce-terminal | gnome-terminal |   |
-|----------+------------+--------------+----------+---------------+----------------+---|
-| f1       | ^[[11~     | ^[[11~       | ^[OP     | (help)        | (help)         |   |
-| f2       | ^[[12~     | ^[[12~       | ^[OQ     | ^[OQ          | ^[OQ           |   |
-| f3       | ^[[13~     | ^[[13~       | ^[OR     | ^[OR          | ^[OR           |   |
-| f4       | ^[[14~     | ^[[14~       | ^[OS     | ^[OS          | ^[OS           |   |
-| S-f1     | ^[[23~     | ^[[23~       | ^[[1;2P  | ^[O1;2P       | ^[O2P          |   |
-| M-f1     | ^[^[[11~   | ^[^[[11~     | ^[[1;3P  | ^[O1;3P       | ^[O3P          |   |
-| C-f1     | -          | -            | ^[[1;5P  | /             | /              |   |
-| M-S-f1   | ^[^[23~    | ^[^[23~      |          | ^[O1;4P       | ^[O4P          |   |
-| C-S-f1   | -          | -            | ^[[1;6P  | ^[O1;6P       | ^[06P          |   |
-| C-M-f1   | -          | -            | ^[[1;7P  | (help)        | (help)         |   |
-| f5       | ^[[15~     | ^[[15~       | ^[[15~   | ^[[15~        | ^[[15~         |   |
-| f6       | ^[[17~     | ^[[17~       | ^[[17~   | ^[[17~        | ^[[16~         |   |
-| S-f5     | ^[[28~     | ^[[28~       | ^[[15;2~ | ^[[15;2~      | ^[[15;2~       |   |
-| M-f5     | ^[^[[15~   | ^[^[[15~     | ^[[15;3~ | ^[[15;3~      | ^[[15;3~       |   |
-| C-f5     | -          | -            | ^[[15;5~ | ^[[15;5~      | ^[[15;5~       |   |
-| M-S-f5   | ^[^[[28~   | ^[^[[28~     | ^[[15;4~ | ^[[15;4~      | ^[[15;4~       |   |
-| C-S-f5   | -          | -            | ^[[15;6~ | ^[[15;6~      | ^[[15;6~       |   |
-| C-M-f5   | -          | -            | ^[[15;7~ | ^[[15;7~      | ^[[15;7~       |   |
-|----------+------------+--------------+----------+---------------+----------------+---|
-| S-tab    | ^[[Z       | ^[[Z         | ^[[Z     | ^[[Z          | ^[[Z           |   |
-| C-tab    | -          | -            | ^[[1;5I  | -             | -              |   |
-| S-Bksp   | -          | -            | -        | -             | -              |   |
-| C-Bksp   | -          | -            | -        | -             | -              |   |
-|          |            |              |          |               |                |   |
-&lt;/code&gt;
+|           | putty(win) | putty(linux) | mintty  | xfce-terminal | gnome-terminal | mate-terminal | xterm   | term/xterm.el          |
+|           | 0.62       |              | 1.1     | 0.48          | 2.16           | 1.4           | 271     | SS3   CSI              |
+|-----------+------------+--------------+---------+---------------+----------------+---------------+---------+------------------------|
+| up        | ^[[A       | ^[[A         | ^[[A    | ^[[A          | ^[[A           | ^[[A          | ^[[A    | ^[OA  ^[[A             |
+| down      | ^[[B       | ^[[B         | ^[[B    | ^[[B          | ^[[B           | ^[[B          | ^[[B    | ^[OB  ^[[B             |
+| right     | ^[[C       | ^[[C         | ^[[C    | ^[[C          | ^[[C           | ^[[C          | ^[[C    | ^[OC  ^[[C             |
+| left      | ^[[D       | ^[[D         | ^[[D    | ^[[D          | ^[[D           | ^[[D          | ^[[D    | ^[OD  ^[[D             |
+| home      | ^[[1~      | ^[[1~        | ^[[H    | ^[OH          | ^[OH           | ^[OH          | ^[[H    | ^[OH  ^[[1~            |
+| end       | ^[[4~      | ^[[4~        | ^[[F    | ^[OF          | ^[OF           | ^[OF          | ^[[F    | ^[OF  ^[[4~ (&lt;select&gt;) |
+| S-up      | -          | -            | (term)  | (term)        | ^[[2A  ?       | ^[[1;2A       | ^[[1;2A | ^[O2A ^[[1;2A          |
+| S-down    | -          | -            | (term)  | (term)        | ^[[2B  ?       | ^[[1;2B       | ^[[1;2B | ^[O2B ^[[1;2B          |
+| S-right   | -          | -            | ^[[1;2C | ^[[1;2C       | ^[[2C  ?       | ^[[1;2C       | ^[[1;2C | ^[O2C ^[[1;2C          |
+| S-left    | -          | -            | ^[[1;2D | ^[[1;2D       | ^[[2D  ?       | ^[[1;2D       | ^[[1;2D | ^[O2D ^[[1;2D          |
+| S-home    | -          | -            | (term)  | (term)        | (term)         | (term)        | ^[[1;2H | ^[O2H ^[[1;2H          |
+| S-end     | ^[[4~      | -            | (term)  | (term)        | (term)         | (term)        | ^[[1;2F | ^[O2F ^[[1;2F          |
+| M-up      | ^[\e[A     | ^[\e[A       | ^[[1;3A | ^[[1;3A       | ^[[3A  ?       | ^[[1;3A       | ^[[1;3A | ____  ^[[1;3A          |
+| M-down    | ^[\e[B     | ^[\e[B       | ^[[1;3B | ^[[1;3B       | ^[[3B  ?       | ^[[1;3B       | ^[[1;3B | ____  ^[[1;3B          |
+| M-right   | ^[\e[C     | ^[\e[C       | ^[[1;3C | ^[[1;3C       | ^[[3C  ?       | ^[[1;3C       | ^[[1;3C | ____  ^[[1;3C          |
+| M-left    | ^[\e[D     | ^[\e[D       | ^[[1;3D | ^[[1;3D       | ^[[3D  ?       | ^[[1;3D       | ^[[1;3D | ____  ^[[1;3D          |
+| M-home    | ^[\e[1~    | ^[\e[1~      | ^[[1;3H | -             | -              | -             | ^[[1;3H | ____  ^[[1;3H          |
+| M-end     | ^[\e[4~    | ^[\e[4~      | ^[[1;3F | -             | -              | -             | ^[[1;3F | ____  ^[[1;3F          |
+| C-up      | -          | -            | ^[[1;5A | ^[[1;5A       | ^[[5A  ?       | ^[[1;5A       | ^[[1;5A | ^[O5A ^[[1;5A          |
+| C-down    | -          | -            | ^[[1;5B | ^[[1;5B       | ^[[5B  ?       | ^[[1;5B       | ^[[1;5B | ^[O5B ^[[1;5B          |
+| C-right   | /          | -            | ^[[1;5C | ^[[1;5C       | ^[[5C  ?       | ^[[1;5C       | ^[[1;5C | ^[O5C ^[[1;5C          |
+| C-left    | /          | -            | ^[[1;5D | ^[[1;5D       | ^[[5D  ?       | ^[[1;5D       | ^[[1;5D | ^[O5D ^[[1;5D          |
+| C-home    | /          | /            | ^[[1;5H | -             | -              | -             | ^[[1;5H | ^[O5H ^[[1;5H          |
+| C-end     | /          | /            | ^[[1;5F | -             | -              | -             | ^[[1;5F | ^[O5F ^[[1;5F          |
+| C-S-up    |            |              |         |               | ^[[6A  ?       | -             | ^[[1;6A | ____  ^[[1;6A          |
+| C-S-down  |            |              |         |               | ^[[6B  ?       | -             | ^[[1;6B | ____  ^[[1;6B          |
+| C-S-right |            |              |         |               | ^[[6C  ?       | ^[[1;6C       | ^[[1;6C | ____  ^[[1;6C          |
+| C-S-left  |            |              |         |               | ^[[6D  ?       | ^[[1;6D       | ^[[1;6D | ____  ^[[1;6D          |
+| C-M-up    | ^[\eOA     | ^[\eOA       | ^[[1;7A | ^[[1;7A       | ^[[7A  ?       | ^[[1;7A       | ^[[1;7A | ____  ^[[1;7A          |
+|-----------+------------+--------------+---------+---------------+----------------+---------------+---------+------------------------|
+
+|          | putty(win) | putty(linux) | mintty  | xfce-terminal     | gnome-terminal | mate-terminal | xterm   | term/xterm.el |
+|          | 0.62       |              | 1.1     | 0.48              | 2.16           | 1.4           | 271     | SS3   CSI     |
+|----------+------------+--------------+---------+-------------------+----------------+---------------+---------+---------------|
+| insert   | ^[[2~      | ^[[2~        | ^[[2~   | ^[[2~             | ^[[2~          | ^[[2~         | ^[[2~   | ____  ^[[2~   |
+| delete   | ^[[3~      | ^[[3~        | ^[[3~   | ^[[3~             | ^[[3~          | ^[[3~         | ^[[3~   | ____  ^[[3    |
+| pgup     | ^[[5~      | ^[[5~        | ^[[5~   | ^[[5~             | ^[[5~          | ^[[5~         | ^[[5~   | ____  ^[[5~   |
+| pgdn     | ^[[6~      | ^[[6~        | ^[[6~   | ^[[6~             | ^[[6~          | ^[[6~         | ^[[6~   | ____  ^[[6~   |
+| S-insert | (paste)    | -            | (paste) | (paste)           | (paste)        | (paste)       | (paste) | ____  ^[[2;2~ |
+| S-delete | ^[[3~  x   | -            | ^[[3;2~ | ^[[3;2~           | ^[[3;2~        | ^[[3;2~       | ^[[3;2~ | ____  ^[[3;2~ |
+| S-pgup   | (term)     | /            | (term)  | (term)            | (term)         | (term)        | (term)  | ____  ^[[5;2~ |
+| S-pgdn   | (term)     | /            | (term)  | (term)            | (term)         | (term)        | (term)  | ____  ^[[6;2~ |
+| M-insert | ^[\e[2~    | ^[\e[2~      | ^[[2;3~ | ^[[2;3~           | ^[[2;3~        | ^[[2;3~       | ^[[2;3~ | ____  ^[[2;3~ |
+| M-delete | ^[\e[3~    | ^[\e[3~      | ^[[3;3~ | ^[[3;3~           | ^[[3;3~        | ^[[3;3~       | ^[[3;3~ | ____  ^[[3;3~ |
+| M-pgup   | ^[\e[5~    | ^[\e[5~      | ^[[5;3~ | ^[[5;3~           | ^[[5;3~        | ^[[5;3~       | ^[[5;3~ | ____  ^[[5;3~ |
+| M-pgdn   | ^[\e[6~    | ^[\e[6~      | ^[[6;3~ | ^[[6;3~           | ^[[6;3~        | ^[[6;3~       | ^[[6;3~ | ____  ^[[5;3~ |
+| C-insert | /          | /            | (copy)  | (copy)            | (copy)         | (copy)        | ^[[2;5~ | ____  ^[[2;5~ |
+| C-delete | /          | /            | ^[[3;5~ | ^[[3;5~           | ^[[3;5~        | ^[[3;5~       | ^[[3;5~ | ____  ^[[3;5~ |
+| C-pgup   | (term)     | /            | ^[[5;5~ | ^[[5;5~ (prevtab) | ^[[5;5~        | ^[[5;5~       | ^[[5;5~ | ____  ^[[5;5~ |
+| C-pgdn   | (term)     | /            | ^[[6;5~ | ^[[6;5~ (nexttab) | ^[[6;5~        | ^[[6;5~       | ^[[6;5~ | ____  ^[[6;5~ |
+|----------+------------+--------------+---------+-------------------+----------------+---------------+---------+---------------|
+
+|          | putty(win) | putty(linux) | mintty      | xfce-terminal | gnome-terminal | mate-terminal | xterm    | term/xterm.el  |
+|          | 0.62       |              | 1.1         | 0.48          | 2.16           | 1.4           |          | SS3   CSI      |
+|----------+------------+--------------+-------------+---------------+----------------+---------------+----------+----------------|
+| f1       | ^[[11~     | ^[[11~       | ^[OP        | ^[OP  (help)  | ^[OP (help)    | ^[OP  (help)  | ^[OP     | ^[OP  ^[[11~   |
+| f2       | ^[[12~     | ^[[12~       | ^[OQ        | ^[OQ          | ^[OQ           | ^[OQ          | ^[OQ     | ^[OQ  ^[[12~   |
+| f3       | ^[[13~     | ^[[13~       | ^[OR        | ^[OR          | ^[OR           | ^[OR          | ^[OR     | ^[OR  ^[[13~   |
+| f4       | ^[[14~     | ^[[14~       | ^[OS        | ^[OS          | ^[OS           | ^[OS          | ^[OS     | ^[OS  ^[[14~   |
+| S-f1     | ^[[23~     | ^[[23~       | ^[[1;2P     | ^[O1;2P  x    | ^[O2P          | ^[O1;2P x     | ^[[1;2P  | ^[O2P ^[[1;2P  |
+| S-f2     | ^[[24~     | ^[[24~       | ^[[1;2Q     | ^[O1;2Q  x    | ^[O2Q          | ^[O1;2Q x     | ^[[1;2Q  | ^[O2Q ^[[1;2Q  |
+| M-f1     | ^[^[[11~   | ^[^[[11~     | ^[[1;3P     | ^[O1;3P  x    | ^[O3P          | ^[O1;3P x     | ^[[1;3P  | ^[O3P ____     |
+| M-f2     | ^[^[[12~   | ^[^[[12~     | ^[[1;2Q     | ^[O1;3Q  x    | ^[O2Q          | ^[O1;3Q x     | ^[[1;3Q  | ^[O3Q ____     |
+| C-f1     | -          | -            | ^[[1;5P     | /             | /              | /             | ^[[1;5P  | ^[O5P ____     |
+| C-f2     | -          | -            | ^[[1;5Q     | ^[O1;5Q  x    | ^[O5Q          | ^[O1;5Q x     | ^[[1;5Q  | ^[O5Q ____     |
+| M-S-f1   | ^[^[23~    | ^[^[23~      | ^[[1;4P     | ^[O1;4P  x    | ^[O4P          | ^[O1;4P x     | ^[[1;4P  | ^[O4P ____     |
+| M-S-f1   | ^[^[24~    | ^[^[24~      | ^[[1;4Q     | ^[O1;4Q  x    | ^[O4Q          | ^[O1;4Q x     | ^[[1;4Q  | ^[O4Q ____     |
+| C-S-f1   | -          | -            | ^[[1;6P     | ^[O1;6P  x    | ^[O6P          | ^[O1;6P x     | ^[[1;6P  | ^[O6P ____     |
+| C-M-f1 * | -          | -            | ^[[1;7P     | -             | -              | -             |          | ____  ____     |
+| C-M-f2 * | -          | -            | ^[[1;7Q     | -             | -              | -             | -        | ____  ____     |
+| f5       | ^[[15~     | ^[[15~       | ^[[15~      | ^[[15~        | ^[[15~         | ^[[15~        | ^[[15~   | ____  ^[[15~   |
+| f6       | ^[[17~     | ^[[17~       | ^[[17~      | ^[[17~        | ^[[16~         | ^[[16~        | ^[[16~   | ____  ^[[16~   |
+| S-f5     | ^[[28~     | ^[[28~       | ^[[15;2~    | ^[[15;2~      | ^[[15;2~       | ^[[15;2~      | ^[[15;2~ | ____  ^[[15;2~ |
+| S-f6     | ^[[29~     | ^[[29~       | ^[[17;2~    | ^[[17;2~      | ^[[17;2~       | ^[[17;2~      | ^[[17;2~ | ____  ^[[17;2~ |
+| M-f5     | ^[^[[15~   | ^[^[[15~     | ^[[15;3~    | ^[[15;3~      | ^[[15;3~       | ^[[15;3~      | ^[[15;3~ | ____  ^[[15;3~ |
+| C-f5     | -          | -            | ^[[15;5~    | ^[[15;5~      | ^[[15;5~       | ^[[15;5~      | ^[[15;5~ | ____  ^[[15;5~ |
+| M-S-f5   | ^[^[[28~   | ^[^[[28~     | ^[[15;4~    | ^[[15;4~      | ^[[15;4~       | ^[[15;4~      | ^[[15;4~ | ____  ^[[15;4~ |
+| C-S-f5   | -          | -            | ^[[15;6~    | ^[[15;6~      | ^[[15;6~       | ^[[15;6~      | ^[[15;6~ | ____  ^[[15;6~ |
+| C-M-f5   | -          | -            | ^[[15;7~    | -             | -              | -             |          | ____  _____    |
+|----------+------------+--------------+-------------+---------------+----------------+---------------+----------+----------------|
+| S-tab    | ^[[Z       | ^[[Z         | ^[[Z        | ^[[Z          | ^[[Z           | ^[[Z          | ^[[Z     | ^[[27;2;9~     |
+| C-tab    | -          | -            | ^[[1;5I     | -             | -              | -             |          | ^[[27;5;9~     |
+| S-return |            |              | ^j *        | ^m x          | ^m x           | ^m x          |          | ^[[27;2;13~    |
+| C-return |            |              | ^^ *        | ^j *          | ^j *           | ^j *          |          | ^[[27;5;13~    |
+| S-Bksp   | -          | -            | ^? *(=bksp) | -             | -              | -             |          | ---            |
+| C-Bksp   | -          | -            | ^_ *        | -             | -              | -             | ^h x     | ---            |
+|          |            |              |             |               |                |               |          |                |
 </pre>
 
 
+<p>
+<ul>
+<li>putty 不支持C/S-up/down/left/right, 不支持C-f1..f12</li>
 <li>如果你用了tmux或者gnu screen，情况就更复杂了: 一方面tmux/screen是终端模拟器里面的应用程序，另一方面它自己又是一个终端模拟器，上面的三步曲要变成六步了。</li>
+</ul>
+</p>
 
 <h4>keypad</h4>
+<p>
+<ul>
 <li>这篇Vim Tips里面提到了keypad键盘的control sequences: <a href="http://vim.wikia.com/wiki/PuTTY_numeric_keypad_mappings" title="PuTTY numeric keypad mappings - Vim Tips Wiki" class="http">PuTTY numeric keypad mappings - Vim Tips Wiki</a></li>
 <li>keypad顶上那一排键(包括numlock本身)，在cat下显示是 <code>/ * -</code> 等键，在emacs里面却是 <code>\eOP .. \eOS</code> (跟XFree86 xterm的F1..F4)一致。读了一下Putty的文档才发现有个<a href="http://the.earth.li/~sgtatham/putty/0.62/htmldoc/Chapter4.html#config-appkeypad" title="Application Keypad" class="http">Application Keypad</a>功能，服务器端的程序可以打开或者关闭。不过Putty提供了禁用选项，这样numlock就又可以普通控制keypad的功能了（不过数字键和光标键也不再发送M-O序列了）</li>
+</ul>
+</p>
 
 
 

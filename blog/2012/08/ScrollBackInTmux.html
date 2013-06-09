@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title></title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+		</style>
+	</head>
+	<body>
+
+<!-- Header -->
+
+	[ <a href='./PythonEncodingWhenRedirection.html'>Prev</a> ]
+
+			[ <a href='../../../index.html.html'>Index</a> ]
+
+	[ <a href='../09.html'>Next</a> ]
+
+<!-- End Header -->
+
+<hr />
+
+<!-- Wiki content -->
+
+<h1>ScrollBackInTmux</h1>
+
+<p>
+Created 星期日 02 六月 2013<br>
+</p>
+
+<p>
+<span class="zim-tag">@tmux</span> <span class="zim-tag">@xterm</span> <br>
+</p>
+
+<p>
+在tmux里面，因为每个窗口(tmux window)的历史内容已经被tmux接管了，所以原来console/terminal提供的<code>Shift+PgUp/PgDn</code>所显示的内容并不是当前窗口的历史内容，那么应该怎么办呢?<br>
+</p>
+
+<p>
+改用<code>C-b [</code>进入copy mode，然后就可以用 <code>PgUp/PgDn/光标 </code>来浏览历史输出了，按q退出。<code>C-b PgUp</code>也可以直接进入coy mode. 参见: <a href="http://superuser.com/a/209608" title="How do I scroll in tmux? - Super User" class="http">How do I scroll in tmux? - Super User</a><br>
+</p>
+
+<p>
+copy mode其实比较类似于vi/emacs里面一个只读buffer，可以移动光标，可以搜索，用<code>C-SPC</code>开始选择，选择完后用M-w拷贝(拷贝后自动退出copy mode)，然后可以<code>C-b ]</code>粘贴(可在其它窗口粘贴), <code>C-b =</code>可以从剪贴板历史中选择。<br>
+</p>
+
+<h3>gnu screen里面呢</h3>
+<p>
+gnu screen进入copy mode的方式跟tmux类似(<code>C-a [</code>)，但进入后它是<code>vi style keybindings</code>。<br>
+</p>
+
+<p>
+对于拷贝文字，第一次空格设置开始标记，然后用<code>hjkl</code>之类移动光标，第二次空格完成拷贝。粘贴也是用<code>C-a ]</code> <br>
+</p>
+
+
+<!-- End wiki content -->
+
+<hr />
+
+<!-- Attachments and Backlinks -->
+
+	<i>No backlinks to this page.</i>
+<br><br>
+
+
+
+<!-- End Attachments and Backlinks -->
+
+	</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title></title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+		</style>
+	</head>
+	<body>
+
+<!-- Header -->
+
+	[ <a href='./2012-02.html'>Prev</a> ]
+
+			[ <a href='../../index.html.html'>Index</a> ]
+
+	[ <a href='./2012-04.html'>Next</a> ]
+
+<!-- End Header -->
+
+<hr />
+
+<!-- Wiki content -->
+
+<h1>2012-03</h1>
+
+<p>
+Created 星期六 14 七月 2012<br>
+</p>
+
+<p>
+2012-03<br>
+</p>
+
+<p>
+<ol type="1" start="1">
+<li>[notepad++] 看了一下nppexec的源代码，实在没明白filter/highlight为啥不工作，找到它在sf.net的论坛， 搜到一个例子，一对比，才发现它这个匹配模式里面*是shell glob那种，我一直按照正则表达式写成.*了——抓 狂！ <a href="http://is.gd/AVE1Tz" title="http://is.gd/AVE1Tz" class="http">http://is.gd/AVE1Tz</a> 2012-03-02 09:47:09</li>
+<li>[notepad++] 续：终于grep/ack, epylint这些都可以在它的console窗口里面很爽地用起来了 [2012-03-02 09:48:39]</li>
+<li>[python] 原来缺省的interactive shell也支持tab键补全，不过得利用readline的能力: &gt;&gt;&gt; import rlcompleter, readline &gt;&gt;&gt; readline.parse_and_bind('tab: complete') 2012-03-02 11:12:29</li>
+<li>哈哈，firefox大战chrome <a href="http://www.howtogeek.com/107154/firefox-versus-chrome-fight-humorous-image/" title="http://www.howtogeek.com/107154/firefox-versus-chrome-fight-humorous-image/" class="http">http://www.howtogeek.com/107154/firefox-versus-chrome-fight-humorous-image/</a> [2012-03-02 12:04:29]</li>
+<li>史上最全最强大最WS的爆笑漫画 每日连载20幅 <a href="http://bbs.c114.net/viewthread.php?tid=541115&extra=page%3D2&page=1" title="http://bbs.c114.net/viewthread.php?tid=541115&amp;extra=page%3D2&amp;page=1" class="http">http://bbs.c114.net/viewthread.php?tid=541115&amp;extra=page%3D2&amp;page=1</a> [2012-03-02 13:09:19]</li>
+<li>ipython里不仅仅可以通过!ls来调用外部命令ls，还可以这样files = !ls，于是外部命令ls的输出就转换到了 files这个变量里面了，它的类型是IPython.utils.text.SList 2012-03-02 17:29:46</li>
+<li>ipython也是一个unix shell: In 1: user = 'jmjones' In 2: process = 'bash' In 3: !ps aux | grep $user | grep $process 2012-03-02 17:35:00</li>
+<li>ipython与外部命令的深度结合: for i in range(10): \n !date &gt; ${i}.txt 2012-03-02 17:37:39</li>
+<li>[todo][android] Google电子市场 Vending.apk <a href="http://www.mediafire.com/?rest29bka7mm0ck" title="http://www.mediafire.com/?rest29bka7mm0ck" class="http">http://www.mediafire.com/?rest29bka7mm0ck</a> [2012-03-05 13:56:58]</li>
+<li>出差期间手机收到了更新通知，说是系统升级到了Android 2.3.5, HTC Sense 3.0，昨天回来后做了升级，结 果发现手机启动后剩余内存只有60M了，开几个程序后切回桌面就发现桌面又要被重新载入，今天换用了Go桌 面，可用内存多了80M左右 2012-03-05 15:36:15</li>
+<li>[android] 续：这次升级倒也有个好处，好像Google Service Framework被加进来了，这样我可以添加Google 账号了，目前Google Currents已经可以使用，但谷歌电子市场还没找到apk包装上 2012-03-05 15:38:04</li>
+<li>昨天同学来深看铺位，在东门逛了一天，晚上见我第一句就是“深圳怎么美女这么少啊” [2012-03-07 08:51:48]</li>
+<li>[emacs] 无意中发现一个有用的小东西: M-x cua-toggle-global-mark (C-S-SPC) 设置之后不仅本buffer内拷 贝/输入文字，都会跑到这个位置去，其它buffer内拷贝/输入文字，也会 (但不是所有按键都会被该buffer处 理) 2012-03-07 09:40:40</li>
+<li>[emacs][org-mode] in-buffer settings: <a href="http://orgmode.org/manual/In_002dbuffer-settings.html" title="http://orgmode.org/manual/In_002dbuffer-settings.html" class="http">http://orgmode.org/manual/In_002dbuffer-settings.html</a> export options: <a href="http://orgmode.org/manual/Export-options.html" title="http://orgmode.org/manual/Export-options.html" class="http">http://orgmode.org/manual/Export-options.html</a> 2012-03-07 10:45:41</li>
+<li>[工具软件] minipad2装了词典文件到dict目录后始终在设置里面不出现，也就没法使用，最后手工修改了 minipad2.ini 设置SelDictList=mediumdict.dic,Oxford.dic AllDictList=mediumdict.dic,Oxford.dic 再重 启程序就可以用了 2012-03-07 15:19:51</li>
+<li>[工具软件] 将stardict字典转为minipad2可用的: 『字典档快速制作实例』 <a href="http://www.nebulasoft.cn/bbs/index.php?mods=topicdisplay&forumid=6&postid=40" title="http://www.nebulasoft.cn/bbs/index.php?mods=topicdisplay&amp;forumid=6&amp;postid=40" class="http">http://www.nebulasoft.cn/bbs/index.php?mods=topicdisplay&amp;forumid=6&amp;postid=40</a> [2012-03-07 15:52:04]</li>
+<li>[工具软件][firefox] 这个firemin小工具可以帮助firefox降低内存泄露，支持firefox, palemoon, seamonkey, thunderbird，限windows <a href="http://www.rizonesoft.com/2011/firemin/" title="http://www.rizonesoft.com/2011/firemin/" class="http">http://www.rizonesoft.com/2011/firemin/</a> 2012-03-07 17:44:42</li>
+<li>[emacs] cua global mark 的文档 <a href="http://www.cua.dk/cua.html" title="http://www.cua.dk/cua.html" class="http">http://www.cua.dk/cua.html</a> 2012-03-07 17:56:57</li>
+<li>[工具软件] 续: 以前别人推荐了一款VSuite Ramdisk，但其免费版本不支持休眠，但我休眠用得多啊，一般都 是一两周才重启一次。其它ramdisk大都不支持3G以上内存 2012-03-09 08:51:32</li>
+<li>[工具软件] 总算碰到一个支持休眠的免费ramdisk软件，可以将3G以上的内存用起来（我的电脑还在用XP） 『Buffalo Ramdisk – 瞬间提升电脑速度！用内存虚拟成硬盘，体验真正飞一般的高速高性能！！ 』 <a href="http://www.iplaysoft.com/buffalo-ramdisk.html" title="http://www.iplaysoft.com/buffalo-ramdisk.html" class="http">http://www.iplaysoft.com/buffalo-ramdisk.html</a> 2012-03-09 08:52:05</li>
+<li>[todo] Picasa 3.9 图片浏览器提取版 <a href="http://www.iplaysoft.com/buffalo-ramdisk.html" title="http://www.iplaysoft.com/buffalo-ramdisk.html" class="http">http://www.iplaysoft.com/buffalo-ramdisk.html</a> [2012-03-09 08:53:05]</li>
+<li>[todo][fileman] xplorer&amp;#178; 2.1.0.0 32-64-bit Multilingual - PortableAppZ <a href="http://feedproxy.google.com/~r/blogspot/Tmnu/~3/Tg1G-mnbqwg/xplorer-2100-32-64-bit-multilingual.html" title="http://feedproxy.google.com/~r/blogspot/Tmnu/~3/Tg1G-mnbqwg/xplorer-2100-32-64-bit-multilingual.html" class="http">http://feedproxy.google.com/~r/blogspot/Tmnu/~3/Tg1G-mnbqwg/xplorer-2100-32-64-bit-multilingual.html</a> 2012-03-09 08:54:23</li>
+<li>- "在看 stl 源码分析，不理解为什么需要有 trats。有没有朋友能不能详解解释一下， 或者提供一个 需要使用它的场景？谢谢" - "general一点的说，Traits实现了类型系统递归推导的一个出口。 " #OMG <a href="http://groups.google.com/group/pongba/browse_thread/thread/b46688ca181349dd" title="http://groups.google.com/group/pongba/browse_thread/thread/b46688ca181349dd" class="http">http://groups.google.com/group/pongba/browse_thread/thread/b46688ca181349dd</a> 2012-03-12 08:52:02</li>
+<li>matplotlib诞生之初就是为了能在python里面完成matlib那样的制图的，这下我不用返回十年前去重拾matlib 了 2012-03-12 18:06:29</li>
+<li>matplotlib一个简单的例子: pylab_examples example code: simple_plot.py <a href="http://matplotlib.sourceforge.net/examples/pylab_examples/simple_plot.html" title="http://matplotlib.sourceforge.net/examples/pylab_examples/simple_plot.html" class="http">http://matplotlib.sourceforge.net/examples/pylab_examples/simple_plot.html</a> [2012-03-12 18:06:46]</li>
+<li>[漫画] #眼中体 一个软件编程人员在其它人眼中是什么样的 <a href="http://wkee.net/qee/wordpress/wp-content/uploads/2012/03/computing-programming-560x380.jpg" title="http://wkee.net/qee/wordpress/wp-content/uploads/2012/03/computing-programming-560x380.jpg" class="http">http://wkee.net/qee/wordpress/wp-content/uploads/2012/03/computing-programming-560x380.jpg</a> 2012-03-15 09:22:02</li>
+<li>[漫画] Browser Wars – The Transportation Edition [Classic Funny Image] <a href="http://www.howtogeek.com/108551/browser-wars-the-transportation-edition-classic-funny-image/" title="http://www.howtogeek.com/108551/browser-wars-the-transportation-edition-classic-funny-image/" class="http">http://www.howtogeek.com/108551/browser-wars-the-transportation-edition-classic-funny-image/</a> 2012-03-15 09:22:33</li>
+<li>[linux] 打开一个文件以后，系统就以inode号码来识别这个文件，不再考虑文件名…(这一点)使得软件更新 变得简单，可以在不关闭软件的情况下进行更新，不需要重启。因为系统通过inode号码，识别运行中的文件， 不通过文件名。更新的时候，新版文件以同样的文件名，生成一个新的inode，不会影响到运行中的文件。等到 下一次运行这个软件的时候，文件名就自动指向新版文件，旧版文件的inode则被回收。 《理解inode》 阮一 峰的网络日志 <a href="http://www.ruanyifeng.com/blog/2011/12/inode.html" title="http://www.ruanyifeng.com/blog/2011/12/inode.html" class="http">http://www.ruanyifeng.com/blog/2011/12/inode.html</a> 2012-03-15 15:47:15</li>
+<li>[g_f_w][adnroid] Verizon Opera Mini是款美国Verizon电信定制的Opera Mini浏览器，小巧迷你，使用它可 以不用通过代理也能浏览facebook、twitter、youtube等被封网站。v6.5.2 <a href="http://www.ctdisk.com/file/5291471" title="http://www.ctdisk.com/file/5291471" class="http">http://www.ctdisk.com/file/5291471</a> 2012-03-16 11:24:38</li>
+<li>[chrome] 找个一个跟firefox里colt扩展在功能上相近的扩展: create link <a href="https://chrome.google.com/webstore/detail/gcmghdmnkfdbncmnmlkkglmnnhagajbm" title="https://chrome.google.com/webstore/detail/gcmghdmnkfdbncmnmlkkglmnnhagajbm" class="https">https://chrome.google.com/webstore/detail/gcmghdmnkfdbncmnmlkkglmnnhagajbm</a> [2012-03-19 08:57:26]</li>
+<li>[emacs] cedet发了1.1的beta2版本了 <a href="http://sourceforge.net/projects/cedet/files/cedet/" title="http://sourceforge.net/projects/cedet/files/cedet/" class="http">http://sourceforge.net/projects/cedet/files/cedet/</a> [2012-03-20 17:14:28]</li>
+<li>[emacs] 测了一下emacs + cedet + ecb的版本配合问题，结论是如果用ecb-snap + 最新的cedet-1.1b2的话, emacs 23/24都没问题；而ecb跟内置的cedet就存在问题 2012-03-21 09:20:14</li>
+<li>[emacs] ecb-snap + emacs 24.0.92.1的内置cedet: ecb的界面能出来，但method窗口不能列出函数/符号列 表；用Development菜单里面的强制reparse的话，会报告“Attempt to modify read-only object” 2012-03-21 09:23:10</li>
+<li>[emacs] 而ecb-2.40完全不支持内置的cedet，首先检测cedet版本这一处就过不去 2012-03-21 09:24:17</li>
+<li>[emacs] 对了，虽说"ecb-snap + 最新的cedet-1.1b2的话, emacs 23/24都没问题"，但还是需要修 改一下ecb-cedet-wrapper.el里面的ecb-cedet-required-version-max参数，否则ecb会认为不兼容而拒绝启动 2012-03-21 09:26:00</li>
+<li>[emacs][tips] (add-hook 'before-save-hook 'time-stamp) Add "Time-stamp: &lt;&gt;" anywhere in the first few lines of the buffer, and when you save it, the &lt;&gt; will automatically be replaced by the current timestamp. 2012-03-21 13:25:05</li>
+<li>深圳年度个人所得税自行申报将于3月31日截止。据悉，*您已被列入税务机关掌握的应报人员名单中*，请抓紧 时间完成申报。——中间这句的用词怎么感觉那么别扭 2012-03-22 10:12:15</li>
+<li>[python] lxml应该是python里功能最强的xml parser，支持ElemenTree风格的API，支持xpath，支持不严谨的 html，还支持css selector哦 <a href="http://lxml.de/" title="http://lxml.de/" class="http">http://lxml.de/</a> 2012-03-22 10:43:12</li>
+<li>原来要让google code的svn浏览页面正确显示html，得用svn propset 设置mime-type: How can I make SVN serve HTML and images with the correct Content-Type? <a href="http://goo.gl/FRVLF" title="http://goo.gl/FRVLF" class="http">http://goo.gl/FRVLF</a> 2012-03-22 11:29:08</li>
+<li>建议您优先选取网络申报方式，<a href="" title="网址http://dzswj.szds.gov.cn/dzswj/index.jsp?12w" class="page">网址http://dzswj.szds.gov.cn/dzswj/index.jsp?12w</a> c)申报完成后发现信息 填写有误的，可以登录再次申报，申报记录会更新为最后一次填写的信息. d)如提交申报时系统提示“利息、 股息、红利”一栏税额不应高于应纳税所得额的20%，则请将该栏“应纳税额”和“已扣缴税额”列金额同时调 减0.01元。e)网络申报出现问题败的，请将IE选项安全级别设为低、将税务局网址设为信任站点，或把申报表 发送回家用公司以外的网络申报，不同时间段多尝试几次。如果问题仍得不到解决，请改选邮寄申报方式或者 工作时间联系税务局咨询热线12366转2. 2012-03-22 18:18:11</li>
+<li>建议您优先选取网络申报方式，<a href="" title="网址http://dzswj.szds.gov.cn/dzswj/index.jsp?12w" class="page">网址http://dzswj.szds.gov.cn/dzswj/index.jsp?12w</a> [2012-03-22 18:18:51]</li>
+<li>啊，"美国大杏仁”其实是桃仁，又欺骗中国消费者 <a href="http://songshuhui.net/archives/65474" title="http://songshuhui.net/archives/65474" class="http">http://songshuhui.net/archives/65474</a> 2012-03-23 14:50:24</li>
+<li>[emacs][tips] eshell 提供了两个模拟设备/dev/clip和/dev/kill，可以将一些命令的输出放到剪贴板去（不 过反过来不行，eshell不支持input redirection） 2012-03-23 17:02:43</li>
+<li>[emacs] 刚才说的/dev/clip这些，也可以扩展其它的“设备"，参见eshell-virtual-targets，每个 target其实都是elisp函数 2012-03-23 17:28:09</li>
+<li>终于可以在Thunderbird里面连上Exchange来编辑、同步日历了 Exchange 2007/2010 Kalender en Taken Provider <a href="http://is.gd/o4CUkB" title="http://is.gd/o4CUkB" class="http">http://is.gd/o4CUkB</a> 它的前身Provider for Microsoft Exchange在我这里不好使，配完了看不到 日程项 2012-03-23 17:47:29</li>
+<li>pyscripter这个ide挺不错啊，麻雀虽小五脏俱全，有project支持、代码补全、调试、interactive interpreter，还有单元测试向导，唯一的小缺点是不支持代码折叠，另外简体中文的翻译是基于繁体的，很多 术语比较别扭 <a href="http://code.google.com/p/pyscripter/" title="http://code.google.com/p/pyscripter/" class="http">http://code.google.com/p/pyscripter/</a> 2012-03-24 10:37:48</li>
+<li>[orgmode][tips] How can I get a vertical bar "|" inside a table field? abc|def <a href="http://orgmode.org/worg/org-faq.html#table-fields-with-vertical-bar" title="http://orgmode.org/worg/org-faq.html#table-fields-with-vertical-bar" class="http">http://orgmode.org/worg/org-faq.html#table-fields-with-vertical-bar</a> 2012-03-24 13:22:10</li>
+<li>[orgmode][tips] Q: Can I use the editing features of org-mode in other modes? A: orgtbl-mode, orgstruct-mode &amp; org-footnote-action <a href="http://orgmode.org/worg/org-faq.html#use-editing-features-in-other-modes" title="http://orgmode.org/worg/org-faq.html#use-editing-features-in-other-modes" class="http">http://orgmode.org/worg/org-faq.html#use-editing-features-in-other-modes</a> 2012-03-24 13:26:34</li>
+<li>[orgmode][tips] org-table-comment.el allows you to create org-tables in languages that do not have block comments. <a href="https://github.com/emacsmirror/org-table-comment" title="https://github.com/emacsmirror/org-table-comment" class="https">https://github.com/emacsmirror/org-table-comment</a> 2012-03-24 13:28:58</li>
+<li>[python] 支持调试python的编辑器还真没几个： <a href="http://wiki.python.org/moin/PythonDebuggers#IDEs_with_Debug_Capabilities" title="http://wiki.python.org/moin/PythonDebuggers#IDEs_with_Debug_Capabilities" class="http">http://wiki.python.org/moin/PythonDebuggers#IDEs_with_Debug_Capabilities</a> 不过Spyder和Eric也支持调 试，没在这里列出来——居然还找不到一个基于wx（这两个都是基于Qt的） 2012-03-25 21:18:14</li>
+<li>[emacs][python] 另一个思路是geben + komodo debugger extension (基于dbgp protocol) <a href="http://docs.activestate.com/komodo/5.2/debugger.html" title="http://docs.activestate.com/komodo/5.2/debugger.html" class="http">http://docs.activestate.com/komodo/5.2/debugger.html</a> 2012-03-25 21:20:22</li>
+<li>最近工作上老碰到 provisioning 这个词，不知道具体是什么意思，今天发现原来维基百科上有很详细的解 释: <a href="http://zh.wikipedia.org/wiki/%E6%9C%8D%E5%8A%A1%E5%BC%80%E9%80%9A" title="http://zh.wikipedia.org/wiki/%E6%9C%8D%E5%8A%A1%E5%BC%80%E9%80%9A" class="http">http://zh.wikipedia.org/wiki/%E6%9C%8D%E5%8A%A1%E5%BC%80%E9%80%9A</a> 2012-03-28 11:31:01</li>
+<li>[orgmode] 经试验，使用Consolas字体的话，Windows下表格线是能对齐的。另:《Emacs里中英文混排的文字对 齐》 <a href="http://ysong.me/2012/03/emacs_chinese_character_width/" title="http://ysong.me/2012/03/emacs_chinese_character_width/" class="http">http://ysong.me/2012/03/emacs_chinese_character_width/</a> 2012-03-30 11:50:53</li>
+<li>[emacs][tips] C-x 4 c (clone-indirect-buffer-other-window) gives user two (or more) different buffers which have their textual content linked together. You can use different major modes in the clones. <a href="http://www.emacswiki.org/emacs/IndirectBuffers" title="http://www.emacswiki.org/emacs/IndirectBuffers" class="http">http://www.emacswiki.org/emacs/IndirectBuffers</a> 2012-03-30 12:58:49</li>
+<li>[firefox] 这个FloatNotes扩展不错（在特定地址的页面上贴一个便签），支持用markdown格式来写内容，于 是可以添加粗体、列表、链接、图片，数据可跟随firefox sync（需要在其设置界面选一下） <a href="https://addons.mozilla.org/zh-CN/firefox/addon/floatnotes/?src=search" title="https://addons.mozilla.org/zh-CN/firefox/addon/floatnotes/?src=search" class="https">https://addons.mozilla.org/zh-CN/firefox/addon/floatnotes/?src=search</a> 2012-03-30 15:41:02</li>
+<li>Markdown 语法说明(简体中文版) <a href="http://wowubuntu.com/markdown/" title="http://wowubuntu.com/markdown/" class="http">http://wowubuntu.com/markdown/</a> 2012-03-30 15:42:17</li>
+<li>"The same features that can make Scala more productive can also make it unreadable." - Scala or Java? Exploring myths and facts <a href="http://www.infoq.com/articles/scala-java-myths-facts" title="http://www.infoq.com/articles/scala-java-myths-facts" class="http">http://www.infoq.com/articles/scala-java-myths-facts</a> 2012-03-30 16:02:00</li>
+<li>[emacs] 用frame-bufs.el实现了一直想要的类似perspective功能 <a href="https://gist.github.com/2250340" title="https://gist.github.com/2250340" class="https">https://gist.github.com/2250340</a> 相比之 前研究的perspective.el，现在直接用frame绑定buffer，不同的frame即是不同的透视图，要简单直观得多。 perspective.el 定义的透视图在不同的frame之间不是共享的，所以比较适合单一frame的情况 [2012-03-30 17:44:42]</li>
+<li>[emacs][todo] eshell/start, frame-bufs, popwin (&lt;f11&gt; ~) 2012-03-30 18:11:43</li>
+<li>[firefox] FloatNotes扩展的两个相关链接: FloatNotes Guide <a href="http://www.floatnotes.org/documentation/guide" title="http://www.floatnotes.org/documentation/guide" class="http">http://www.floatnotes.org/documentation/guide</a> Markdown 语法说明(简体中文版) <a href="http://wowubuntu.com/markdown/" title="http://wowubuntu.com/markdown/" class="http">http://wowubuntu.com/markdown/</a> 2012-03-31 08:41:07</li>
+<li>RT <span class="zim-tag">@hecaitou</span>: 波尔定律：在非常专业的研究领域犯过一切错误的，就是专家。 2012-03-31 11:06:53</li>
+<li>[emacs][todo] 这个改进的flymake.el 对多文件时的性能做了改进（也有不少其它的改进），有必要合入到 eepy里面去（也已经包含了epy里面所用info统计功能) <a href="https://github.com/illusori/emacs-flymake" title="https://github.com/illusori/emacs-flymake" class="https">https://github.com/illusori/emacs-flymake</a> 2012-03-31 16:51:47</li>
+</ol>
+</p>
+
+
+<!-- End wiki content -->
+
+<hr />
+
+<!-- Attachments and Backlinks -->
+
+	<i>No backlinks to this page.</i>
+<br><br>
+
+
+
+<!-- End Attachments and Backlinks -->
+
+	</body>
+
+</html>

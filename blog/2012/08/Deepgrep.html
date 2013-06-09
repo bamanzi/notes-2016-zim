@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title></title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+		</style>
+	</head>
+	<body>
+
+<!-- Header -->
+
+	[ <a href='../07/zim.html'>Prev</a> ]
+
+			[ <a href='../../../index.html.html'>Index</a> ]
+
+	[ <a href='./DropboxUbuntuOne.html'>Next</a> ]
+
+<!-- End Header -->
+
+<hr />
+
+<!-- Wiki content -->
+
+<h1>deepgrep: grep nested archives with one command</h1>
+
+<p>
+Created 星期四 30 五月 2013<br>
+</p>
+
+<p>
+<span class="zim-tag">@grep</span> <span class="zim-tag">@cmdline</span> <span class="zim-tag">@shell</span> <br>
+</p>
+
+<p>
+Total Commander里面有个功能是我很离不开的，导致我在linux下还得用wine来跑它：可以支持搜索压缩包里面的文件内容，并且可以通过它的packer插件支持各种类型的压缩包。<br>
+</p>
+
+<p>
+先说说我最需要这个功能的一个场景吧，比如，我常常修改一些Firefox的扩展，有的扩展的安装包会在被firefox解压，但里面还有一个 content jar文件（其实是采用zip压缩格式）; 而新版本的firefox对安装的扩展大都不会将xpi解压，这个xpi文件其实也是zip格式，里面很可能还会有个jar包。我有时需要搜索所有扩展的 install.rdf文件，以确定名称为xxxx的某个扩展到底在哪个文件里，有时需要搜索xpi或者jar里面的js、xul代码，以查找某个函数或 者某个页面元素的定义。<br>
+</p>
+
+<p>
+zgrep/bzgrep都只能搜索单个的gzip/bzip2压缩文件，而不能支持包含多个文件的包，不适用于上面的问题;<br>
+</p>
+
+<p>
+zipgrep性质上比较接近，支持zip文件，但有两个问题:<br>
+<ol type="1" start="1">
+<li>不支持压缩包嵌套的场景(比如在上述xpi里面的content jar中间搜索js/xul的内容），</li>
+<li>它只能指定搜索某个zip文件，而不是以目录为搜索范围，然后透明地搜索多个zip文件;</li>
+</ol>
+</p>
+
+<p>
+前两天看见Planet Debian上有篇<a href="http://noone.org/blog/English/Computer/Debian/CoolTools/deepgrep.futile" title="deepgrep: grep nested archives with one command" class="http">deepgrep: grep nested archives with one command</a>，这个东西正式我一直以来想要的！<br>
+</p>
+
+<p>
+唯一的遗憾是deepgrep不能显示搜索结果所在的行号，这使得我想在Emacs里面集成它有点困难（本来想在grep-mode的基础上改改，可以打开搜索结果所在的文件（压缩包内的），并跳到指定的行）。<br>
+</p>
+
+
+<!-- End wiki content -->
+
+<hr />
+
+<!-- Attachments and Backlinks -->
+
+	<i>No backlinks to this page.</i>
+<br><br>
+
+
+
+<!-- End Attachments and Backlinks -->
+
+	</body>
+
+</html>

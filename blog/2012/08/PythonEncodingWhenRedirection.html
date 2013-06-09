@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title></title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+		</style>
+	</head>
+	<body>
+
+<!-- Header -->
+
+	[ <a href='./MouseWheelInTmuxScreen.html'>Prev</a> ]
+
+			[ <a href='../../../index.html.html'>Index</a> ]
+
+	[ <a href='./ScrollBackInTmux.html'>Next</a> ]
+
+<!-- End Header -->
+
+<hr />
+
+<!-- Wiki content -->
+
+<h1>Python脚本重定向其输出时的编码问题</h1>
+
+<p>
+Created 星期日 02 六月 2013<br>
+</p>
+
+<p>
+<span class="zim-tag">@python</span> <span class="zim-tag">@unicode</span> <span class="zim-tag">@shell</span> <br>
+</p>
+
+<p>
+python有一个比较烦的问题是，同一段程序，里面有print语句，直接运行时没有问题，一旦将其输出设了个重定向，这个脚本就不正常了，报告UnicodeEncodeError<br>
+</p>
+
+<p>
+究其原因，是Python感知到输出到控制台时，会从控制台取当前编码；而重定向后Python程序无法得知写那个文件该用哪个编码（不过为啥不用控制台的值?）, 缺省就用了ascii (准确地说，是系统缺省编码<code>sys.getdefaultencoding()</code>，可以在 <code>sitecustomize </code>模块里修改。而python3将缺省编码改为utf-8了) 。<a href="http://stackoverflow.com/questions/4545661/unicodedecodeerror-when-redirecting-to-file/4551045#4551045" title="python - UnicodeDecodeError when redirecting to file - Stack Overflow" class="http">python - UnicodeDecodeError when redirecting to file - Stack Overflow</a><br>
+</p>
+
+<p>
+解决办法有两个:<br>
+</p>
+ 
+<p>
+一个是刚才提到的修改 <strong>sitecustomize</strong> 模块（缺省不存在，特意留给用户定制的），在里面调用 <code>sys.setdefaultcoding('xxxx')</code> ——这个函数python在 <code>import site</code> 之后就没有了，应用程序的python代码里是没法调的<br>
+</p>
+
+<p>
+方法二是shell里设置环境变量 <code>PYTHONIOENCODING</code>，设成utf_8或者gbk都可以（只要字符集够) <a href="http://wiki.python.org/moin/PrintFails" title="PrintFails - PythonInfo Wiki" class="http">PrintFails - PythonInfo Wiki</a><br>
+</p>
+
+
+<!-- End wiki content -->
+
+<hr />
+
+<!-- Attachments and Backlinks -->
+
+	<i>No backlinks to this page.</i>
+<br><br>
+
+
+
+<!-- End Attachments and Backlinks -->
+
+	</body>
+
+</html>

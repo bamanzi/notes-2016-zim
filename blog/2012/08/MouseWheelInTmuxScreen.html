@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title></title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+		</style>
+	</head>
+	<body>
+
+<!-- Header -->
+
+	[ <a href='./GrepReplacements2.html'>Prev</a> ]
+
+			[ <a href='../../../index.html.html'>Index</a> ]
+
+	[ <a href='./PythonEncodingWhenRedirection.html'>Next</a> ]
+
+<!-- End Header -->
+
+<hr />
+
+<!-- Wiki content -->
+
+<h1>tmux/screen里面如何用鼠标滚轮来卷动窗口内容</h1>
+
+<p>
+Created 星期日 02 六月 2013<br>
+</p>
+
+<p>
+<span class="zim-tag">@tmux</span> <span class="zim-tag">@screen</span> <span class="zim-tag">@xterm</span> <br>
+</p>
+
+<h3>tmux里面用鼠标滚轮来卷动窗口内容</h3>
+
+<p>
+在 tmux里面，因为每个窗口(tmux window)的历史内容已经被tmux接管了，所以原来console/terminal提供的Shift+PgUp/PgDn所显示的内容并不是当前窗口的历史内容，所以要用C-b [ 进入copy-mode，然后才能用PgUp/PgDn/光标/Ctrl-S等键在copy-mode中移动。<br>
+</p>
+
+<p>
+如果要启用鼠标滚轮来卷动窗口内容的话，可以按C-b :然后输入<br>
+    <code>setw mode-mouse on</code><br>
+这就可以了。如果要对所有窗口开启的话:<br>
+    <code>setw -g mode-mouse on</code><br>
+(这种情况下，Vi/Emacs等全屏程序并不受影响，还可以自己接管滚轮事件)<br>
+</p>
+
+<p>
+也可以加到~/.tmux.conf里面<br>
+     <code>set-window-option -g mode-mouse on</code><br>
+(setw其实是set-window-option的别名)<br>
+</p>
+
+<p>
+摘自: <a href="./Scroll_shell_output_with_mouse_in_tmux_-_Super_User.html" title="Scroll shell output with mouse in tmux - Super User" class="page">Scroll shell output with mouse in tmux - Super User</a><br>
+</p>
+
+<h3>gnu screen里面呢</h3>
+<p>
+一种说法是在~/.screenrc里面添加<br>
+    <code>termcapinfo xterm* ti@:te@</code><br>
+xterm*用于匹配(glob match)你的当前term类型。来自: <a href="http://stackoverflow.com/a/1125947" title="Using the scrollwheel in GNU screen" class="http">Using the scrollwheel in GNU screen</a><br>
+</p>
+
+<p>
+另一种说法就比较复杂了，详见链接: <a href="http://www.staldal.nu/tech/2009/01/11/how-to-use-mousewheel-in-gnu-screen/comment-page-1/#comment-512" title="How to use mousewheel in GNU Screen " class="http">How to use mousewheel in GNU Screen </a>  <br>
+</p>
+
+
+<!-- End wiki content -->
+
+<hr />
+
+<!-- Attachments and Backlinks -->
+
+	<i>No backlinks to this page.</i>
+<br><br>
+
+
+
+<!-- End Attachments and Backlinks -->
+
+	</body>
+
+</html>

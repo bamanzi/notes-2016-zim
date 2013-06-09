@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title></title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+		</style>
+	</head>
+	<body>
+
+<!-- Header -->
+
+	[ <a href='./2011-05.html'>Prev</a> ]
+
+			[ <a href='../../index.html.html'>Index</a> ]
+
+	[ <a href='./2011-07.html'>Next</a> ]
+
+<!-- End Header -->
+
+<hr />
+
+<!-- Wiki content -->
+
+<h1>2011-06</h1>
+
+<p>
+Created 星期六 14 七月 2012<br>
+</p>
+
+
+<p>
+<ul>
+<li>[g_f_w] evernote也不能同步了，方҉殡҉兴҉我҉日҉你҉先҉人҉ 2011-06-01 08:55:15</li>
+<li>[g_f_w] 今早起来，上推的几个网址都挂了，IM+勉强可用，但太不给力了 2011-06-01 08:59:21</li>
+<li>[colinux][tips] 设置console大小的方法: 改conf文件，里面设置cocon=120x37 2011-06-02 09:37:55</li>
+<li>使用intel显卡的机器上按Ctrl-Alt-down时导致屏幕颠倒的解决办法: 修改注册表 HKEY_CURRENT_USER\Software\Intel\Display\igfxcui\hkcmd\resources 然后重启 [2011-06-02 15:01:59]</li>
+<li>[工具软件] 刚留意到阅读chm时执行搜索导致hh.exe崩溃的原因是xkeymacs.dll，用VS2005打开xkeymacs工程跑了一下，居然崩溃了没有断下来 2011-06-03 08:28:14</li>
+<li>[colinux][emacs] 有时我也挺佩服自己的，为了试验X下面Emacs的super/hyper键，我用VirtualBox跑了个 Ubuntu Live CD，但里面没有emacs，觉得apt-get太慢，于是用ssh -X 连到colinux上，在GNOME桌面上跑起来了 2011-06-03 08:30:20</li>
+<li>[工具软件] 前两天用autoit 写了一段小脚本，这样每次win+s 都用MuseTip TextFilter打开最后导出的闪存文件，动态搜索 2011-06-03 08:32:27</li>
+<li>[colinux] Lingoes在Firefox 4上无力，几个词典服务网址又都不在公司的proxy 白名单中，只得自己在 colinux 里面安装了一个dictd，然后在Firefox 上装 dict 扩展 <a href="http://dict.mozdev.org" title="http://dict.mozdev.org" class="http">http://dict.mozdev.org</a> [2011-06-03 08:41:11]</li>
+<li>续: 问题是Debian 里面似乎没有用于dictd 的中文字典，在网上搜了一下，这里有好几个 <a href="http://ports.gnu-darwin.org/chinese/dictd-database/work/dict-zh-1.6/" title="http://ports.gnu-darwin.org/chinese/dictd-database/work/dict-zh-1.6/" class="http">http://ports.gnu-darwin.org/chinese/dictd-database/work/dict-zh-1.6/</a> 2011-06-03 08:42:27</li>
+<li>续: 对了, dictd.conf 里面要将listen_to 一行删除，access部分改为 allow *，否则colinux 外面连不上 —— 可能不太安全，但估计没几个人琢磨 dict 协议 2011-06-03 08:44:29</li>
+<li>[emacs] 我觉得这个AnchoredTranspose想法不咋样，不如我昨天的交换primary/secondary选区的想法 <a href="http://www.emacswiki.org/emacs/AnchoredTranspose" title="http://www.emacswiki.org/emacs/AnchoredTranspose" class="http">http://www.emacswiki.org/emacs/AnchoredTranspose</a> 2011-06-03 08:52:02</li>
+<li>RT <span class="zim-tag">@virushuo</span>: 内牛… RT <span class="zim-tag">@duck_1984</span>: 3DM全国首发《永远的毁灭公爵》试玩版下载 <a href="http://bit.ly/l85cw5" title="http://bit.ly/l85cw5" class="http">http://bit.ly/l85cw5</a> 流下了鸡动的尿水~~<strike>(&gt;_&lt;)</strike>~~ 2011-06-03 15:59:04</li>
+<li>[emacs] 跟defun范围相关的几个键：C-M-a/e 跳到函数头／尾（也可用C-M-home/end; C-M-h 选择整个函数；C-x n d narrow-to-defun 2011-06-03 17:19:41</li>
+<li>[emacs][todo] goto-last-change, po-mode, completion-ui 2011-06-03 18:08:17</li>
+<li>[工具软件][totalcmd] 将TortoiseSVN里面的TortoiseMerge用作totalcmd的文件比较工具似乎是个不错的主意: wincmd.ini CompareTool=”c:\path→\tortoisemerge.exe” 加载还比较快，而且是免费的 (BeyondC..虽然好但不免费) 2011-06-07 17:59:38</li>
+<li>[firefox][addons] 使用了两天『電腦玩物』介绍的firelink，觉得不比CoLT强 2011-06-08 16:39:44</li>
+<li>[linux][CLI] showkey命令可以告诉你每个键的键码，正是我在找的类似于xev的东西，不过showkey只能工作于console，不能工作于term，还得再找找，否则 .inputrc 还是搞不明白 2011-06-09 13:22:18</li>
+<li>[unix][cygwin] 终于知道.inputrc 里面怎么描述 f1, f2等键了: 先按C-v再按f1，将输出（比如^[14~)里面的^[换成\e就行了(不如\e14~)。麻烦的问题是各种终端这个值不一样 2011-06-09 14:04:41</li>
+<li>[unix][cygwin][CLI] [技巧]Readline：在BASH下自定键盘热键[原创] [论坛存档] - <a href="http://www.linuxsir.org/bbs/archive/index.php/t-237528.html" title="http://www.linuxsir.org/bbs/archive/index.php/t-237528.html" class="http">http://www.linuxsir.org/bbs/archive/index.php/t-237528.html</a> 2011-06-09 14:08:15</li>
+<li>[python][windows] 打开rlcompleter2.py的调试开关，可以看到补全项都找出来了，但就是没有显示出来，看来的确是pyreadline的问题 2011-06-09 14:28:31</li>
+<li>showkey的相关资料: The Linux keyboard and console HOWTO: Unusual keys and keyboards - <a href="http://www.linuxdoc.org/HOWTO/Keyboard-and-Console-HOWTO-14.html" title="http://www.linuxdoc.org/HOWTO/Keyboard-and-Console-HOWTO-14.html" class="http">http://www.linuxdoc.org/HOWTO/Keyboard-and-Console-HOWTO-14.html</a> 2011-06-09 16:14:14</li>
+<li>So at a Bash prompt, type Control-V followed by F1 – How To Make A Hotkey On The Linux Console LG #55 - <a href="http://linuxgazette.net/issue55/henderson.html" title="http://linuxgazette.net/issue55/henderson.html" class="http">http://linuxgazette.net/issue55/henderson.html</a> 2011-06-09 16:16:37</li>
+<li>好几年不见，Linux Gazette电子杂志还在坚持出啊，真有毅力 <a href="http://linuxgazette.net/" title="http://linuxgazette.net/" class="http">http://linuxgazette.net/</a> 当初可是每期都被Debian收录为一个包啊——好像现在不了 2011-06-09 16:21:12</li>
+<li>[囧囧] 亲爱的巴蛮子，公司党委祝您生日快乐。此条消息超过帐户设置中的“最大消息长度”，因此我们只能从邮件服务器上下载前几行。单击 此处下载剩余消息。 2011-06-10 09:03:24</li>
+<li>[g_f_w] <a href="http://vpnix.tenacy.com/public" title="http://vpnix.tenacy.com/public" class="http">http://vpnix.tenacy.com/public</a> 密码每隔半小時會自動變更，但不會影響正在使用的連線 2011-06-10 10:19:28</li>
+<li>[emacs][cygwin] dict.el 使用起来不给力，require的时候就要去调用程on序，而且配cygwin的总是不好使——<a href="" title="改用dictionary了https://github.com/emacsmirror/dictionary/" class="page">改用dictionary了https://github.com/emacsmirror/dictionary/</a> ，多几个文件也无所谓了 2011-06-12 14:28:09</li>
+<li>[emacs][cygwin] 续: 而且dictionary自己实现了dict 协议，不再需要dict命令行程序，免得自己在cygwin 下编译了 2011-06-12 14:29:16</li>
+<li>[iphone] TNND, 想把iphone恢复到上次下载的固件4.2.1，怎么都卡在“正在恢复”一步，升级itunes到最新版本也不行，最后换了个电脑，上面的itunes还是9.x，恢复固件还不用去服务器验证，结果搞定了 2011-06-12 16:51:52</li>
+<li>[iphone] 最近发现iphone 3g不再新固件的支持范围内了，这次恢复固件想试试4.3才发现到处都没有iphone 3g版本，而ios5的beta版本也没有 2011-06-12 16:54:20</li>
+<li>[android] Several StarDict-compatible programs … Android based devices may try `ColorDict' or `Wordmate'. <a href="http://en.wikipedia.org/wiki/Stardict" title="http://en.wikipedia.org/wiki/Stardict" class="http">http://en.wikipedia.org/wiki/Stardict</a> [2011-06-13 08:43:31]</li>
+<li>[firefox][addons] Tile Tabs只能tabpage内分页，用着的确不能满足我一般分屏的要求(SplitBrowser又不支持fx4)，看见Split Panel又回来了（支持fx4了），于是果断切换。不过有点bug: 窗口拖大后不能拖小，会拖出一个很大的分隔条(测了一下，在fx5上有此问题，fx4上没有) 2011-06-13 09:48:16</li>
+<li>[emacs] Dictionary and Reference Lookup with Emacs - <a href="http://emacs.livejournal.com/27424.html" title="http://emacs.livejournal.com/27424.html" class="http">http://emacs.livejournal.com/27424.html</a> 2011-06-13 10:50:38</li>
+<li>[debian][cygwin] 中科大Debian镜像成为 ftp.cn.debian.org 与Debian ftp-master只有12小时的滞后。消息来源: <a href="http://www.debian.org/News/2011/20110525" title="http://www.debian.org/News/2011/20110525" class="http">http://www.debian.org/News/2011/20110525</a> 该镜像上也有cygwin仓库 2011-06-13 16:11:34</li>
+<li>[firefox] SideBar/SplitPanel里访问Google Translate的化，用这个移动版网址效果会好一点: <a href="http://translate.google.com/m?twu=1" title="http://translate.google.com/m?twu=1" class="http">http://translate.google.com/m?twu=1</a> 2011-06-13 16:42:07</li>
+<li>[emacs]A GNU Emacs global minor mode for dealing with the source code in your projects efficiently <a href="http://code.google.com/p/emacs-project-m" title="http://code.google.com/p/emacs-project-m" class="http">http://code.google.com/p/emacs-project-m</a> 2011-06-14 06:40:18</li>
+<li>[iphone][android] Switching From Jailbroken iOS to Android? Here’s What You Need to Know <a href="http://is.gd/x6Q191" title="http://is.gd/x6Q191" class="http">http://is.gd/x6Q191</a> 2011-06-14 11:07:03</li>
+<li>[android] FBReaderJ - an e-book reader for Google Android platform 也已经集成了书仓，可跟Stanza 媲美了。不过相对我以前在moto e680i上用的c语言版本，少了不少格式，这个只支持epub,fb2和oeb 2011-06-14 16:32:19</li>
+<li>[android] FBReaderJ - an e-book reader for Google Android platform 也已经集成了书仓，可跟Stanza 媲美了。<a href="http://www.fbreader.org/FBReaderJ/screenshots.php" title="http://www.fbreader.org/FBReaderJ/screenshots.php" class="http">http://www.fbreader.org/FBReaderJ/screenshots.php</a> 2011-06-14 16:32:55</li>
+<li>MoreLayouts: Adds additional Wide Thread View and Stacked View to Thunderbird - <a href="https://addons.mozilla.org/en-US/thunderbird/addon/morelayouts/" title="https://addons.mozilla.org/en-US/thunderbird/addon/morelayouts/" class="https">https://addons.mozilla.org/en-US/thunderbird/addon/morelayouts/</a> 2011-06-15 17:37:29</li>
+<li>续: 关于MoreLayouts for TB: 原本只有 口吕 和 口口口 两种布局，安装这个之后多了三种: Wide Message(倒品字)、Wide Thread(品)和Stacked(吕口)，最后一种在我现在使用的宽屏上很合适 [2011-06-16 14:05:59]</li>
+<li>[firefox][addons] 修改了一下splitpanel里面的overlay.js，把splitpannelBrowser的拖放支持禁用了，这样我就可以拖文字到SP里面的输入框了 2011-06-17 09:33:30</li>
+<li>Best Free [Android ]Apps <a href="http://www.techsupportalert.com/best-free-android-apps.htm" title="http://www.techsupportalert.com/best-free-android-apps.htm" class="http">http://www.techsupportalert.com/best-free-android-apps.htm</a> 2011-06-18 15:34:03</li>
+<li>[android][TODO] 一些值得尝试的应用: Evernote, Expense Manager, Dolphin Browser, Team Viewer, NetCounter, KeePassDroid, 2011-06-20 10:30:08</li>
+<li>[android][TODO] 一些值得尝试的应用: App 2 SD Free, Apps Organizer, Clipper, Gmote, Barcode Scanner, Documents To Go, Laputa Reader, 2011-06-20 10:31:10</li>
+<li>[工具软件] Wuala: 一个比Dropbox安全的替代品 - <a href="http://www.chinagfw.org/2011/05/wuala-dropbox.html" title="http://www.chinagfw.org/2011/05/wuala-dropbox.html" class="http">http://www.chinagfw.org/2011/05/wuala-dropbox.html</a> 2011-06-20 17:50:16</li>
+<li>[linux][tips] 4 Methods to Identify Your Linux File System Type (Ext2/3/4) - <a href="http://www.thegeekstuff.com/2011/04/identify-file-system-type/" title="http://www.thegeekstuff.com/2011/04/identify-file-system-type/" class="http">http://www.thegeekstuff.com/2011/04/identify-file-system-type/</a> 2011-06-20 17:56:16</li>
+<li>[工具软件] 坚果铺子: 类Dropbox云存储产品 - <a href="http://www.showeb20.com/?p=3184" title="http://www.showeb20.com/?p=3184" class="http">http://www.showeb20.com/?p=3184</a> [2011-06-20 17:59:29]</li>
+<li>[android] How to Get Better Battery Life from Your Android Phone <a href="http://is.gd/mLNN12" title="http://is.gd/mLNN12" class="http">http://is.gd/mLNN12</a> 2011-06-20 18:01:44</li>
+<li>[iphone] DisplayLink – 将你的iPad变成无线显示器 - <a href="http://www.iostoy.com/?p=1036" title="http://www.iostoy.com/?p=1036" class="http">http://www.iostoy.com/?p=1036</a> [2011-06-20 18:05:44]</li>
+<li>[tips] 如何选择开源许可证？ - <a href="http://news.cnblogs.com/n/99622/" title="http://news.cnblogs.com/n/99622/" class="http">http://news.cnblogs.com/n/99622/</a> 2011-06-20 18:06:08</li>
+<li>[iphone] Essay：脱颖而出的富文本编辑器 - <a href="http://www.ifanr.com/39880" title="http://www.ifanr.com/39880" class="http">http://www.ifanr.com/39880</a> 2011-06-20 18:08:50</li>
+<li>[emacs] sdcv.el 所用的showtip.el 在Emacs全屏的时候会出现一个异常: (frame-parameter nil 'left)会返回(+ -4)这样奇怪的结果而不是一个简单的数值，导致showtip函数出错，不知道只是 windows这样还是都有 2011-06-22 09:26:21</li>
+<li>[emacs][windows][cygwin] 要在ntemacs和cygwin程序之间通过参数/返回值传递中文，是一件相当麻烦的事情 <a href="http://web.archiveorange.com/archive/v/UcW9CYbe2vyIo9UH5QsV" title="http://web.archiveorange.com/archive/v/UcW9CYbe2vyIo9UH5QsV" class="http">http://web.archiveorange.com/archive/v/UcW9CYbe2vyIo9UH5QsV</a> 2011-06-22 10:01:31</li>
+<li>[Cygwin] developers recommend that you do not put Cygwin on your system PATH for this reason. Instead you can make the Cygwin tools availabl 2011-06-22 10:02:19</li>
+<li>… Instead you can make the [Cygwin] tools available within [Emacs] by setting exec-path in your init file. <a href="http://is.gd/uZxpbL" title="http://is.gd/uZxpbL" class="http">http://is.gd/uZxpbL</a> 2011-06-22 10:02:54</li>
+<li>[android] 给主屏上装了个fortune，这样就隔一会显示一段有意思的话了；还有一个Quote Me也可以，但后者需要访问网络 2011-06-22 13:21:08</li>
+<li>[emacs][unicode][windows] bug#6705: w32 cmdproxy.c pass args to cygwin; erroneous charset conversion <a href="http://is.gd/tDIwee" title="http://is.gd/tDIwee" class="http">http://is.gd/tDIwee</a> 2011-06-22 13:21:43</li>
+<li>不考虑unicode和中英文对齐的话，我最喜欢的等宽字体是Dina <a href="http://www.donationcoder.com/Software/Jibz/Dina/" title="http://www.donationcoder.com/Software/Jibz/Dina/" class="http">http://www.donationcoder.com/Software/Jibz/Dina/</a> 2011-06-22 13:29:12</li>
+<li>[emacs][chm] 奇怪，用texi2html-1.82生成的elisp.chm有点问题: 每一章的最后一页都是空白页，本应该是有内容的；以前用加了chm补丁的texi2html-1.64就没有这个问题 2011-06-22 15:35:56</li>
+<li>[emacs] 怎么刚发现eldoc-mode这么爽的东西: a MinorMode which shows you the argument list of the function call in the echo area. 2011-06-22 18:47:50</li>
+<li>前后费了近10天，才把这篇《Emacs下查词典》博客文章的内容部分给完成了，晚上或者明晚整理了发出来 <a href="http://www.cnblogs.com/bamanzi/archive/2011/06/13/2079485.html" title="http://www.cnblogs.com/bamanzi/archive/2011/06/13/2079485.html" class="http">http://www.cnblogs.com/bamanzi/archive/2011/06/13/2079485.html</a> 2011-06-22 19:25:32</li>
+<li>闾丘露薇：给南科大教改多一点呵护 <a href="http://www.dapenti.com/blog/more.asp?name=xilei&id=45266" title="http://www.dapenti.com/blog/more.asp?name=xilei&amp;id=45266" class="http">http://www.dapenti.com/blog/more.asp?name=xilei&amp;id=45266</a> 2011-06-23 08:20:34</li>
+<li>[thunderbird] 将colt移植到tb上: 修改colt.xul，将&lt;popup id=”contentAreaContextMenu”&gt;复制一份为&lt;popup id=”mailContext”&gt; 而overlay要加到messenger.xul和messengerWindow.xul 上 2011-06-23 09:06:10</li>
+<li>国内[Android] Market孰更好 | 互联网的那点事 <a href="http://www.alibuybuy.com/posts/61156.html" title="http://www.alibuybuy.com/posts/61156.html" class="http">http://www.alibuybuy.com/posts/61156.html</a> 这篇文章明显故意贬低机锋市场嘛，而且开头那么明显的数字对比都不提 2011-06-23 10:18:11</li>
+<li>iPhone版本地鐵捷運大全下載地址（App Store） <a href="http://itunes.apple.com/cn/app/id437182766?mt=8" title="http://itunes.apple.com/cn/app/id437182766?mt=8" class="http">http://itunes.apple.com/cn/app/id437182766?mt=8</a> 2011-06-23 12:25:06</li>
+<li>我比较赞同这个: […]认为用完整的操作系统当作hypervisor 是最好的选择。 虚拟化和操作系统比较只是个小特色。 当虚拟化是操作系统的一部分时更能让虚拟化解决方案重复使用许多现代操作系统已经有的功能 2011-06-24 14:19:25</li>
+<li>[工具软件] XYplorer 最后的免费版 5.5 <a href="http://www.xyplorer.com/download/xyplorer_full_lfv.zip" title="http://www.xyplorer.com/download/xyplorer_full_lfv.zip" class="http">http://www.xyplorer.com/download/xyplorer_full_lfv.zip</a> 2011-06-24 17:51:04</li>
+<li>这个xyplorer免费版: 多Tab界面（不支持多Panel），支持搜索，不支持多语言、外部工具、命令行，查看器很简单，总体感觉不如A43 2011-06-24 18:08:46</li>
+<li>[fileman] A43跟XYplorerFree比起来，支持多语言，支持Dule Pane，还有一个“快速启动”面板可放一些快捷方式上去；没什么可配置的选项——不过xy配置项又太多看得头晕，并且配了也不能保存啊，有啥用？ 2011-06-25 08:55:43</li>
+<li>我在上海，活的很好_韩寒_新浪博客 <a href="http://blog.sina.com.cn/s/blog_4701280b0101854o.html" title="http://blog.sina.com.cn/s/blog_4701280b0101854o.html" class="http">http://blog.sina.com.cn/s/blog_4701280b0101854o.html</a> 2011-06-25 13:18:23</li>
+<li>『我移开视线，走进碟店，碟店里的伙计说，帅哥，《建党伟业》看过伐？我说，我一直在看。』– 我在上海，活的很好_韩寒 <a href="http://blog.sina.com.cn/s/blog_4701280b0101854o.html" title="http://blog.sina.com.cn/s/blog_4701280b0101854o.html" class="http">http://blog.sina.com.cn/s/blog_4701280b0101854o.html</a> 2011-06-25 13:19:54</li>
+<li>『一位《环球时报》记者承认，他们经常遇到的评价就是“商业民族主 义”。在不少同行眼中，这是一个比狭隘民族主 义更让人鄙视的词汇，后者无论对错，尚不失其信仰，而前者则纯粹是操弄意识形态当作赚取钞票的工具。』 2011-06-25 13:20:53</li>
+<li>[firefox][xul] 把Brief的快捷键改得跟google reader一致了，否则容易精神分裂。主要是改 brief-overlay.xul；而keyboard-shortcuts.xhtml为帮助页，最好也改了 2011-06-25 13:46:52</li>
+<li>哇：『跨越操作系统的隔阂：BlueStacks让Android与Windows 7转换自如』</li>
+<li><a href="http://cn.engadget.com/2011/06/22/bluestacks-android-windows-7/" title="http://cn.engadget.com/2011/06/22/bluestacks-android-windows-7/" class="http">http://cn.engadget.com/2011/06/22/bluestacks-android-windows-7/</a> 2011-06-25 15:20:21</li>
+<li>[emacs] 奇怪，我前两天明明行得通的（lwindow/rwindow/apps只在Emacs中做为粘滞键，不影响Windows已有热键），今天突然不好使了，怎么回事??? 2011-06-25 16:44:03</li>
+<li>[km] <a href="http://www.techrepublic.com/blog/10things/10-linux-rescue-tools-for-recovering-linux-windows-or-mac-machines/1458" title="http://www.techrepublic.com/blog/10things/10-linux-rescue-tools-for-recovering-linux-windows-or-mac-machines/1458" class="http">http://www.techrepublic.com/blog/10things/10-linux-rescue-tools-for-recovering-linux-windows-or-mac-machines/1458</a> 2011-06-27 09:51:28</li>
+<li>[g_f_w] vpnassist - help people in China connect VPN easily - <a href="http://code.google.com/p/vpnassist/" title="http://code.google.com/p/vpnassist/" class="http">http://code.google.com/p/vpnassist/</a> 2011-06-27 14:10:31</li>
+<li>[emacs][orgmode] 防止g_f_w中f被下划线转变为下标的方法是，在文件头部加 #+OPTIONS: ^:{} 或者设置变量org-use-sub-superscripts. （这个破特性在org-mode里面叫做embeded latex) 2011-06-27 14:41:54</li>
+<li>[android] 怎么找个桌面便签这么困难？我的要求很简单：能支持多个便签，在桌面上象相册一样可一页一页翻；便签可以修改（HTC自己提供的便签居然不能修改！） 2011-06-27 14:55:39</li>
+<li>[emacs] 代码折叠: 总算找到一个支持outline-mino-mode的fringe可视化 qtmstr-outline.el <a href="http://paste.lisp.org/display/86638" title="http://paste.lisp.org/display/86638" class="http">http://paste.lisp.org/display/86638</a> 2011-06-28 08:20:59</li>
+<li>”In fact, the MSYS developers advise to stay away of MSYS except for running the configure scripts.” <a href="http://is.gd/pxlep2" title="http://is.gd/pxlep2" class="http">http://is.gd/pxlep2</a> 2011-06-28 08:46:56</li>
+<li>[emacs][msys][tips] shell-msys in emacs <a href="http://is.gd/pxlep2" title="http://is.gd/pxlep2" class="http">http://is.gd/pxlep2</a> 2011-06-28 08:47:35</li>
+<li>[emacs] RT <span class="zim-tag">@github_el</span>: Emacs-Sunburst-Color-Theme - A color theme for emacs based on Textmate's Sunburst color scheme <a href="http://bit.ly/k5jerM" title="http://bit.ly/k5jerM" class="http">http://bit.ly/k5jerM</a> 2011-06-28 10:31:33</li>
+<li>RT <span class="zim-tag">@github_el</span>: reverse-android - Reverse-engineering tools for [Android] applications <a href="http://bit.ly/ji2kyR" title="http://bit.ly/ji2kyR" class="http">http://bit.ly/ji2kyR</a> 2011-06-28 10:37:20</li>
+<li>[debian] all sunpinyin related packages are backported to squeeze-backports [2011-06-28 10:57:15]</li>
+<li>[debian] squeeze下sources.list的配置 <a href="http://www.debian.org/News/2011/20110525" title="http://www.debian.org/News/2011/20110525" class="http">http://www.debian.org/News/2011/20110525</a> [2011-06-28 11:05:04]</li>
+<li>”Google在春天种下了Android之树，百度在秋天偷割了果实，名为秋实” 2011-06-28 11:08:59</li>
+<li>phpsh was developed at Facebook, and ironically, is written mostly in python. <a href="http://www.phpsh.org" title="http://www.phpsh.org" class="http">http://www.phpsh.org</a> 2011-06-28 11:11:51</li>
+<li>phpsh – an interactive shell for php - <a href="http://phpsh.org/" title="http://phpsh.org/" class="http">http://phpsh.org/</a> 2011-06-28 11:28:21</li>
+<li>[totalcmd] TC居然有[android]版本 Total Commander for Android 1.0 beta 9 (2nd public beta) - <a href="http://ghisler.ch/board/viewtopic.php?t=29772" title="http://ghisler.ch/board/viewtopic.php?t=29772" class="http">http://ghisler.ch/board/viewtopic.php?t=29772</a> 2011-06-28 13:55:59</li>
+<li>[tips][unix] How do I get a plain text man page without all that ^H^_ stuff? <a href="http://tldp.org/HOWTO/Man-Page/q10.html" title="http://tldp.org/HOWTO/Man-Page/q10.html" class="http">http://tldp.org/HOWTO/Man-Page/q10.html</a> 2011-06-29 08:45:12</li>
+<li>… decided on the end of June for the beginning of the [Emacs] 24.1 pretest. We're hoping for an early 2012 release… <a href="http://is.gd/i8WKi9" title="http://is.gd/i8WKi9" class="http">http://is.gd/i8WKi9</a> 2011-06-29 09:16:23</li>
+<li>[ssh] Target management: telnet/ssh terminal on [Eclipse] <a href="http://www.eclipse.org/tm/tutorial/index.php" title="http://www.eclipse.org/tm/tutorial/index.php" class="http">http://www.eclipse.org/tm/tutorial/index.php</a> 2011-06-29 10:53:50</li>
+<li>[debian] 将我的debian从testing降级到了stable(squeeze)了，就我目前的使用，基本够了，少数软件找找 backport就行。过一年再切到testing吧，免得软件太过时 2011-06-29 12:23:17</li>
+<li>ifttt是什么，能怎么玩 <a href="http://www.shibeichen.com" title="http://www.shibeichen.com" class="http">http://www.shibeichen.com</a> 简单地说，就是能将 twitter/facebook/delicious/email/phone等东西串起来，一处事件触发另一处动作 <a href="http://ifttt.com/wtf" title="http://ifttt.com/wtf" class="http">http://ifttt.com/wtf</a> 2011-06-29 14:14:22</li>
+<li>RT <span class="zim-tag">@Thruth</span>: 唉，openSUSE 没落了。 2011-06-29 15:15:35</li>
+<li>[debian] squeeze-backports 中所有软件的列表：<a href="http://backports-master.debian.org/changes/squeeze-backports.html" title="http://backports-master.debian.org/changes/squeeze-backports.html" class="http">http://backports-master.debian.org/changes/squeeze-backports.html</a> 2011-06-30 09:09:55</li>
+<li>这人比我还着魔: 『怎么用emacs作为图形客户端来访问远程服务器』 - <a href="http://is.gd/fo2fMS" title="http://is.gd/fo2fMS" class="http">http://is.gd/fo2fMS</a> [2011-06-30 10:06:56]</li>
+<li>[Android]软件开发方法浅析_IT新闻_博客园 - <a href="http://news.cnblogs.com/n/106719/" title="http://news.cnblogs.com/n/106719/" class="http">http://news.cnblogs.com/n/106719/</a> [2011-06-30 11:40:15]</li>
+<li>[工具软件] mstsc快捷键: Ctrl-Alt-Break 切换全屏, Ctrl-Alt-End 发送Ctrl-Alt-Del [2011-06-30 13:30:27]</li>
+</ul>
+</p>
+
+
+
+<!-- End wiki content -->
+
+<hr />
+
+<!-- Attachments and Backlinks -->
+
+	<i>No backlinks to this page.</i>
+<br><br>
+
+
+
+<!-- End Attachments and Backlinks -->
+
+	</body>
+
+</html>

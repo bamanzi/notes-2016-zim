@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title></title>
+		<meta name='Generator' content='Zim 0.60'>
+		<style type='text/css'>
+			a          { text-decoration: none      }
+			a:hover    { text-decoration: underline }
+			a:active   { text-decoration: underline }
+			strike     { color: grey                }
+			u          { text-decoration: none;
+			             background-color: yellow   }
+			tt         { color: #2e3436;            }
+			pre        { color: #2e3436;
+			             margin-left: 20px          }
+			h1         { text-decoration: underline;
+			             color: #4e9a06             }
+			h2         { color: #4e9a06             }
+			h3         { color: #4e9a06             }
+			h4         { color: #4e9a06             }
+			h5         { color: #4e9a06             }
+			span.insen { color: grey                }
+		</style>
+	</head>
+	<body>
+
+<!-- Header -->
+
+	[ <a href='./DropboxUbuntuOne.html'>Prev</a> ]
+
+			[ <a href='../../../index.html.html'>Index</a> ]
+
+	[ <a href='./GitMirrorForHgRepo.html'>Next</a> ]
+
+<!-- End Header -->
+
+<hr />
+
+<!-- Wiki content -->
+
+<h1>[git/hg]什么叫做bare repo?</h1>
+
+<p>
+Created 星期日 02 六月 2013<br>
+</p>
+
+<p>
+<span class="zim-tag">@git</span> <span class="zim-tag">@hg</span> <br>
+</p>
+
+<p>
+引用:<br>
+</p>
+
+<p>
+<div style='padding-left: 30pt'>
+一个bare repo与普通repo的区别是没有项目文件的working copy，即repo根目录下只有专用目录，而没有任何其他代码文件和文件夹；这是为了响应作为codebase应当遵循的“Only store, never update from revisions（只存储版本，不更新到实际代码文件）”原则。<br>
+</div>
+</p>
+	
+<p>
+<div style='padding-left: 30pt'>
+hg管理的repo天生就能做codebase使用，无论是否是bare的，这点是由其分布式版本控制系统的本质决定的，它可以随时把当前的repo通过自带的http server发布代码，特别适合分布式开源项目的代码分享。<br>
+</div>
+</p>
+	
+<p>
+<div style='padding-left: 30pt'>
+git也是分布式代码版本管理工具，不过它对作为codebase的repo做了严格的bare要求。可以看到的是许多人在初学git时不了解这一点，抱怨自己做spike时不知如何提交代码到在本机上的codebase。这里顺手写下两个tips：<br>
+</div>
+</p>
+	
+<p>
+<ul style='padding-left: 30pt'>
+<li>初始建立一个bare repo</li>
+</ul>
+</p>
+	
+<p>
+<div style='padding-left: 30pt'>
+<code>$ git init --bare</code><br>
+</div>
+</p>
+	
+<p>
+<ul style='padding-left: 30pt'>
+<li>如果已有一个repo了，使用下面的方法将其转化为bare的</li>
+</ul>
+</p>
+	
+<p>
+<div style='padding-left: 30pt'>
+<code>$ git config --bool core.bare true</code><br>
+</div>
+</p>
+	
+<p>
+<div style='padding-left: 30pt'>
+之后可删除除了repo根目录.git文件夹之外的所有文件，即只保留专用目录<br>
+</div>
+</p>
+
+
+<p>
+摘自: <a href="http://blog.csdn.net/shaobo_wu/article/details/6090765" title="git vs hg - 挖金子的矿工 - 博客频道 - CSDN.NET" class="http">git vs hg - 挖金子的矿工 - 博客频道 - CSDN.NET</a><br>
+</p>
+
+<p>
+补充:<br>
+<ol type="1" start="1">
+<li>上面部分说法可能不对，因为该博文是针对老版hg写的，而后来hg也有了类似git的repo内多命名分支，而对于bare repo，官方wiki (<a href="http://mercurial.selenic.com/wiki/GitConcepts#Bare_repositories" title="GitConcepts#Bare_repositories" class="http">GitConcepts#Bare_repositories</a>上)说要这样: <code>hg update null</code></li>
+</ol>
+</p>
+
+<p>
+<ol type="1" start="2">
+<li>对git而言, bare repo不仅仅是没有checkout, 而且There is no .git directory is created. Instead, the files normally in the .git directory are placed in the top-level directory where the working directory would normally be. (来自<a href="http://www.gitguys.com/topics/shared-repositories-should-be-bare-repositories/" title="Shared Repositories Should Be Bare Repositories - GitGuys" class="http">Shared Repositories Should Be Bare Repositories - GitGuys</a>)</li>
+</ol>
+</p>
+
+
+<!-- End wiki content -->
+
+<hr />
+
+<!-- Attachments and Backlinks -->
+
+	<i>No backlinks to this page.</i>
+<br><br>
+
+
+
+<!-- End Attachments and Backlinks -->
+
+	</body>
+
+</html>

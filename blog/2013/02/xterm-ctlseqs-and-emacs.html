@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>终端下如何让Emacs用上Ctrl+F1, Shift+Up等组合键</title>
+		<title></title>
 		<meta name='Generator' content='Zim 0.60'>
 		<style type='text/css'>
 			a          { text-decoration: none      }
@@ -14,82 +14,82 @@
 			tt         { color: #2e3436;            }
 			pre        { color: #2e3436;
 			             margin-left: 20px          }
-			h1         { text-align: center;
+			h1         { text-decoration: underline;
 			             color: #4e9a06             }
 			h2         { color: #4e9a06             }
 			h3         { color: #4e9a06             }
 			h4         { color: #4e9a06             }
 			h5         { color: #4e9a06             }
 			span.insen { color: grey                }
-			.page { max-width: 1000px;}
-			.menu{
-				float:left; width: 300px;
-			}
-
-			.content { padding-left: 320px;}
-			.notebook{font-variant: small-caps;
-					color:#4e9a06;
-					padding: 0px 20px;}
-			hr{clear:both;}
 		</style>
-
 	</head>
 	<body>
-		<div class="page">
-			<div class="heading">
-									<h1>终端下如何让Emacs用上Ctrl+F1, Shift+Up等组合键</h1>
-			</div>
-			<hr>
-			<div class="menu">
-				<ul>
-<li><a href="../../../blog.html" title="blog" class="page">blog</a></li>
-<ul>
-<li><a href="../../2012.html" title="2012" class="page">2012</a></li>
-<li><a href="../../2013.html" title="2013" class="page">2013</a></li>
-<ul>
-<li><a href="../02.html" title="02" class="page">02</a></li>
-<ul>
-<li><strong class="activepage">xterm-ctlseqs-and-emacs</strong></li>
-</ul>
-<li><a href="../04.html" title="04" class="page">04</a></li>
-<li><a href="../05.html" title="05" class="page">05</a></li>
-</ul>
-<li><a href="../../todo.html" title="todo" class="page">todo</a></li>
-</ul>
-<li><a href="../../../chirps.html" title="chirps" class="page">chirps</a></li>
-<li><a href="../../../misc.html" title="misc" class="page">misc</a></li>
-<li><a href="../../../notes.html" title="notes" class="page">notes</a></li>
-<li><a href="../../../todo.html" title="todo" class="page">todo</a></li>
-</ul>
 
-			</div>
-			<div class="content">
-			<!-- Wiki content -->
-				<span class="zim-tag">@emacs</span> <span class="zim-tag">@putty</span> <span class="zim-tag">@xterm</span> <span class="zim-tag">@ssh</span><br>
-<br>
+<!-- Header -->
+
+	[ <a href='../02.html'>Prev</a> ]
+
+			[ <a href='../../../index.html.html'>Index</a> ]
+
+	[ <a href='../04.html'>Next</a> ]
+
+<!-- End Header -->
+
+<hr />
+
+<!-- Wiki content -->
+
+<h1>终端下如何让Emacs用上Ctrl+F1, Shift+Up等组合键</h1>
+
+<p>
+Created 星期四 30 五月 2013<br>
+</p>
+
+<p>
+<span class="zim-tag">@emacs</span> <span class="zim-tag">@putty</span> <span class="zim-tag">@xterm</span> <span class="zim-tag">@ssh</span><br>
+</p>
+
+<p>
 最近常用Putty访问Linux，在上面用Emacs修改代码、运行shell、进行SQL交互，最大的问题是很多组合键（比如我常用的<code>Shift+Up/Down/Left/Right, Ctrl+F1..F12, Ctrl+Home/End</code>）不能使用，春节前两天有些时间，研究了一下这个问题，算是基本找到了一些解决办法。<br>
-<br>
-<h2>问题分析</h2><br>
-<br>
+</p>
+
+<h2>问题分析</h2>
+
+<p>
 首先需要了解<a href="http://www.xfree86.org/current/ctlseqs.html" title="Xterm control sequences" class="http">Xterm control sequences</a>这个概念，这个链接中的说明很晦涩，我简单地说明一下：对于有对应 ASCII字符的组合健，就发送对应的ASCII字符，否则用一个特殊序列来表示，比 如 F1 就用 <code>^[OP</code> （也就是先按Ctrl+[, 然后按O，然后再按P），或者用 <code>^[[11~</code> 来表示， C-F7 就用 <code>^[[18;5~</code> 表示 。这个序列一般都是以 ESC（也即ASCII码中的27，对应实际按键 ESC 或者 Ctrl+[ ，常写为 \e 或者 ^[ ）开始，所以也常常叫做<strong>Escape sequences</strong>（除了表达按键之外，它还用来表达<a href="http://en.wikipedia.org/wiki/ANSI_escape_code#Colors" title="终端颜色控制" class="http">终端颜色控制</a>）。<br>
-<br>
+</p>
+
+<p>
 当在终端里运行应用程序时，按下一个组合键之后的事情是这样:<br>
-<br>
-<li style="list-style-image: url(../../../_resources/1..png)">终端模拟器将其翻译为对应的Xterm control sequences，发送给对端主机;</li>
-<li style="list-style-image: url(../../../_resources/2..png)">对端主机根据 TERM 在terminfo中查找翻译表，翻译为对应的按键信息，传递给应用程序（如果某些组合键在翻译表中找不到，则透传）</li>
-<li style="list-style-image: url(../../../_resources/3..png)">应用程序对组合健做出响应。</li>
-<br>
+</p>
+
+<p>
+<ol type="1" start="1">
+<li>终端模拟器将其翻译为对应的Xterm control sequences，发送给对端主机;</li>
+<li>对端主机根据 TERM 在terminfo中查找翻译表，翻译为对应的按键信息，传递给应用程序（如果某些组合键在翻译表中找不到，则透传）</li>
+<li>应用程序对组合健做出响应。</li>
+</ol>
+</p>
+
+<p>
 所以可能存在的问题是:<br>
-<br>
-<li style="list-style-image: url(../../../_resources/1..png)">终端模拟器不能将某些组合键翻译为Xterm control sequences</li>
-<li style="list-style-image: url(../../../_resources/2..png)">终端模拟器与terminfo中的翻译表不一致</li>
+</p>
+
+<p>
+<ol type="1" start="1">
+<li>终端模拟器不能将某些组合键翻译为Xterm control sequences</li>
+<li>终端模拟器与terminfo中的翻译表不一致</li>
+</ol>
+</p>
 
 <h2>解决方法</h2>
 
-<h3>对于第一个问题</h3><br>
-<br>
+<h3>对于第一个问题</h3>
+
+<p>
 可以用AutoHotKey拦截组合键，自行翻译到control sequences发送出去:<br>
-<br>
+</p>
+
 <pre style='padding-left: 30pt'>
 #if WinActive("ahk_class PuTTY") or WinActive("ahk_class mintty")
 ;;** Ctrl+Fn
@@ -100,16 +100,22 @@
 ^F5::SendInput  {Esc}[15;5~
 ^F6::SendInput  {Esc}[17;5~
 </pre>
-<br>
-<br>
+
+
+<p>
 (完整的代码见这里: <a href="https://bitbucket.org/bamanzi/dotemacs-elite/src/default/term/putty-ctlseqs.ahk" title="bamanzi / dotemacs-elite / source / term / putty-ctlseqs.ahk — Bitbucket" class="https">bamanzi / dotemacs-elite / source / term / putty-ctlseqs.ahk — Bitbucket</a>)<br>
-<br>
+</p>
+
+<p>
 备注一下，我的办公用机是Windows，我用的终端模拟器是putty及其变种 （包括<a href="http://code.google.com/p/mintty/" title="mintty" class="http">mintty</a>, <a href="http://sourceforge.net/projects/putty-nd/" title="putty-nd" class="http">putty-nd</a>以及<a href="http://mobaxterm.mobatek.net/" title="MobaXterm" class="http">MobaXterm</a>）。至于Linux桌面，GNOME Terminal和XFCE Terminal基本上<a href="http://help.gnome.org/users/gnome-terminal/stable/gnome-terminal.html.en" title="兼容vt102和vt220的组合键" class="http">兼容vt102和vt220的组合键</a>，Ctrl+Up, Alt+F1这些大都是支持的（但有少数不支持，但我目前不知道什么工具可以完成类似AutoHotKey这样的功能）<br>
-<br>
-<h3>对于第二个问题</h3><br>
-<br>
+</p>
+
+<h3>对于第二个问题</h3>
+
+<p>
 对于Emacs而言，我们并不需要直接去解决第二个问题，因为Emacs可以自己将control sequences翻译为其它按键:<br>
-<br>
+</p>
+
 <pre style='padding-left: 30pt'>
 (define-key input-decode-map "\eO5P"    [C-f1])
 (define-key input-decode-map "\eO5Q"    [C-f2])
@@ -120,33 +126,41 @@
 </pre>
 
 
-<strike>这里有一个比较完整的包，包含了很多control sequences: http://www.dur.ac.uk/p.j.heslin/Software/Emacs/Download/xterm-extras.el )</strike><br>
+<p>
+~~这里有一个比较完整的包，包含了很多control sequences: <a href="http://www.dur.ac.uk/p.j.heslin/Software/Emacs/Download/xterm-extras.el" title="http://www.dur.ac.uk/p.j.heslin/Software/Emacs/Download/xterm-extras.el" class="http">http://www.dur.ac.uk/p.j.heslin/Software/Emacs/Download/xterm-extras.el</a> )~~<br>
 (更新: Emacs自带了一个<a href="http://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/term/xterm.el?h=emacs-23" title="term/xterm.el" class="http">term/xterm.el</a>包，里面已经包含了很多xterm所支持的control sequences。上面的<a href="http://www.dur.ac.uk/p.j.heslin/Software/Emacs/Download/xterm-extras.el" title="xterm-extras.el" class="http">xterm-extras.el</a>可作为更多信息的参考）<br>
-<br>
+</p>
+
 <h2>补充说明</h2>
 
+<p>
+<ul>
 <li>对于同一个键，可能有多种control sequences，比如F1有<code>^[11~ , ^[[1P和^[OP</code> 这三种序列，但每种终端模拟器只发送其中一种。上面的xterm-extra.el 对光标键提供了CSI和SS3序列的映射，这意味着在多种终端上按这些键都可以正确翻译; 但对于F1..F4只提供了CSI的序列映射，没有提供SS3序列映射（而Putty/Mintty对于F1..F4恰好使用的是CSI序列）。不过反过来比较好的是，不会一个序列对应多种按键。</li>
 <li>上面的xterm-extra.el里面对keypad序列似乎不是标准的，我没有查到^[z开头的序列，似乎是作者利用了一个尚未使用的序列。不过SS3序列中是有keypad序列的（vim wiki中有一篇相关的贴士: <a href="http://vim.wikia.com/wiki/PuTTY_numeric_keypad_mappings" title="PuTTY numeric keypad mappings - Vim Tips Wiki" class="http">PuTTY numeric keypad mappings - Vim Tips Wiki</a> );</li>
 <li>Putty本身对于<code>F1, Shift+F1, Alt+F1, Alt+Shift+F1,</code> 支持挺好，但不支持带Ctrl修饰键的（比如Ctrl+F1, Ctrl+Shift+F1, Ctrl+Alt+F1），如果是Windows平台，可以用AutoHotKey来解决;</li>
 <li>对于Ctrl+标点这个列表，部分（比如Ctrl+*, Ctrl+.等）是有control sequences定义的，还有一些（比如Ctrl+!, Ctrl+#, Ctrl+; ）则没有正式的control sequences。详细说明可以参考我的配置文件里面的说明： <a href="https://bitbucket.org/bamanzi/dotemacs-full/src/default/init.d/80-ports.el?at=default#cl-188" title="init.d / 80-ports.el" class="https">init.d / 80-ports.el</a>。如果要使用，也只能用AutoHotKey来解决;</li>
 <li>获取你的终端上某个键的control sequences的简单方法是用cat命令（不过对于少数特殊键和<a href="http://the.earth.li/~sgtatham/putty/0.62/htmldoc/Chapter4.html#config-appkeypad" title="application keypad" class="http">application keypad</a>不好使）</li>
+</ul>
 <img src="./xterm-ctlseqs-and-emacs/17223111-720c1041c64b48abb639bd446f51179f.png" alt=""><br>
  （这篇文章有个<a href="http://bamanzi.bitbucket.org/misc/xterm-ctrlseqs.html" title="完整的版本" class="http">完整的版本</a>，包含了更多细节，我放在了bitbucket里面，如果有兴趣，可以前往阅读）<br>
-<br>
+</p>
 
 
-			<!-- End wiki content -->
-			</div>
-			<hr>
-			<!-- Backlinks -->
-			<div class="footer">
-									<i>No backlinks to this page.</i>
-				<br><br>
 
-									<b>Attachments:</b>
-					<table>						<tr><td><a href='./xterm-ctlseqs-and-emacs/17223111-720c1041c64b48abb639bd446f51179f.png'>17223111-720c1041c64b48abb639bd446f51179f.png</a></td><td>&nbsp;</td><td>22.0kb</td></tr>					</table>
-			<!-- End Backlinks -->
-			</div>
-		</div>
+<!-- End wiki content -->
+
+<hr />
+
+<!-- Attachments and Backlinks -->
+
+	<i>No backlinks to this page.</i>
+<br><br>
+
+	<b>Attachments:</b>
+	<table>		<tr><td><a href='./xterm-ctlseqs-and-emacs/17223111-720c1041c64b48abb639bd446f51179f.png'>17223111-720c1041c64b48abb639bd446f51179f.png</a></td><td>&nbsp;</td><td>22.0kb</td></tr>	</table>
+
+<!-- End Attachments and Backlinks -->
+
 	</body>
+
 </html>
